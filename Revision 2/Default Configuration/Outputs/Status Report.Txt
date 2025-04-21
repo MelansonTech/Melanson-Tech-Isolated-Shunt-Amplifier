@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 5:19:03 PM On 2025-04-20
+
+Output: ExportSTEP
+Type  : ExportSTEP
+From  : Variant [[No Variations]] of PCB Document [MelansonTech Isolated Shunt Amplifier Rev 2.CSPcbDoc]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev 2.step]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 5:19:06 PM On 2025-04-20

@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\shawn\OneDrive\ProjectGitReleases\Melanson-Tech-Isolated-Shunt-Amplifier\Revision 2\MelansonTech Isolated Shunt Amplifier Rev 2.CSPcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=melansontech isolated shunt amplifier rev 2-roundholes.txt|LayerPairs=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=melansontech isolated shunt amplifier rev 2-slotholes.txt|LayerPairs=gtl,gbl

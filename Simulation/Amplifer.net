@@ -1,0 +1,32 @@
+* C:\Users\shawn\OneDrive\ProjectGitReleases\Melanson-Tech-Isolated-Shunt-Amplifier\Simulation\Amplifer.asc
+XU1 N009 N003 12v 0 N004 OPA197
+V1 12v 0 12
+V2 NC_01 0 6
+R1 N004 N003 10K
+R2 N003 N006 8.1K
+R3 N009 N008 8.1K
+R4 6v N009 10K
+V3 N006 N008 PULSE(0 0.5 0 100n 100n 0.001 0.002) AC 1
+XU2 N007 N001 12v 0 N002 OPA197
+R5 N004 0 10k
+R6 N007 N004 10k
+R7 N002 N001 1410
+C2 N002 N001 3.3n
+C3 N004 N003 3p
+C4 N009 6v 3p
+R8 N002 0 10k
+R9 N005 N002 50
+C5 N005 6v 1n
+XU3 N010 6v 12v 0 6v OPA197
+R11 12v N010 100k
+R12 N010 0 100k
+C6 N010 0 100n
+C7 6v 0 1n
+C1 N007 6v 3p
+R10 N001 6v 1410
+R13 N007 6v 10k
+.lib "C:\Users\shawn\OneDrive\Shawn\Circuit Studio\LtSpice SIM Models\OPAMPS\OPA197IDBVT\OPA197.LIB"
+.tran 0.01
+* .ac dec 1000 10 1meg
+.backanno
+.end
