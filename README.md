@@ -6,7 +6,7 @@ Key Features:
 •	Times 10 with 500kHz Bandwidth
 •	Times 100 with 30kHz Bandwidth
 2.	Input Voltage Range:
-•	2V to 9V input
+•	13-15V input
 3.	Output Voltage Range:
 •	+/-6Vout
 4.	Input Voltage Common Mode Range:
