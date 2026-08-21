@@ -1,14 +1,18 @@
 Project Outputs Generation Report
 ---------------------------------
-Start Output Generation At 8:12:50 PM On 2026-08-20
+Start Output Generation At 8:43:59 PM On 2026-08-20
 
-Output: ExportSTEP
-Type  : ExportSTEP
-From  : Variant [[No Variations]] of PCB Document [MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc]
-   Generated File[MelansonTech Isolated Shunt Amplifier Rev3.step]
+Output: NC Drill
+Type  : NC Drill
+From  : PCB Document [MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev3-RoundHoles.TXT]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev3-SlotHoles.TXT]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev3.DRL]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev3.LDP]
+   Generated File[MelansonTech Isolated Shunt Amplifier Rev3.DRR]
 
 
-Files Generated   : 1
+Files Generated   : 5
 Documents Printed : 0
 
-Finished Output Generation At 8:12:55 PM On 2026-08-20
+Finished Output Generation At 8:43:59 PM On 2026-08-20

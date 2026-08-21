@@ -46,10 +46,10 @@ The legends are scale factors, not range limits. Position 3 is the *finer* range
 span — it stops at 5 A because that is where the 5 V output ceiling is reached
 (5 V ÷ 100 ÷ 10 mΩ = 5 A), not because of anything in the input path.
 
-> **Rev 3.1 legends the switch by gain instead — `Off / x10 / x50`.** The `x50` is a silkscreen
-> typo: **that position is ×100**, which is what the LED beside it says and what the schematic
-> does. There is no ×50 range. Finding 15 in [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md) tracks it
-> along with three other Rev 3.1 silkscreen figures that disagree with the schematic.
+> **Rev 3.1 legends the switch by gain instead — `Off / x10 / x100`** — and adds a range LED
+> legend beside each position. The first Rev 3.1 artwork printed `x50` on the ×100 position; that
+> was a typo and is corrected. Three other Rev 3.1 silkscreen figures still disagree with the
+> schematic — see finding 15 in [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md).
 
 `SW1` also switches the board's supply, so position 1 genuinely removes power rather than just
 muting the output.

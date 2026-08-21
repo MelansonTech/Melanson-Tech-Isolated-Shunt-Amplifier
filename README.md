@@ -112,8 +112,7 @@ and isolated +5 V rails.*
 [![Board](docs/board-silkscreen.png)](docs/board-silkscreen.png)
 
 *Board artwork, Rev 3.1 — silkscreen, including the on-board specification legend. Several of
-those legends disagree with the schematic, and the `x50` beside the switch is a typo for `x100` —
-there is no ×50 range. See finding 15 in the design review.*
+those legends still disagree with the schematic — see finding 15 in the design review.*
 
 The full set including the PCB and fabrication drawings is
 [`Revision 3/MelansonTech Isolated Current Sense Rev 3.PDF`](Revision%203/MelansonTech%20Isolated%20Current%20Sense%20Rev%203.PDF).

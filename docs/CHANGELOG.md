@@ -27,12 +27,16 @@ What did change is the **silkscreen**, which now carries an on-board specificati
 | `Supply: 13-16Vdc` | 13–15 V | **unresolved — 16 V is 133 % of `Rel1`'s 12 V coil rating** |
 | `Vout +/-6V` | 5 V max, ±5.85 V computed | unresolved |
 | `Max Input +/-200mV` | ±250 mV | unresolved |
-| Switch legend `x50` | that position is ×100 | **silkscreen typo** — should read `x100`; there is no ×50 range |
+| ~~Switch legend `x50`~~ | ×100 | **fixed** — the rebuilt outputs read `Off / x10 / x100` |
 
-Full detail in finding 15 of [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md). The `x50` is settled — a
-typo for `x100`, not a range — so the accuracy tables and the tolerance budget are unaffected.
-The other three are open, and **the documentation in this repository follows the schematic, not
-the silkscreen**, until they are resolved.
+Full detail in finding 15 of [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md). The `x50` was a typo and is
+now corrected in the artwork; it never affected the accuracy tables or the tolerance budget. The
+other three are open, and **the documentation in this repository follows the schematic, not the
+silkscreen**, until they are resolved.
+
+The `Vout` figure is the messiest of the three: the silkscreen says `+/-6V`, the amplifier sheet
+is annotated `+/-4.5Vout`, the rails compute to ±5.85 V, and full scale is 5.0 V. Four numbers,
+one parameter.
 
 Also in this revision: the Gerber set gains `.GKO` (keep-out), `.GM4` and a `Dimensions Top`
 layer that Rev 3's March outputs did not produce, and the NC drill files are no longer suffixed
