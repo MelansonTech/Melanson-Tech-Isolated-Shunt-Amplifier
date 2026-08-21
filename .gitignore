@@ -1,0 +1,12 @@
+# CircuitStudio preview cache — regenerated whenever a document is opened
+__Previews/
+
+# scratch
+_stale/
+
+# OS / editor cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.~*

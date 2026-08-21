@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 8:17:41 PM On 2026-03-08
+
+Output: BOM_PartType
+Type  : BOM
+From  : Variant [[No Variations]] of Project [MelansonTech Isolated Current Sense Rev 2.PrjPcb]
+   Generated File[BOM_PartType-MelansonTech Isolated Current Sense Rev 2.xls]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 8:18:17 PM On 2026-03-08
