@@ -10,7 +10,7 @@ A front-panel switch selects off, the **10 A range** (gain ×10, 1 V per 10 A) o
 finer range over a smaller span, running to 5 A where the 5 V output ceiling stops it. The board runs from a single 15 V isolated supply and
 generates its own isolated rail for the measured side.
 
-> ### ⚠ Power it from an isolated supply
+> ### ⚠ Power it from an isolated supply, 15 V nominal
 >
 > `ISenseRTN` — the output return, on the SMA shell — is **bonded to chassis**, and the board's
 > internal 0 V rail floats about 6 V below it. The 15 V auxiliary input connects to that
@@ -25,6 +25,17 @@ generates its own isolated rail for the measured side.
 >
 > Also: the output source impedance is 50 Ω, so a 50 Ω *terminated* instrument reads **half** the
 > true output. Use a 1 MΩ input.
+
+**On the supply voltage.** The board runs anywhere in 13–15 V, but the +12 V rail only regulates
+above about **14.9 V** — the UA78L12 needs 14.5 V and there is a Schottky in the path. Below that
+the rail sags and takes the 6 V reference with it.
+
+Accuracy survives this: `DiffAmpRef` and `ISenseRTN` come from identical dividers off the same
+rail, so they move together and cancel, and gain is set by resistor ratios and the Si8921 on the
+regulated +5 V. What shrinks is **output headroom** — at 13 V there is 5.32 V of swing against
+the 5.0 V the 5 A range needs at full scale, a 6 % margin. Run it at 15 V and the margin is 0.85 V.
+
+Do not exceed **15.6 V**: `Rel1`'s coil is driven from the input, and that is 130 % of its rating.
 
 ## Specifications
 
@@ -49,7 +60,8 @@ generates its own isolated rail for the measured side.
 | Temperature coefficient † | ±(0.011 % of reading + 0.5 mA)/°C | outside 23 °C ±5 °C |
 | Accuracy, user gain calibrated † | ±(0.25 % + 12 mA) / ±(0.15 % + 8 mA) | requires a scale factor in your own system |
 | Operating temperature | 0 °C to 40 °C | accuracy specified at 23 °C ±5 °C |
-| Auxiliary supply | 15 V, **isolated/floating**, ~300 mW | 2.1 × 5.5 mm barrel jack, centre positive |
+| Auxiliary supply | **13–15 V**, isolated/floating, ~300 mW | 15 V nominal. 2.1 × 5.5 mm barrel jack, centre positive |
+| Supply for full specified performance | **14.9–15.6 V** | below 14.9 V the +12 rail is unregulated — see the note |
 | Input connector | 2-pos 5.08 mm terminal block | Phoenix 5442002, 12 A / 400 V |
 | Output reference | `ISenseRTN`, bonded to chassis | board 0 V floats ~6 V below chassis |
 

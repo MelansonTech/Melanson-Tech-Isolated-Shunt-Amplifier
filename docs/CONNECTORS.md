@@ -9,9 +9,9 @@ and bill of materials; see [`SAFETY.md`](SAFETY.md) before connecting anything t
 |---|---|---|---|
 | **J2** | Phoenix Contact 5442002 | **Current input.** 2-position, 5.08 mm pitch, rated 12 A / 400 V. The measured current flows *through* this connector and the shunt. | **1** — shunt low side · **2** — shunt high side, and the local `GND_ISO` reference |
 | **J1** | Cinch 142-0701-801 | **Signal output.** 50 Ω SMA jack, edge launch. | **centre** — `IsenseOut` · **shell** — `ISenseRTN`, bonded to chassis |
-| **J4** | PJ-002A | **Auxiliary supply.** 2.1 mm ID / 5.5 mm OD barrel jack, right angle. | **centre — positive, 15 V** · sleeve — board 0 V |
+| **J4** | PJ-002A | **Auxiliary supply, 13–15 V** (15 V nominal). 2.1 mm ID / 5.5 mm OD barrel jack, right angle. | **centre — positive** · sleeve — board 0 V |
 
-Three things about these that are not obvious:
+Five things about these that are not obvious:
 
 - **`J2` carries the full measured current.** It is not a sense connection. Torque the screws
   properly and use wire rated for the current — at 10 A a loose terminal is the hottest thing on
@@ -21,6 +21,11 @@ Three things about these that are not obvious:
 - **`J4` must be fed from an isolated supply.** The board's 0 V floats ~6 V below chassis. A
   supply with its negative bonded to earth shorts the reference buffer. This is the single most
   common way to get a wrong reading; the README carries the full explanation.
+- **Use 15 V if you want the full specification.** The board runs across 13–15 V, but the +12 V
+  rail only regulates above about 14.9 V. Below that it sags and output headroom on the 5 A range
+  shrinks — 0.32 V of margin at 13 V against 0.85 V at 15 V. Accuracy is unaffected; headroom is.
+- **Never exceed 15.6 V.** `Rel1`'s coil is driven directly from the input and that is 130 % of
+  its 12 V rating.
 
 ## Controls
 

@@ -108,7 +108,8 @@ heavier copper if you are ordering the board anyway.
 
 ## First power-on
 
-Do this with **`J2` disconnected** and an isolated 15 V supply.
+Do this with **`J2` disconnected** and an isolated supply set to **15 V** — the top of the
+13–15 V range, where the +12 rail regulates.
 
 1. **Inspect before applying power.** Check `J2`, `J4` and `J1` for solder bridges, and check the
    Si8921 and DC-DC module orientation.
@@ -133,18 +134,21 @@ Do this with **`J2` disconnected** and an isolated 15 V supply.
 
 | Rail | Expected | Where it comes from |
 |---|---|---|
-| `VregIn` | ≈ 14.6 V from a 15.0 V supply | after the choke, `L1` and a Schottky drop |
+| `VregIn` | ≈ Vin − 0.37 V (14.63 V from 15.0 V) | after the choke, `L1` and a Schottky drop |
 | `+12` | 12 V ±4 % | `U1`, UA78L12 |
 | `+5` | 5 V | `U6`, HT7550-1 |
 | `+5_ISO` | 5 V, isolated side | `PSU1`, NXJ1S0505 |
 | `ISenseRTN` | ≈ 6 V above board 0 V | `U5` buffering the `R22`/`R17` divider |
 | `DiffAmpRef` | ≈ 6 V, adjustable by `R28` | `U9` buffering the `R26`/`R29` divider |
 
-> **`+12` is the one to watch.** `U1` needs roughly 14.5 V in to regulate, and `VregIn` is only
-> about 14.6 V from a nominal 15 V supply. If your supply reads low, or you see `+12` sagging
-> below about 11.5 V, the regulator is in dropout — the reference and full scale move with it.
-> Feed the board from a supply you have actually measured. Finding 2 in the design review covers
-> this in detail.
+> **`+12` is the one to watch, and it depends on your supply.** `U1` needs 14.5 V in to regulate,
+> and there is a 0.37 V drop ahead of it, so the rail only holds 12 V above about **14.9 V at the
+> jack**. Below that it follows the input down — at 13 V in, expect roughly **10.9 V**, not 12 V.
+>
+> That is not a fault: both 6 V references derive from the same rail and track together, so zero
+> and gain are preserved. What shrinks is output headroom on the 5 A range. But it does mean a
+> `+12` reading of 10.9 V is *correct* for a 13 V supply and a *fault* for a 15 V one — so measure
+> your supply at the jack before judging the rail. Finding 2 has the full table.
 
 Record the results in [`TEST_RECORD.xlsx`](TEST_RECORD.xlsx).
 

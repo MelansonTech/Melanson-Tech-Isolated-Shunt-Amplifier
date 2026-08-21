@@ -70,28 +70,71 @@ Related and independent of all the above: the source impedance is `R4 ∥ R8` = 
 *terminated* instrument reads **half** the true output. Fine into 1 MΩ; a footgun into 50 Ω.
 Worth stating in the docs either way.
 
-## 2. The +12 V rail is at its dropout limit with a 15 V input — **high**
+## 2. Below ~14.9 V the +12 rail stops regulating — **medium**, revised
 
-`U1` is a UA78L12ACPKG3, which needs roughly **14.5 V in** to hold 12 V out. Its input is
-`VregIn`, and `VregIn` is not the raw jack voltage — it comes through:
+The published auxiliary input is **13–15 V**. `U1` is a UA78L12ACPKG3, whose regulation is
+specified from **14.5 V in**, and `VregIn` is not the jack voltage — an `MBR0560` Schottky
+(~0.35 V) and the magnetics (~0.02 V) sit in between. So the regulator needs about **14.9 V at
+the jack**, and everything below that is out of regulation:
 
-| Element | Drop at ~95 mA |
-|---|---|
-| `CM1` DR331-105BE common-mode choke | DCR-dependent, tens of mV |
-| `L1` MLZ2012M2R2HT000, 160 mΩ | ~15 mV |
-| `D1` or `D3` MBR0560 Schottky | ~0.3–0.4 V |
+| Vin | `VregIn` | +12 rail | 6 V reference | Swing above the reference | 5 A range needs 5 V |
+|---|---|---|---|---|---|
+| 13.0 V | 12.63 V | **10.93 V** | 5.47 V | 5.32 V | OK, 0.32 V margin |
+| 14.0 V | 13.63 V | **11.93 V** | 5.97 V | 5.82 V | OK |
+| **14.9 V** | 14.53 V | **12.00 V** | 6.00 V | 5.85 V | OK — regulation starts here |
+| 15.0 V | 14.63 V | 12.00 V | 6.00 V | 5.85 V | OK |
 
-So `VregIn` ≈ 14.6 V from a 15.0 V source, against a 14.5 V requirement — roughly **100 mV of
-margin**, before supply tolerance, ripple, or load steps from the relay coil. A 15 V adapter at
-−5 % (14.25 V) puts U1 out of regulation outright.
+**The board still works at 13 V, and the reason is worth understanding.** The rail sags to about
+10.9 V and the "6 V" reference with it, to 5.47 V — but `DiffAmpRef` and `ISenseRTN` are generated
+by *identical* dividers from that same rail, so both move together and their difference stays
+nulled. Gain is set by resistor ratios and the Si8921, which runs from the regulated +5 V, so it
+does not move either. **Zero and gain both survive an unregulated rail.** That is the third time
+the matched-divider architecture has paid for itself in this review.
 
-That matters more than a normal rail sag would, because the 6 V analog reference is a resistive
-divider off +12 (finding 3). When +12 droops, zero and full-scale move with it.
+What actually degrades is **output headroom**. At 13 V there is 5.32 V of swing above the
+reference against the 5.0 V the 5 A range needs at full scale — a 6 % margin. Any further sag,
+ripple, or a supply reading low clips the top of that range.
 
-Fixes: swap U1 for an LDO with <500 mV dropout at 40 mA (there are many 12 V SOT-89 parts), or
-specify an 18–24 V input instead of 15 V (U1 is good to 27 V, U6 to 30 V — but see finding 5 for
-the thermal cost), or take the Schottky out of the supply path by separating the range logic
-from the power path.
+An earlier draft of this review called this a hard failure at 15 V. That was wrong in both
+directions: 15 V is comfortably inside regulation, and 13 V degrades gracefully rather than
+breaking.
+
+### The real constraint is at the other end
+
+Two limits close in from opposite sides:
+
+| Limit | Value | Set by |
+|---|---|---|
+| Minimum for a regulated +12 rail | **14.87 V** | `U1` needs 14.5 V, plus the 0.37 V input path |
+| Maximum continuous | **15.6 V** | `Rel1` coil — G6L-1F DC12 at 130 % of its 12 V rating |
+
+So **full specified performance is only available between about 14.9 V and 15.6 V** — a ±2.4 %
+window around 15.2 V. The published 13–15 V range delivers a working instrument across its whole
+span, but a *regulated* one only in the top 100 mV of it.
+
+And the two ends trade against each other:
+
+| | 13 V | 15 V |
+|---|---|---|
+| +12 rail | unregulated, ~10.9 V | regulated |
+| Output headroom on the 5 A range | 0.32 V | 0.85 V |
+| `U6` dissipation | 0.46 W | 0.58 W |
+| `Rel1` coil | 108 % of rating, 154 mW | 125 % of rating, 205 mW |
+
+**13 V is easier on the thermals and the relay; 15 V is the only end that regulates.** The design
+is squeezed from both directions, which is what makes the window narrow.
+
+### What to do
+
+- **Document it honestly:** 13–15 V for operation, 15 V nominal, and note that the +12 rail is
+  unregulated below ~14.9 V with reduced headroom on the 5 A range.
+- **On a future revision, replace `U1`** with a low-dropout 12 V part. A 300 mV LDO moves the
+  regulation threshold from 14.87 V down to about 12.7 V, which makes the whole 13–15 V range
+  regulated and removes this finding entirely. There are many in SOT-89.
+- **Drive the relay coil from +12 rather than `Vin`.** That removes the 15.6 V ceiling, and the
+  coil then sees a regulated 12 V instead of 108–130 % of its rating.
+
+Those two changes together turn a ±2.4 % window into a genuine 13–16 V input range.
 
 ## 3. Offset trim works, but its residual drift is untrimmable — **medium**
 
