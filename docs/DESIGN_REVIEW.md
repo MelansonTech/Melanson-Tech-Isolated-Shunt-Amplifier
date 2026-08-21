@@ -792,7 +792,7 @@ schematic, not the silkscreen.**
 
 | On the silkscreen | Schematic / documentation | Why it matters |
 |---|---|---|
-| `Supply: 13-16Vdc` | 13–15 V | `Rel1` is a G6L-1F **DC12** and its coil runs directly from the input. 16 V is **133 % of the coil rating**; the accepted maximum is 15.6 V. A user who trusts the silk can cook the relay. |
+| `Supply: 13-16Vdc` | 13–15 V | `Rel1` is a G6L-1F **DC12** and its coil sits on `HighGain`, the range switch's output — so it follows the input jack. At 16 V the coil is at **130–133 % of rating** against a 130 % maximum. A user who trusts the silk can cook the relay. Arithmetic below. |
 | `Vout +/-6V` | the amplifier sheet is annotated **`+/-4.5Vout`**; computed swing is ±5.85 V; full scale is 5.0 V | **Three different numbers for one parameter.** The ×100 range reaches its 5.0 V full scale at 5 A; ±6 V implies headroom the rails do not have — at 13 V input there is only 5.32 V. |
 | `Max Input +/-200mV` | ±250 mV at the isolator input | 200 mV corresponds to 20 A through the 10 mΩ shunt, so it does not bound either published range. It is more conservative than the schematic, which is the safe direction, but the two numbers should agree. |
 | ~~Switch legend `x50`~~ | ×100 | ~~Silkscreen typo~~ — **fixed 2026-08-21.** The switch now reads `Off / x10 / x100`. |
@@ -813,14 +813,42 @@ The legend was a leftover from it.
 
 **What still has to happen before Rev 3.1 is fabricated**
 
-1. Bring the supply legend down to **13–15 V**, or change `Rel1` for a 24 V coil part and say so.
-   16 V on the silk against a 12 V coil is the one item here that can destroy a board.
+1. **Change the supply legend to `13-15Vdc`.** The arithmetic below sets both ends, and 16 V is
+   outside what the relay coil can take.
 2. Settle the output voltage. There are currently three numbers in circulation for one
    parameter: `+/-6V` on the silkscreen, `+/-4.5Vout` annotated on the amplifier sheet, and
    ±5.85 V computed from the rails — against a 5.0 V full scale. Pick one and put it everywhere.
 3. Settle the maximum input: `+/-200mV` on the silkscreen against `Max +/-250mV In` on the
    amplifier sheet. The silkscreen is the more conservative of the two, which is the safe
    direction, but they should agree.
+
+### Why the supply legend has to read 13–15 V
+
+`Rel1`'s coil is not on a regulated rail. It sits on `HighGain`, which is the range switch's own
+output — the switch takes the input, and position 3 routes it to both the coil and, through a
+Schottky, to `VregIn`. So **the coil follows the input jack**, less at most one diode drop, with
+nothing between to limit it.
+
+| Input at `J4` | Coil sees | % of `Rel1`'s 12 V rating | |
+|---|---|---|---|
+| 13.0 V | 12.6–13.0 V | 105–108 % | fine |
+| 15.0 V | 14.6–15.0 V | 122–125 % | fine |
+| **16.0 V** | **15.6–16.0 V** | **130–133 %** | **at or past the limit** |
+
+A G6L-1F DC12's maximum applicable coil voltage is 130 % of rated — 15.6 V — and that figure is
+quoted at 23 °C; it derates as the coil self-heats and as ambient rises. A board legended for
+16 V invites a user to sit permanently at the number where the margin has already gone.
+
+The bottom of the range is set by something else entirely: `U1` (UA78L12) needs 14.5 V in, and
+there is a 0.37 V drop ahead of it, so the +12 rail only regulates above about **14.9 V at the
+jack**. Below that it sags. Accuracy survives — both 6 V references derive from that rail and
+track together — but output headroom shrinks, to 0.32 V at 13 V against 0.85 V at 15 V. That is
+why 13 V is a legitimate minimum and 15 V is the number to run at, and finding 2 has the detail.
+
+So the window is genuinely 13–15 V: **13 V because the board still works, 15 V because the relay
+coil cannot go higher.** If 16 V really is wanted, the fix is a part change, not a legend change
+— a 24 V coil variant, or a dropper in series with the coil — and the tolerance on the coil
+current would then need checking against the must-operate voltage at the bottom of the range.
 
 Until then, the figures in this repository are the schematic's, not the silkscreen's.
 
