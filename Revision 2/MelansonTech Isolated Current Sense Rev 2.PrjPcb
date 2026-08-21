@@ -29,7 +29,7 @@ PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
 ForceUpdateCount=0
-OutputPath=
+OutputPath=Outputs
 LogFolderPath=
 ManagedProjectGUID=
 LinkedManagedProjectGUID=
@@ -107,6 +107,94 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[GeneratedDocument1]
+DocumentPath=Default Configuration\Outputs\BOM\BOM_PartType-MelansonTech Isolated Current Sense Rev 2.xls
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Default Configuration\Outputs\NC Drill\MelansonTech Isolated Shunt Amplifier Rev 2-RoundHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Default Configuration\Outputs\NC Drill\MelansonTech Isolated Shunt Amplifier Rev 2-SlotHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Default Configuration\Outputs\NC Drill\MelansonTech Isolated Shunt Amplifier Rev 2.DRL
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Default Configuration\Outputs\NC Drill\MelansonTech Isolated Shunt Amplifier Rev 2.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.G1
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.G2
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Default Configuration\Outputs\NC Drill\MelansonTech Isolated Shunt Amplifier Rev 2.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.Outline
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.REP
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Default Configuration\Outputs\Gerber\MelansonTech Isolated Shunt Amplifier Rev 2.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Default Configuration\Outputs\ExportSTEP\MelansonTech Isolated Shunt Amplifier Rev 2.step
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Default Configuration\Outputs\Pick Place\Pick Place for MelansonTech Isolated Shunt Amplifier Rev 2.csv
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Default Configuration
 ParameterCount=0
@@ -122,7 +210,7 @@ DocumentReferenceClass2=DocumentReference
 OutputJobFileName2=MelansonTech Isolated Current Sense Rev 2.OutJob
 
 [Generic_EDE]
-OutputDir=
+OutputDir=Outputs
 
 [OutputGroup1]
 Name=Netlist Outputs

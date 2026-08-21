@@ -1,4 +1,4 @@
-# Design Review — MelansonTech Isolated Shunt Amplifier (Rev 2)
+# Design Review — MelansonTech Isolated Shunt Amplifier (Rev 2 / Rev 3)
 
 Reviewed 2026-08-20 against `Isolated Current Sense.PDF` (schematic set, 2026-03-08),
 `BOM_PartType-...Rev 2.xls`, and `Simulation/Amplifer.asc`. Schematic-level only — the PCB
@@ -28,6 +28,15 @@ Findings are ordered by how much they threaten the published specs.
 > shows the static offsets at full value and credits `R28` with removing them — untrimmed, they
 > are 4.4 % and 17.3 % of full scale. Working model:
 > [`Tolerance Budget - Isolated Shunt Amplifier Rev 2.xlsx`](Tolerance%20Budget%20-%20Isolated%20Shunt%20Amplifier%20Rev%202.xlsx).
+>
+> **Fourth revision, 2026-08-21.** Revision 3's documents were renamed and its full output set
+> regenerated; the board is now silkscreened `Rev3.1`. The schematic, BOM and layout are
+> unchanged — 95 placements, 163 holes, the same four board-scoped design rules — but the new
+> silkscreen carries a specification legend that disagrees with the schematic in four places.
+> That is **finding 15**, and it is the most consequential open item in this review because one
+> of the four (`13-16Vdc` against a 12 V relay coil) can damage hardware. The `x50` switch
+> legend in that finding is confirmed by the designer as a typo for `x100` — there is no ×50
+> range and never was one on this board.
 
 ---
 
@@ -767,6 +776,50 @@ series with 156.7 Ω → **~0.06 % gain error initially**, drifting upward with 
 Inside a 1 % budget that is acceptable and probably why you chose a telecom relay rather than an
 analog switch. Just be aware it is a wear-out term, and it is one more reason the ×100 range is
 where the error budget gets tight.
+
+---
+
+## 15. The Rev 3.1 silkscreen contradicts the schematic in four places — **high**
+
+The board artwork regenerated in August 2026 is silkscreened `Rev3.1` and carries an on-board
+specification legend. Four of those legends disagree with the schematic set and with the rest of
+this documentation. The `x50` legend is settled — a typo for `x100`, explained below. The other
+three are open, and until they are resolved **the documentation follows the schematic, not
+the silkscreen.**
+
+| On the silkscreen | Schematic / documentation | Why it matters |
+|---|---|---|
+| `Supply: 13-16Vdc` | 13–15 V | `Rel1` is a G6L-1F **DC12** and its coil runs directly from the input. 16 V is **133 % of the coil rating**; the accepted maximum is 15.6 V. A user who trusts the silk can cook the relay. |
+| `Vout +/-6V` | 5 V maximum, ±5.85 V computed swing | The ×100 range reaches its 5.0 V full scale at 5 A. Advertising ±6 V implies headroom the rails do not have — at 13 V input there is only 5.32 V. |
+| `Max Input +/-200mV` | ±250 mV at the isolator input | 200 mV corresponds to 20 A through the 10 mΩ shunt, so it does not bound either published range. It is more conservative than the schematic, which is the safe direction, but the two numbers should agree. |
+| Switch legend `x50` | that position is the **×100** range | **Resolved — silkscreen typo.** Confirmed by the designer: there is no ×50 range; the legend should read `x100`. Fix the artwork before release. |
+
+### The `x50` legend is a typo for `x100`
+
+The switch area carries three rotated legends — `x50`, `x10` and `Off` — beside two range LEDs
+legended `x100` and `x10`. **There is no ×50 range.** The designer confirms the `x50` is a
+mistake in the artwork: that position is the **×100** range, which is why the LED immediately
+beside it is legended `x100`. The intended switch legend is `Off / x10 / x100`.
+
+Nothing electrical is affected, which is the reassuring part. `SW1` is an SP3T with two active
+positions, and `R7`/`R10`/`R11`/`R14`/`R16`/`R18` are unchanged from Rev 2, so nothing in the
+netlist could produce ×50 in the first place. The accuracy tables, the tolerance budget and the
+test record all stand as published — two ranges, no third column.
+
+It is worth knowing where the number came from: `x50` also appears in the Rev 1 Bode sweep
+filenames (`Revision 1/TestData/BodePlots/`), so a ×50 range was real at some point in the
+design's life. The legend is a leftover from it.
+
+**What has to happen before Rev 3.1 is fabricated**
+
+1. Change the `x50` switch legend to `x100`. A board that ships with it reads as a three-range
+   instrument and misnames the range a user is most likely to be on.
+2. Bring the supply legend down to **13–15 V**, or change `Rel1` for a 24 V coil part and say so.
+   16 V on the silk against a 12 V coil is the one item here that can destroy a board.
+3. Reconcile `Vout` and `Max Input` with the schematic in whichever direction the designer
+   intends — but pick one number per parameter.
+
+Until then, the figures in this repository are the schematic's, not the silkscreen's.
 
 ---
 

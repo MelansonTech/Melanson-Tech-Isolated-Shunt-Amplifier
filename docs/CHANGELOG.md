@@ -1,6 +1,44 @@
 # Changelog
 
-## Rev 2 — current
+## Rev 3.1 — current, not released (2026-08-21)
+
+Documents renamed and the full output set regenerated. The Revision 3 project is now
+self-contained and consistently named: every document it references carries `Rev 3` and lives in
+`Revision 3/`, including its own `MelansonTech Isolated Current Sense Rev 3.OutJob`. Generated
+outputs follow the same convention (`...Rev3.GTL`, `...Rev3.DRL`,
+`Pick Place for ...Rev3.csv`), so a file's name now identifies the board it belongs to.
+
+**The board is unchanged electrically and mechanically.** Read out of the new outputs:
+
+| | Rev 3.1 | Rev 3 (March) |
+|---|---|---|
+| Dimensions | 68.25 × 85.00 mm | same |
+| Layers | 4 | same |
+| Placements | 95 — 79 top, 16 bottom | same |
+| Drilled holes | 163 across 10 tools, 3 slots | same |
+| Board-scoped design rules | 4 | same |
+| BOM | `R28` still specified as CT94EW103 (10 kΩ) | same — **still wrong**, fit 100 Ω |
+
+What did change is the **silkscreen**, which now carries an on-board specification legend and a
+`Rev3.1` marking. Four of its legends disagree with the schematic:
+
+| Silkscreen | Schematic | Status |
+|---|---|---|
+| `Supply: 13-16Vdc` | 13–15 V | **unresolved — 16 V is 133 % of `Rel1`'s 12 V coil rating** |
+| `Vout +/-6V` | 5 V max, ±5.85 V computed | unresolved |
+| `Max Input +/-200mV` | ±250 mV | unresolved |
+| Switch legend `x50` | that position is ×100 | **silkscreen typo** — should read `x100`; there is no ×50 range |
+
+Full detail in finding 15 of [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md). The `x50` is settled — a
+typo for `x100`, not a range — so the accuracy tables and the tolerance budget are unaffected.
+The other three are open, and **the documentation in this repository follows the schematic, not
+the silkscreen**, until they are resolved.
+
+Also in this revision: the Gerber set gains `.GKO` (keep-out), `.GM4` and a `Dimensions Top`
+layer that Rev 3's March outputs did not produce, and the NC drill files are no longer suffixed
+`-Plated`.
+
+## Rev 2 — latest released board
 
 The project file is `MelansonTech Isolated Current Sense Rev 2.PrjPcb`. Read out of the project
 files themselves, Rev 2 consists of:

@@ -50,7 +50,7 @@ Do not exceed **15.6 V**: `Rel1`'s coil is driven from the input, and that is 13
 | Bandwidth, ×10 (10 A range) | ≈500 kHz † | set by the Si8921, not by an on-board RC |
 | Bandwidth, ×100 (5 A range) | ≈30–60 kHz † | set by `C8` and `C9`, switched with the range |
 | Full-scale output | 1.0 V (10 A range) / 5.0 V (5 A range) | `IsenseOut` relative to `ISenseRTN` (chassis) |
-| Maximum output | 5 V | note: `J1` is silkscreened ±4.5 V — see the design review |
+| Maximum output | 5 V | Rev 3.1 silkscreen says ±6 V; computed swing is ±5.85 V — see the design review |
 | Output impedance | 50 Ω | `R4 ∥ R8` — use a 1 MΩ input, not 50 Ω |
 | Output connector | SMA female, edge launch | Cinch 142-0701-801 |
 | Input common-mode range | 400 Vdc | limited by the `J2` terminal block rating |
@@ -109,8 +109,14 @@ buffer and the two 6 V references. Click for full size.*
 *Power supply — input filtering, the range/power switch with its diode OR, and the +12 V, +5 V
 and isolated +5 V rails.*
 
+[![Board](docs/board-silkscreen.png)](docs/board-silkscreen.png)
+
+*Board artwork, Rev 3.1 — silkscreen, including the on-board specification legend. Several of
+those legends disagree with the schematic, and the `x50` beside the switch is a typo for `x100` —
+there is no ×50 range. See finding 15 in the design review.*
+
 The full set including the PCB and fabrication drawings is
-[`Revision 3/Default Configuration/Outputs/Isolated Current Sense.PDF`](Revision%203/Default%20Configuration/Outputs/Isolated%20Current%20Sense.PDF).
+[`Revision 3/MelansonTech Isolated Current Sense Rev 3.PDF`](Revision%203/MelansonTech%20Isolated%20Current%20Sense%20Rev%203.PDF).
 
 ## Documentation
 
@@ -121,7 +127,7 @@ The full set including the PCB and fabrication drawings is
 | [**Building one**](docs/ASSEMBLY.md) | Fab ordering, assembly notes, BOM corrections, first power-on |
 | [**Calibration**](docs/CALIBRATION.md) | The zero trim — **required** — and the optional gain correction |
 | [**Test record**](docs/TEST_RECORD.xlsx) | Per-board data capture with automatic pass/fail |
-| [**Design review**](docs/DESIGN_REVIEW.md) | 14 findings, the full tolerance stack-up, open items |
+| [**Design review**](docs/DESIGN_REVIEW.md) | 15 findings, the full tolerance stack-up, open items |
 | [**Tolerance budget**](docs/Tolerance%20Budget%20-%20Isolated%20Shunt%20Amplifier%20Rev%202.xlsx) | The live model behind every accuracy number |
 | [**Changelog**](docs/CHANGELOG.md) | Revision history and open items |
 
@@ -147,7 +153,8 @@ revision can be built without reference to the others.
 ├── Revision 2/                 second release, April 2025
 │   ├── MelansonTech Isolated Current Sense Rev 2.OutJob
 │   └── Default Configuration/Outputs/
-├── Revision 3/                 current working design, March 2026 — the "alt shunt" variant
+├── Revision 3/                 current working design, board marked Rev3.1, August 2026
+│   ├── MelansonTech Isolated Current Sense Rev 3.OutJob
 │   ├── 3d Models/              STL and STEP — board, enclosure panels, bumpers
 │   ├── Simulation/             LTspice model
 │   ├── archive/                superseded documents, explained in archive/README.md
@@ -157,7 +164,8 @@ revision can be built without reference to the others.
 ```
 
 **Revision 3 is not a released board.** It is the current state of the design in CircuitStudio:
-an alternate-shunt amplifier sheet on a newer layout, with outputs regenerated in March 2026. It
+an alternate-shunt amplifier sheet on a newer layout, with every document renamed to `Rev 3` and
+the full output set regenerated in August 2026. The board itself is silkscreened **Rev3.1**. It
 has not been fabricated or tested. Revisions 1 and 2 are the released designs.
 
 The accuracy figures and the design review in `docs/` were built against Revision 3's schematics
@@ -175,18 +183,26 @@ The files have no header row, so the two response channels in each cannot be att
 specific nodes without the original bench notes. Adding a legend would make a genuinely useful
 dataset readable by someone who was not there.
 
-### Which files belong to which project — Revision 3
+### Which files belong to the Revision 3 project
 
-Both revision projects live side by side in `Revision 3/` and the file names do not make the
-mapping obvious. This table was read out of the `.PrjPcb` files:
+As of August 2026 the Revision 3 project is self-contained and consistently named — every
+document it references carries `Rev 3`, and all of them sit in `Revision 3/`. This table was read
+out of `MelansonTech Isolated Current Sense Rev 3.PrjPcb`:
 
-| | Current (Rev 2 project file) | Older (Rev 1 project file) |
-|---|---|---|
-| Project | `MelansonTech Isolated Current Sense Rev 2.PrjPcb` | `MelansonTech Isolated Current Sense.PrjPcb` |
-| Amplifier sheet | `...Isolated Shunt Amplifier rev 2 alt shunt.SchDoc` | `...Isolated Shunt Amplifier rev 2.SchDoc` |
-| PSU sheet | `MelansonTech PSU_IsolatedShuntAmp Rev2.SchDoc` | `MelansonTech PSU_IsolatedShuntAmp.SchDoc` |
-| PCB layout | `MelansonTech Isolated Shunt Amplifier.CSPcbDoc` | *same file* |
+| Role | File |
+|---|---|
+| Project | `MelansonTech Isolated Current Sense Rev 3.PrjPcb` |
+| Amplifier sheet | `MelansonTech Isolated Shunt Amplifier Rev3.SchDoc` |
+| PSU sheet | `MelansonTech PSU_IsolatedShuntAmp Rev3.SchDoc` |
+| PCB layout | `MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc` |
+| Output job | `MelansonTech Isolated Current Sense Rev 3.OutJob` |
 
+Generated outputs follow the same convention — `...Rev3.GTL`, `...Rev3.DRL`,
+`Pick Place for MelansonTech Isolated Shunt Amplifier Rev3.csv` and so on — so a file's name
+now tells you which board it belongs to.
+
+Older `Rev 2` and un-suffixed documents still sit in the folder because CircuitStudio's project
+history refers to them; they are not part of the Rev 3 project.
 `Revision 3/archive/` holds documents referenced by neither project, including
 `...Isolated Shunt Amplifier Rev 2.CSPcbDoc` — which is the layout released as `Revision 2/`,
 superseded within Revision 3 by newer work. It is kept for history, not discarded.

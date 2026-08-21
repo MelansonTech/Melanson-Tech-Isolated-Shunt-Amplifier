@@ -1,6 +1,6 @@
 # Building one
 
-Everything here is derived from the Rev 2 fabrication outputs in
+Everything here is derived from the fabrication outputs in
 [`../Default Configuration/Outputs/`](../Default%20Configuration/Outputs/). Read
 [`SAFETY.md`](SAFETY.md) before the board goes anywhere near an energised circuit.
 
@@ -46,10 +46,11 @@ colour. The design does not depend on any of them — but see the note on copper
 `.Assembly Top`/`.Bottom`, `.Courtyard *` and `.3D *` are documentation layers — do not send
 them to the fab as copper.
 
-> The output-job file that generates all of this is published as
-> `Revision 2/MelansonTech Isolated Current Sense Rev 2.OutJob`. Revision 3 does not carry its
-> own copy — its project references an OutJob one directory above the working folder — so if you
-> are regenerating Revision 3's outputs, point it at the Revision 2 job file or supply your own.
+> Each revision publishes the output-job file that generates all of this:
+> `Revision 2/MelansonTech Isolated Current Sense Rev 2.OutJob` and
+> `Revision 3/MelansonTech Isolated Current Sense Rev 3.OutJob`. As of August 2026 the Revision 3
+> project carries its own copy and references nothing outside its folder, so its outputs can be
+> regenerated from a clean checkout.
 
 ## Assembly
 
