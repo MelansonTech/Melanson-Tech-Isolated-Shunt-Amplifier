@@ -1,0 +1,4 @@
+# Only needed to talk to real hardware. Everything else in tools/psu_sweep —
+# the protocol, the sweep engine, the simulator and the whole test suite —
+# runs on the standard library alone.
+pyserial>=3.5

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Launcher — runs the psu_sweep CLI without needing PYTHONPATH set."""
+import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from psu_sweep.cli import main  # noqa: E402
+
+raise SystemExit(main())

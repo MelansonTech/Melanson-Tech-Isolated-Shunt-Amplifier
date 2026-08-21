@@ -129,6 +129,7 @@ The full set including the PCB and fabrication drawings is
 | [**Design review**](docs/DESIGN_REVIEW.md) | 15 findings, the full tolerance stack-up, open items |
 | [**Tolerance budget**](docs/Tolerance%20Budget%20-%20Isolated%20Shunt%20Amplifier%20Rev%202.xlsx) | The live model behind every accuracy number |
 | [**Changelog**](docs/CHANGELOG.md) | Revision history and open items |
+| [**Supply sweep tool**](tools/psu_sweep/README.md) | Software control of the auxiliary supply — step it across 13–15.6 V and record every point |
 
 ## Intended use
 
@@ -159,6 +160,7 @@ revision can be built without reference to the others.
 │   ├── archive/                superseded documents, explained in archive/README.md
 │   └── Default Configuration/Outputs/
 ├── Simulation/                 Rev 1/2 LTspice model
+├── tools/psu_sweep/            bench automation — drives the aux supply for a swept measurement
 └── docs/                       documentation — see the table above
 ```
 
@@ -223,6 +225,9 @@ Some things that would genuinely help, in rough order of value:
   board would be the single most valuable contribution.
 - **Bandwidth measurement.** The ×100 figure is not obviously set by any RC in the schematic —
   see finding 8 in the design review.
+- **A supply sweep from a real board.** [`tools/psu_sweep/`](tools/psu_sweep/README.md) will step
+  a FNIRSI IPS3608 across 13–15.6 V and record each point; what nobody has yet is where the
+  +12 V rail actually drops out, measured rather than derived from the UA78L12 datasheet.
 - **A creepage and clearance check across the isolation barrier.** No design rule currently
   enforces it; see [`SAFETY.md`](docs/SAFETY.md).
 - **Enclosure print settings** that are known to work.
