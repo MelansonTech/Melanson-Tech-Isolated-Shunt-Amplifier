@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    // Python language support and the test explorer.
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    // Optional: continue this work with Claude Code inside the editor.
+    "anthropic.claude-code"
+  ]
+}

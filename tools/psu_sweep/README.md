@@ -22,6 +22,50 @@ Only `pip install pyserial` is needed, and only for real hardware.
 
 ---
 
+## On your own machine
+
+The supply is on a USB port, so this has to run where the port is. Nothing here needs a
+particular editor, but the repository carries a VS Code configuration for it.
+
+```bash
+git clone https://github.com/MelansonTech/Melanson-Tech-Isolated-Shunt-Amplifier.git
+cd Melanson-Tech-Isolated-Shunt-Amplifier
+git checkout claude/psu-scope-sweep-interface-v6wx93
+python3 -m pip install -r tools/requirements.txt      # pyserial, for hardware only
+code .
+```
+
+On Windows the launcher needs an interpreter in front of it — `python tools\psu-sweep …` —
+or run `python -m psu_sweep …` from inside `tools/`. Everything else is identical.
+
+Accept the recommended extensions when VS Code offers them, then:
+
+| | |
+|---|---|
+| **F5** | four run configurations — simulated sweep, probe a port, verify the register map, sweep the bench supply. The last three prompt for the port and baud rate |
+| **Ctrl/Cmd-Shift-P → Run Task** | *Tests*, *List serial ports*, *Sweep (simulated)*, *Install pyserial* |
+| **Test explorer** | all 51 tests, discovered automatically. Breakpoints work in them |
+
+The debug configurations run the package as a module with `tools/` on the path, so breakpoints
+land in the driver and the simulator as well as in your own code.
+
+### Finding the port
+
+`tools/psu-sweep ports` — or the *List serial ports* task — ranks the candidates. The IPS3608
+presents as a generic USB-serial bridge with no distinguishing identity, so the list cannot
+identify it; `probe` is the test that answers.
+
+| | |
+|---|---|
+| **Linux** | `/dev/ttyUSB0` typically. `Permission denied` means you are not in the `dialout` group: `sudo usermod -aG dialout $USER`, then log out and back in |
+| **macOS** | `/dev/tty.usbserial-…` or `/dev/tty.wchusbserial…`. A CH340 driver may be needed |
+| **Windows** | `COM3`, `COM4` … as shown in Device Manager |
+
+The unit ships at **9600 baud**; if it has been changed, the System menu on the front panel
+says which. Close the vendor PC software before connecting — it holds the port open.
+
+---
+
 ## Read this before connecting the board
 
 **The supply's negative output must be floating.** `ISenseRTN` — the output return, on the

@@ -1,0 +1,86 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Start here. No hardware, no serial port, nothing energised.
+      "name": "psu-sweep: simulated sweep",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "psu_sweep",
+      "args": ["--simulate", "sweep", "--step", "0.2", "--dwell", "0.2"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}/tools" },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "psu-sweep: probe a port",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "psu_sweep",
+      "args": ["--port", "${input:serialPort}", "--baud", "${input:baud}", "probe"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}/tools" },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      // Run this once per unit, with the board disconnected, before trusting
+      // a long sweep — it checks the reverse-engineered register map.
+      "name": "psu-sweep: verify the register map",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "psu_sweep",
+      "args": ["--port", "${input:serialPort}", "--baud", "${input:baud}",
+               "--profile", "bench", "verify"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}/tools" },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      // Energises the board. The isolated-supply confirmation still applies.
+      "name": "psu-sweep: sweep the bench supply",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "psu_sweep",
+      "args": ["--port", "${input:serialPort}", "--baud", "${input:baud}",
+               "sweep", "--step", "0.1", "--bidirectional", "-o", "${input:csvPath}"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}/tools" },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Python: current file",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}/tools" },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ],
+  "inputs": [
+    {
+      "id": "serialPort",
+      "type": "promptString",
+      "description": "Serial port (run the 'List serial ports' task if unsure)",
+      "default": "/dev/ttyUSB0"
+    },
+    {
+      "id": "baud",
+      "type": "pickString",
+      "description": "Must match the unit's System menu — it ships at 9600",
+      "options": ["9600", "19200", "38400", "57600", "115200"],
+      "default": "9600"
+    },
+    {
+      "id": "csvPath",
+      "type": "promptString",
+      "description": "Where to write the sweep",
+      "default": "supply-sweep.csv"
+    }
+  ]
+}

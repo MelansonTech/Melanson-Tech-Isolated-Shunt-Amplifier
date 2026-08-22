@@ -1,0 +1,35 @@
+{
+  // The tools live under tools/ rather than at the repo root, so both the
+  // language server and the test runner need pointing at it.
+  "python.analysis.extraPaths": ["tools"],
+  "python.testing.unittestEnabled": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s", "tools/psu_sweep/tests",
+    "-t", "tools",
+    "-p", "test_*.py"
+  ],
+
+  "[python]": {
+    "editor.rulers": [96],
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+
+  // CircuitStudio and the fabrication outputs are the bulk of this repository
+  // and none of it is searchable text. Excluding it from search keeps a
+  // find-in-files over the Python from returning several thousand Gerber hits.
+  "search.exclude": {
+    "**/Default Configuration/Outputs/**": true,
+    "**/__Previews/**": true,
+    "**/*.CSPcbDoc": true,
+    "**/*.SchDoc": true,
+    "**/*.step": true,
+    "**/*.stl": true
+  },
+  "files.associations": {
+    "*.OutJob": "ini",
+    "*.PrjPcb": "ini"
+  }
+}

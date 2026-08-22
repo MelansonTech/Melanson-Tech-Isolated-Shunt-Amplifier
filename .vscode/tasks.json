@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tests",
+      "type": "shell",
+      "command": "python3 -m unittest discover -s tools/psu_sweep/tests -t tools",
+      "windows": { "command": "python -m unittest discover -s tools/psu_sweep/tests -t tools" },
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "List serial ports",
+      "type": "shell",
+      "command": "python3 -m psu_sweep ports",
+      "windows": { "command": "python -m psu_sweep ports" },
+      "options": { "env": { "PYTHONPATH": "${workspaceFolder}/tools" } },
+      "problemMatcher": []
+    },
+    {
+      "label": "Sweep (simulated)",
+      "type": "shell",
+      "command": "python3 -m psu_sweep --simulate sweep --step 0.1",
+      "windows": { "command": "python -m psu_sweep --simulate sweep --step 0.1" },
+      "options": { "env": { "PYTHONPATH": "${workspaceFolder}/tools" } },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install pyserial",
+      "detail": "Only needed to talk to real hardware.",
+      "type": "shell",
+      "command": "python3 -m pip install -r tools/requirements.txt",
+      "windows": { "command": "python -m pip install -r tools/requirements.txt" },
+      "problemMatcher": []
+    }
+  ]
+}
