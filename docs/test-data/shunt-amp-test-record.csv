@@ -1,0 +1,140 @@
+Melanson Tech Isolated Shunt Amplifier - Test Procedure & Record
+Published specs are CLAIMED (repo DESIGN_REVIEW / CALIBRATION / CONNECTORS) and are VERIFIED by these tests - not measurements. Blank cells = operator fills on the bench.
+
+DUT IDENTIFICATION
+Field,Value,,Field,Value
+DUT,Isolated Shunt Amplifier,,Operator,
+Revision,,,Date,
+Serial,,,Ambient temp (C),
+Aux supply set (V),15.0,,Warm-up (min),30
+
+REFERENCE INSTRUMENTS (accuracy chain)
+Quantity,Reference
+Output voltage,Fluke 45 DCV (~0.02-0.05%)
+Injection current,Fluke 45 DCI in series OR e-load readback corrected vs Fluke
+AC current (BW/step),Voltage across non-inductive Rs on scope (flat to MHz)
+
+PRE-TEST CHECKLIST (safety & preconditions)
+Item,OK?
+J4 aux supply floating (neither pole earthed); set 15.0 V; NEVER exceed 15.6 V,
+Output measured high-Z >=1 MOhm; SMA shell = ISenseRTN (a 6 V reference; NOT ground),
+Current-injection loop floats; earth only output side; keep CM within +/-200 mV,
+J2 leads adequately gauged; watch contact heating at 5-10 A (J2 carries full current),
+Supply max current confirmed (limits how far the x10 / 10 A range can be swept),
+30 min warm-up complete before any quantitative test,
+
+TEST MATRIX
+Test ID,Parameter,Range,Spec / Limit (claimed),Method (summary),Instruments,Setpoint / Stimulus,Measured,Unit,Pass/Fail,Notes
+T1,Zero offset & warm-up,Both,<=5 mV x100; <=0.9 mV x10 (output),J2 open; warm 30 min; log Vout vs ISenseRTN,Fluke 45 DCV,0 A,,mV,,R28 not adjusted; report as-received
+T2,DC gain / transfer fn,x100,1.000 V/A +/-0.6%,supply(CC)+eload(CC) loop; sweep I; Vout vs Iref,Fluke DCV; corrected e-load I,0.25-5 A (10 pts),,V/A,,See Gain grid below
+T2,DC gain / transfer fn,x10,0.100 V/A +/-0.6%,same; sweep to Imax,Fluke DCV; corrected e-load I,0.5 A - Imax,,V/A,,Top decade unmeasured if supply <10 A
+T2b,Offset (input-referred),x100,+/-5 mA typ,intercept of gain fit,from T2,-,,mA,,
+T2b,Offset (input-referred),x10,+/-9 mA typ,intercept of gain fit,from T2,-,,mA,,
+T2c,Nonlinearity (INL),Both,+/-0.08% (resolution-limited),max residual vs best-fit line,from T2,-,,%FS,,Report with uncertainty
+T3,Output swing / clamp,x100,resolve 4.5 vs 5.85 V,push I toward/past 5 A; find clamp,Fluke DCV,5.5-6 A,,V,,x10 rail (~45 A) not reachable
+T4,Bandwidth -3dB & phase,x10,~500 kHz,NA ref=Rs voltage; resp=Vout,Network Analyzer; scope; power amp; Rs,100 Hz-2 MHz; 1-2 A pk,,kHz,,Do NOT use 500 kHz current probe as ref
+T5,Bandwidth -3dB & phase,x100,~30 kHz,NA ref=Rs voltage; resp=Vout,Network Analyzer; scope; power amp; Rs,10 Hz-200 kHz,,kHz,,Current probe OK as cross-check <=30 kHz
+T6,Step response / rise time,Both,~0.7 us x10; ~12 us x100,square current step; scope Rs & Vout,FG; power amp; scope; Rs,step 1-2 A,,us,,Rs is the fast current ref (not the probe)
+T7,Output impedance,Both,~50 Ohm,Vout open vs into 50 Ohm; ratio,Fluke DCV; 50 Ohm load,fixed DC I,,Ohm,,Confirms measure into >=1 MOhm
+T8,Output noise,Both,report only,spectrum at 0 A; broadband RMS,Spectrum Analyzer; scope AC,0 A,,-,,Output- & input-referred
+T9,Supply sensitivity / PSRR,Both,reg >=14.9 V; ~90-100 mA @15 V,sweep Vaux; record Vout & Iaux,Fluke; supply,13.0-15.6 V,,-,,Never exceed 15.6 V
+T10,Functional / range / LEDs,Both,D5=x10; D4=x100; gain x10 change,visual + gain check,eyes; Fluke,SW1 pos 2/3,,-,,Needs operator observation
+T11,Input CMRR (optional),Both,resolve 250 vs 200 mV,bias GND_ISO +/-200 mV; Vout error,supply; Fluke,+/-200 mV CM,,-,,Optional / advanced
+T-ISO,Isolation 4.2 kV hipot,-,OUT OF SCOPE (this bench),no hipot tester; safety,N/A,-,-,N/A,N/A,Requires dedicated hipot tester
+T-TEMP,Temperature coefficient,-,OUT OF SCOPE (this bench),no temp chamber,N/A,-,-,N/A,N/A,Needs temperature chamber
+
+T1 CAPTURE - Zero offset & warm-up drift (J2 open)
+Elapsed (min),Vout x100 (mV),Vout x10 (mV),Notes
+0,,,
+5,,,
+10,,,
+15,,,
+20,,,
+30,,,
+
+T2 CAPTURE - Gain & linearity x100 (nominal 1.000 V/A)
+Point,Commanded I (A),True I ref (A),Vout (V),V/A = Vout/Iref,Dev from 1.000 (%),Pass/Fail
+1,0.25,,,,,
+2,0.50,,,,,
+3,1.00,,,,,
+4,2.00,,,,,
+5,3.00,,,,,
+6,4.00,,,,,
+7,4.50,,,,,
+8,5.00,,,,,
+
+T2 CAPTURE - Gain & linearity x10 (nominal 0.100 V/A)
+Point,Commanded I (A),True I ref (A),Vout (V),V/A = Vout/Iref,Dev from 0.100 (%),Pass/Fail
+1,0.5,,,,,
+2,1.0,,,,,
+3,2.0,,,,,
+4,4.0,,,,,
+5,6.0,,,,,
+6,8.0,,,,,
+7,10.0,,,,,
+
+T4 CAPTURE - Bandwidth x10 (expect -3 dB near 500 kHz)
+Freq (Hz),|H| rel LF (dB),Phase (deg),Notes
+100,,,
+1000,,,
+10000,,,
+100000,,,
+300000,,,
+500000,,,
+700000,,,
+1000000,,,
+2000000,,,
+
+T5 CAPTURE - Bandwidth x100 (expect -3 dB near 30 kHz)
+Freq (Hz),|H| rel LF (dB),Phase (deg),Notes
+10,,,
+100,,,
+1000,,,
+5000,,,
+10000,,,
+20000,,,
+30000,,,
+50000,,,
+100000,,,
+200000,,,
+
+Bandwidth result
+Range,-3 dB freq,Unit,Pass/Fail
+x10 (spec ~500 kHz),,kHz,
+x100 (spec ~30 kHz),,kHz,
+
+T6 CAPTURE - Step response
+Range,Rise 10-90% (us),Settle to 1% (us),Overshoot (%),Notes
+x10 (expect ~0.7 us),,,,
+x100 (expect ~12 us),,,,
+
+T7 CAPTURE - Output impedance
+Measurement,Value,Unit,Notes
+Vout into >=1 MOhm,,V,
+Vout into 50 Ohm,,V,
+Computed Rout = 50*(Vopen/V50 - 1),,Ohm,
+
+T9 CAPTURE - Supply sensitivity / PSRR (fixed input current)
+Vaux (V),Iaux (mA),Vout (V),Notes
+13.0,,,
+13.5,,,
+14.0,,,
+14.5,,,
+14.9,,,
+15.0,,,
+15.6,,,
+
+T8 CAPTURE - Output noise (J2 open)
+Metric,Value,Unit,Notes
+Broadband RMS (x100),,mV,
+Broadband RMS (x10),,mV,
+Noise density @1 kHz,,nV/rtHz,
+Dominant peak,,Hz,
+Input-referred noise,,mA,
+
+RESULT & SIGN-OFF
+Overall result (PASS / FAIL),
+Result summary,
+Operator signature,
+Reviewed by,
+Date,

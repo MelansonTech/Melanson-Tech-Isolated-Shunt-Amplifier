@@ -286,6 +286,13 @@ Comfortably hot, near or past the sensible limit on a small copper pour, and it 
 board as a precision 6 V reference divider and a 0.05 % gain network — thermal gradients here
 turn straight into measurement drift.
 
+**Bench context, 2026-09-06.** Total board draw measured **~95 mA at 15 V (1.43 W)**, steady
+from 13.0 to 15.5 V ([test report](TEST_REPORT.md) §4.3). That is the whole board — U6's own
+share was not measured separately — but it is consistent with the 50–60 mA estimated here plus
+the +12 V domain, the relay coil and the indicators. **Nothing in the measurement relieves this
+finding**: no junction temperature was taken, and a two-hour soak at zero input is not the
+thermal worst case. It also corrects the README, which claimed ~300 mW for the whole board.
+
 Suggestions: feed U6 from the +12 V rail instead of `VregIn` (drop falls from ~9.6 V to 7 V,
 dissipation to ~0.4 W); or drop a series resistor ahead of it to share the heat; or use a small
 buck. Whichever you pick, keep U6 physically far from `R26`/`R29`/`R22`/`R17` and the diff-amp
@@ -686,12 +693,35 @@ respectively. The files have no header row, so which channel is which node canno
 from the data alone — but both figures sit close to the documented 500 kHz and 30 kHz claims,
 and the wider one is consistent with the Si8921's own 600 kHz bandwidth.
 
+**Re-measured on Rev 3.1, 2026-09-06** — this closes the last open item.
+
+| Range | Rev 1 data (historic) | Rev 3.1 measured | Declared |
+|---|---|---|---|
+| ×10 | 600–700 kHz | **≈580 kHz** | ≈500 kHz |
+| ×100 | 15–18 kHz | **60 kHz** | ≈30–60 kHz |
+
+Both ranges meet their claims, and the ×10 range exceeds its. The ×100 corner moved from the
+Rev 1 figure exactly as expected — `C8`/`C9` differ between the revisions, which is why the
+re-measurement was asked for.
+
+The ×10 result also **corroborates the Rev 1 channel assignment** this finding could not
+resolve. The wide channel in those files sits at 600–700 kHz and the new Rev 3.1 measurement
+lands at 580 kHz on the same range, on a different fixture with a different reference — so the
+wide channel was indeed the ×10 path, and it is consistent with the Si8921's own ~600 kHz
+bandwidth. The narrow 15–18 kHz channel was the ×100 path with Rev 1's filter values.
+
+Method, per-point sweeps and the reference caveat on the ×10 figure are in the
+[bench test report](TEST_REPORT.md) §5.
+
 **What is still worth doing**, and it is documentation rather than design work:
 
 - Add a header row or a legend to the Bode files so the channels are interpretable by someone
-  who was not at the bench.
+  who was not at the bench. The assignment is now known — it just is not written in the files.
 - State in the datasheet which capacitor sets the ×100 corner, and that it was chosen empirically.
-- Re-measure on the Rev 2 or Rev 3 board — the existing data is all Rev 1, and `C8`/`C9` differ.
+- Measure the ×10 range against a **flat, non-inductive HF current reference**. The Rev 3.1 sweep
+  used a shunt of the same Vishay part as the DUT's, so the two inductance zeros partly cancel in
+  the ratio and could inflate the apparent corner. The agreement with the independent Rev 1 data
+  bounds the concern, but does not eliminate it.
 
 The design itself needs no change here. This is a case of the work having been done properly and
 never written down.
@@ -815,9 +845,13 @@ The legend was a leftover from it.
 
 1. **Change the supply legend to `13-15Vdc`.** The arithmetic below sets both ends, and 16 V is
    outside what the relay coil can take.
-2. Settle the output voltage. There are currently three numbers in circulation for one
-   parameter: `+/-6V` on the silkscreen, `+/-4.5Vout` annotated on the amplifier sheet, and
-   ±5.85 V computed from the rails — against a 5.0 V full scale. Pick one and put it everywhere.
+2. Settle the output voltage. There were three numbers in circulation for one parameter:
+   `+/-6V` on the silkscreen, `+/-4.5Vout` annotated on the amplifier sheet, and ±5.85 V
+   computed from the rails — against a 5.0 V full scale. **Measurement now settles it: the
+   output clamps at 5.70 V**, flat from 5.8 to 6.2 A of input on the ×100 range
+   ([test report](TEST_REPORT.md) §4.2). Every one of the three circulating figures is wrong —
+   `+/-6V` by 0.30 V, the computed ±5.85 V by 0.15 V, and `+/-4.5Vout` is below the 5.0 V full
+   scale the range actually reaches. Put **5.70 V** everywhere, and keep 5.0 V as full scale.
 3. Settle the maximum input: `+/-200mV` on the silkscreen against `Max +/-250mV In` on the
    amplifier sheet. The silkscreen is the more conservative of the two, which is the safe
    direction, but they should agree.

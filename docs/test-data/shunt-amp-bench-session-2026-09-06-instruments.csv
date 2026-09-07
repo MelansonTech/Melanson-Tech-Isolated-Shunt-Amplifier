@@ -1,0 +1,10 @@
+Instrument,Model,Where,Basis,Measured by,Date,Note
+Function Generator,Digilent Analog Discovery 2,SN:210321AD5D31,declared,,,
+Oscilloscope,Digilent Analog Discovery 2,SN:210321AD5D31,declared,,,
+Power Supply,Digilent Analog Discovery positive supply,SN:210321AD5D31,declared,,,
+Power Supply,Digilent Analog Discovery negative supply,SN:210321AD5D31,declared,,,
+Electronic Load,MelansonTech MTECH-ELOAD,COM10,declared,,,
+Multimeter,Fluke 45,COM13,declared,,,
+Function Generator,FeelTech FY3224S,COM5,declared,,,
+Oscilloscope,Rigol DS1104Z,USB0::6833::1230::DS1ZA195021923::0::INSTR,declared,,,
+Power Supply,FNIRSI IPS3608,COM12,declared,,,

@@ -47,26 +47,33 @@ Do not exceed **15.6 V**: `Rel1`'s coil is driven from the input, and that is 13
 | Shunt voltage at max current | 100 mV (10 A) / 50 mV (5 A) | ±250 mV maximum at the isolator input |
 | Isolator gain | 8.2 (fixed) | Si8921BD-IS4R |
 | Total gain | ×10 or ×100 | relay-switched second stage |
-| Bandwidth, ×10 (10 A range) | ≈500 kHz † | set by the Si8921, not by an on-board RC |
-| Bandwidth, ×100 (5 A range) | ≈30–60 kHz † | set by `C8` and `C9`, switched with the range |
+| Bandwidth, ×10 (10 A range) | ≈500 kHz ✓ — **measured ≈580 kHz** | set by the Si8921, not by an on-board RC |
+| Bandwidth, ×100 (5 A range) | ≈30–60 kHz ✓ — **measured 60 kHz** | set by `C8` and `C9`, switched with the range |
 | Full-scale output | 1.0 V (10 A range) / 5.0 V (5 A range) | `IsenseOut` relative to `ISenseRTN` (chassis) |
-| Maximum output | 5 V | Rev 3.1 silkscreen says ±6 V; computed swing is ±5.85 V — see the design review |
-| Output impedance | 50 Ω | `R4 ∥ R8` — use a 1 MΩ input, not 50 Ω |
+| Maximum output | 5 V | **measured clamp 5.70 V** ✓. Rev 3.1 silkscreen says ±6 V and the computed swing is ±5.85 V — both superseded by the measurement |
+| Output impedance | 50 Ω ✓ | measured 50–51 Ω. `R4 ∥ R8` — use a 1 MΩ input, not 50 Ω |
 | Output connector | SMA female, edge launch | Cinch 142-0701-801 |
-| Input common-mode range | 400 Vdc | limited by the `J2` terminal block rating |
-| Isolation rating | 4.2 kV (Si8921 and PSU1) | withstand rating, not continuous working voltage |
-| Accuracy, 10 A range † | ±(1.0 % of reading + 12 mA) | at 23 °C ±5 °C. Typical ±(0.6 % + 9 mA) |
-| Accuracy, 5 A range † | ±(0.9 % of reading + 8 mA) | at 23 °C ±5 °C. Typical ±(0.6 % + 5 mA) |
+| Input common-mode range † | 400 Vdc | limited by the `J2` terminal block rating |
+| Isolation rating † | 4.2 kV (Si8921 and PSU1) | withstand rating, not continuous working voltage |
+| Accuracy, 10 A range ✓ | ±(1.0 % of reading + 12 mA) | at 23 °C ±5 °C. Typical ±(0.6 % + 9 mA). **Measured −0.24 %, uncalibrated** |
+| Accuracy, 5 A range ✓ | ±(0.9 % of reading + 8 mA) | at 23 °C ±5 °C. Typical ±(0.6 % + 5 mA). **Measured −0.05 %, uncalibrated** |
 | Temperature coefficient † | ±(0.011 % of reading + 0.5 mA)/°C | outside 23 °C ±5 °C |
 | Accuracy, user gain calibrated † | ±(0.25 % + 12 mA) / ±(0.15 % + 8 mA) | requires a scale factor in your own system |
 | Operating temperature | 0 °C to 40 °C | accuracy specified at 23 °C ±5 °C |
-| Auxiliary supply | **13–15 V**, isolated/floating, ~300 mW | 15 V nominal. 2.1 × 5.5 mm barrel jack, centre positive |
+| Auxiliary supply | **13–15 V**, isolated/floating, **~1.4 W** ✓ | ~95 mA measured at 15 V on the ×100 range (`Rel1` energised — the higher of the two). 2.1 × 5.5 mm barrel jack, centre positive |
 | Supply for full specified performance | **14.9–15.6 V** | below 14.9 V the +12 rail is unregulated — see the note |
 | Input connector | 2-pos 5.08 mm terminal block | Phoenix 5442002, 12 A / 400 V |
 | Output reference | `ISenseRTN`, bonded to chassis | board 0 V floats ~6 V below chassis |
 
-† Derived from the schematic, BOM and device datasheets; still to be confirmed on the bench. The
-full working model is in [`docs/Tolerance Budget - Isolated Shunt Amplifier Rev 2.xlsx`](docs/).
+✓ **Confirmed on the bench**, on a Rev 3.1 board, 2026-09-05/06. Method, per-point data and
+the three specifications this bench could *not* test are in the
+[**Bench Test Report**](docs/TEST_REPORT.md); the raw readings are in [`docs/test-data/`](docs/test-data/).
+
+† Derived from the schematic, BOM and device datasheets; **still to be confirmed on the bench**.
+Isolation withstand, common-mode range and temperature coefficient need a hipot tester, a 400 V
+source and a thermal chamber respectively — none of which this bench has. Treat them as
+manufacturer ratings, not as results. The full working model is in
+[`docs/Tolerance Budget - Isolated Shunt Amplifier Rev 2.xlsx`](docs/).
 
 **On accuracy.** The spec is given as ±(% of reading + fixed mA) because the two behave
 differently. The proportional part comes from the shunt's ±0.5 % initial tolerance and the
@@ -121,6 +128,9 @@ The full set including the PCB and fabrication drawings is
 
 | | |
 |---|---|
+| [**Bench test report**](docs/TEST_REPORT.md) | **Measured performance** on a Rev 3.1 board — DC accuracy, bandwidth, noise, drift, and what was *not* tested |
+| [**Bench test data**](docs/test-data/) | Every raw reading behind the report, with the reference instrument for each |
+| [**Product brief**](docs/PRODUCT_BRIEF.md) | What the board is for and how it performs, in short form |
 | [**Safety**](docs/SAFETY.md) | Working voltage, what the isolation does and does not do, handling. **Read before connecting `J2` to anything energised.** |
 | [**Connectors and controls**](docs/CONNECTORS.md) | Pinouts, switch positions, LEDs, output loading |
 | [**Building one**](docs/ASSEMBLY.md) | Fab ordering, assembly notes, BOM corrections, first power-on |
@@ -218,11 +228,18 @@ variants, or simply build reports from your own bench.
 
 Some things that would genuinely help, in rough order of value:
 
-- **Measured data.** Every performance figure in this repository is derived from schematics and
-  datasheets, not measured. A filled-in [`TEST_RECORD.xlsx`](docs/TEST_RECORD.xlsx) from a real
-  board would be the single most valuable contribution.
-- **Bandwidth measurement.** The ×100 figure is not obviously set by any RC in the schematic —
-  see finding 8 in the design review.
+- **Measured data from a second board.** One Rev 3.1 board has now been characterised in full —
+  see the [bench test report](docs/TEST_REPORT.md). What that cannot show is **unit-to-unit
+  spread**, and one board's −0.05 % gain error says nothing about the next one's. A filled-in
+  [`TEST_RECORD.xlsx`](docs/TEST_RECORD.xlsx) from your own board is now the single most
+  valuable contribution.
+- **The three specifications no bench here can test** — 4.2 kV isolation withstand, 400 V
+  common-mode range and CMRR, and temperature coefficient over 0–40 °C. These need a hipot
+  tester, a 400 V source and a thermal chamber. They remain datasheet figures.
+- **A flat, non-inductive HF current reference.** The ×10 bandwidth was measured against a
+  shunt of the same part as the DUT's, whose inductance zeros partly cancel in the ratio. The
+  580 kHz result is corroborated by the Rev 1 sweeps, but a non-inductive reference would
+  settle it outright — see §5.2 of the test report.
 - **A creepage and clearance check across the isolation barrier.** No design rule currently
   enforces it; see [`SAFETY.md`](docs/SAFETY.md).
 - **Enclosure print settings** that are known to work.

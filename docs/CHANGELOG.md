@@ -1,5 +1,39 @@
 # Changelog
 
+## Bench characterisation — 2026-09-06
+
+**Not a board change.** A Rev 3.1 board was measured end to end, converting most of the
+repository's daggered "derived, still to be confirmed" figures into measured ones. New:
+[`TEST_REPORT.md`](TEST_REPORT.md), the raw readings in [`test-data/`](test-data/), and
+[`PRODUCT_BRIEF.md`](PRODUCT_BRIEF.md).
+
+**Everything the bench could test, the board passed.** DC gain came in at **−0.05 %** (×100) and
+**−0.24 %** (×10) uncalibrated — inside the accuracy grade the datasheet reserves for a
+user-calibrated system — and held across two independent fixtures and both current directions.
+
+Three documentation corrections came out of it:
+
+| | Was | Measured | Where |
+|---|---|---|---|
+| Auxiliary supply power | ~300 mW | **~1.4 W (~95 mA at 15 V)** | README corrected |
+| Output clamp | ±5.85 V computed / `+/-6V` silkscreen | **5.70 V** | README + finding 15 |
+| ×10 output noise | not specified | **108 kHz spur, ~12 mA rms input-referred** | test report §7 |
+
+The supply figure was wrong by nearly 5× and mattered practically — someone sizing a wall
+adapter from "300 mW" would have chosen one five times too small. The board draws what it was
+designed to draw; the documentation was wrong.
+
+**Findings closed.** [Finding 8](DESIGN_REVIEW.md) (bandwidth re-measured on Rev 3 — ×10 at
+≈580 kHz against ≈500 kHz declared, ×100 at 60 kHz) and item 2 of [finding
+15](DESIGN_REVIEW.md) (the output-voltage figure, settled at 5.70 V; all three circulating
+numbers were wrong). Finding 5 gains measured context but **stays open** — total board current
+was measured, U6's own share and its junction temperature were not.
+
+**Three specifications remain untested and are labelled as such**: 4.2 kV isolation withstand,
+400 V common-mode range and CMRR, and temperature coefficient over 0–40 °C. They need a hipot
+tester, a 400 V source and a thermal chamber. No marketing or datasheet claim in this repository
+presents them as verified.
+
 ## Rev 3.1 — current, not released (2026-08-21)
 
 Documents renamed and the full output set regenerated. The Revision 3 project is now
@@ -25,18 +59,20 @@ What did change is the **silkscreen**, which now carries an on-board specificati
 | Silkscreen | Schematic | Status |
 |---|---|---|
 | `Supply: 13-16Vdc` | 13–15 V | **unresolved — 16 V is 133 % of `Rel1`'s 12 V coil rating** |
-| `Vout +/-6V` | 5 V max, ±5.85 V computed | unresolved |
+| `Vout +/-6V` | 5 V max, ±5.85 V computed | **resolved** — measured clamp **5.70 V**; use that |
 | `Max Input +/-200mV` | ±250 mV | unresolved |
 | ~~Switch legend `x50`~~ | ×100 | **fixed** — the rebuilt outputs read `Off / x10 / x100` |
 
 Full detail in finding 15 of [`DESIGN_REVIEW.md`](DESIGN_REVIEW.md). The `x50` was a typo and is
 now corrected in the artwork; it never affected the accuracy tables or the tolerance budget. The
-other three are open, and **the documentation in this repository follows the schematic, not the
-silkscreen**, until they are resolved.
+`Vout` figure has since been settled by measurement at **5.70 V**. The remaining two are open,
+and **the documentation in this repository follows the schematic, not the silkscreen**, until
+they are resolved.
 
-The `Vout` figure is the messiest of the three: the silkscreen says `+/-6V`, the amplifier sheet
-is annotated `+/-4.5Vout`, the rails compute to ±5.85 V, and full scale is 5.0 V. Four numbers,
-one parameter.
+The `Vout` figure was the messiest of the three: the silkscreen says `+/-6V`, the amplifier
+sheet is annotated `+/-4.5Vout`, the rails compute to ±5.85 V, and full scale is 5.0 V. Four
+numbers, one parameter — and **measurement has since settled it at 5.70 V**, which is none of
+them. Full scale stays 5.0 V. See the bench characterisation entry above.
 
 Also in this revision: the Gerber set gains `.GKO` (keep-out), `.GM4` and a `Dimensions Top`
 layer that Rev 3's March outputs did not produce, and the NC drill files are no longer suffixed
