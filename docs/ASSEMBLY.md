@@ -1,7 +1,7 @@
 # Building one
 
 Everything here is derived from the fabrication outputs in
-[`../Default Configuration/Outputs/`](../Default%20Configuration/Outputs/). Read
+[`Revision 3/Default Configuration/Outputs/`](../Revision%203/Default%20Configuration/Outputs/). Read
 [`SAFETY.md`](SAFETY.md) before the board goes anywhere near an energised circuit.
 
 ## Ordering the bare board
@@ -63,7 +63,7 @@ just passives.
 
 A stencil is worth it: the Si8921 is a wide-body SOIC-8 and there are several SOT-23-5s. The
 bill of materials in
-[`../Default Configuration/Outputs/BOM/`](../Default%20Configuration/Outputs/BOM/) has
+[`Revision 3/Default Configuration/Outputs/BOM/`](../Revision%203/Default%20Configuration/Outputs/BOM/) has
 manufacturer part numbers and distributor references for every line.
 
 ### Three BOM lines you must resolve before ordering parts
@@ -155,12 +155,90 @@ Record the results in [`TEST_RECORD.xlsx`](TEST_RECORD.xlsx).
 
 ## Enclosure
 
-STL and STEP models for the board, two enclosure panels and bumpers are in
-[`../3d Models/`](../3d%20Models/).
+The board is built for a **generic 50 × 58 × 24 mm split extruded-aluminium PCB case** — the
+kind sold under a dozen white-label names with no manufacturer part number worth quoting. Its
+stock end plates are replaced by the two printed panels in
+[`Revision 3/3d Models/`](../Revision%203/3d%20Models/), which carry the cutouts for this board's connectors.
 
-These were drawn for mechanical fit and have not been characterised as a safety enclosure. No
-print settings, material recommendation or assembly order is documented yet — if you print a set
-and find something that works, a pull request adding it would be genuinely useful.
+| | |
+|---|---|
+| Case | Split extruded aluminium, two half-shells with internal PCB rails |
+| Outside | **50 × 58 × 24 mm** (1.97 × 2.28 × 0.94 in) — 50 mm along the rails |
+| Board | 50.00 × 49.995 mm, slides into the rails; connectors protrude through the end panels |
+| End plates | Stock plates **discarded**; print `Enclosure Panel A.stl` and `Enclosure Panel B.stl` |
+| Panel size | 58.000 × 24.000 × 1.646 mm each, measured from the meshes |
+| Panel fixings | 2 × Ø2.75 mm holes on **52.00 mm centres**, at mid-height (Y = 12.00 mm) |
+| Screws | M2.5 self-tapping, into the shell's corner bosses |
+| Sleeve | `Shunt Amp BumperV2.stl`, 62 × 28 × 12 mm — slips over the assembled case |
+
+**Search on the dimensions, not on a brand.** No two sellers call this case the same thing, and
+the listings come and go; `50x58x24` or `1.97 x 2.28 x 0.94 inch` finds it where a part number
+will not.
+
+### Where to buy
+
+| Source | Reference | Note |
+|---|---|---|
+| AliExpress | [a.aliexpress.com/_mNXWsaf](https://a.aliexpress.com/_mNXWsaf) | **Used for the Rev 3.1 build**, ~US$6 |
+| AliExpress | item `4000939266131`, seller part `XDM05-40` | ~US$5.85 each in a 2-pack |
+| AliExpress | [a.aliexpress.com/_mMyxcPp](https://a.aliexpress.com/_mMyxcPp) | |
+| eBay | item `276716687470` | US$4.39 + US$15 shipping |
+| Amazon.com | `B0DLBNYR1Y`, `B014RSCFZI` | ~US$8–12, also listed on Amazon.ca |
+| Amazon.co.uk | `B0DM18PJG3`, `B0DLB95WVW` | |
+| JLCMC | aluminium box catalogue | 58 × 24 section and 50 mm length both appear in the filters, but **no matching split product page was found** — confirm on their quote page before relying on it |
+
+Prices are **indicative, September 2026**.
+
+**Hammond 1455 and Polycase EX are not substitutes.** Neither offers a 58 × 24 mm section or a
+50 mm length, so the panels below will not fit them and the board will not meet the rails.
+
+### Panel A — output end
+
+`Enclosure Panel A.stl`, 58.000 × 24.000 × 1.646 mm. Centres are from the panel's bottom-left
+corner, measured at mid-thickness.
+
+| Cutout | Size (mm) | Centre (mm) | Part |
+|---|---|---|---|
+| Round | Ø2.75 | (3.00, 12.00) | Fixing screw |
+| Round | Ø6.50 | (14.00, 8.75) | **J1** SMA jack |
+| Round | Ø3.15 | (24.95, 18.00) | **D5** — 10 A range LED |
+| Slot | 9.00 × 2.50 | (28.95, 10.90) | **SW1** slide switch |
+| Round | Ø3.15 | (32.95, 18.00) | **D4** — 5 A range LED |
+| Rectangle | 9.41 × 11.41 | (43.00, 13.85) | **J4** barrel jack |
+| Round | Ø2.75 | (55.00, 12.00) | Fixing screw |
+
+### Panel B — input end
+
+`Enclosure Panel B.stl`, 58.000 × 24.000 × 1.646 mm.
+
+| Cutout | Size (mm) | Centre (mm) | Part |
+|---|---|---|---|
+| Round | Ø2.75 | (3.00, 12.00) | Fixing screw |
+| Rectangle | 12.50 × 9.50 | (29.00, 12.50) | **J2** terminal block, 5.08 mm pitch |
+| Round | Ø2.75 | (55.00, 12.00) | Fixing screw |
+
+Part assignments are read from the Rev 3 pick-and-place, not inferred: J1, SW1, D5, D4 and J2 all
+land within 0.05 mm of their cutouts under a single constant offset, which is what makes the
+mapping a check rather than a guess.
+
+### The shell is bonded to `ISenseRTN`, not to earth
+
+`J1`'s SMA nut clamps the shell to the connector body, so **the aluminium becomes `ISenseRTN`** —
+the chassis-bonded 6 V reference, not ground. Everything
+[`SAFETY.md`](SAFETY.md) says about not treating that shell as earth applies to the whole case
+once it is assembled.
+
+**Do not assume the halves and end plates are electrically continuous.** These shells are
+anodised, and anodising is an insulator: two halves screwed together can read open. If the
+enclosure is to be bonded deliberately, scrape the anodising at the screw bosses and verify
+continuity with a meter rather than trusting the joint.
+
+### What is still missing
+
+These panels were drawn for mechanical fit and have **not** been characterised as a safety
+enclosure. No print settings, material recommendation or assembly order is documented yet — if
+you print a set and find something that works, a pull request adding it would be genuinely
+useful.
 
 If the input side will run above touch-safe voltages, do not rely on these panels — see
 [`SAFETY.md`](SAFETY.md).

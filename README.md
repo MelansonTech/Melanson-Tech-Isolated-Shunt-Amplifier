@@ -164,7 +164,9 @@ revision can be built without reference to the others.
 │   └── Default Configuration/Outputs/
 ├── Revision 3/                 current working design, board marked Rev3.1, August 2026
 │   ├── MelansonTech Isolated Current Sense Rev 3.OutJob
-│   ├── 3d Models/              STL and STEP — board, enclosure panels, bumpers
+│   ├── 3d Models/              STL and STEP — board, and the printed end panels and
+│   │                           bumper for the 50 × 58 × 24 mm extruded aluminium
+│   │                           case. Cutouts and sourcing: docs/ASSEMBLY.md
 │   ├── Simulation/             LTspice model
 │   ├── archive/                superseded documents, explained in archive/README.md
 │   └── Default Configuration/Outputs/

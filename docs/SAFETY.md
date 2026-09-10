@@ -90,10 +90,18 @@ Gerbers were not examined, so nothing has verified:
   block is a screw terminal with exposed metal.
 - **Do not probe the input side while it is at potential.** Your probe ground is almost certainly
   earthed; the input side is not.
-- **The board is not enclosed by default.** The 3D-printed panels in [`../3d Models/`](../3d%20Models/)
-  are the only barrier between a user and the input side, and they were designed for mechanical
-  fit, not as a safety enclosure. If the input side will be above touch-safe voltages, put the
-  board in a properly rated enclosure.
+- **The board is not enclosed by default.** It is built for a generic 50 × 58 × 24 mm split
+  extruded-aluminium case whose stock end plates are replaced by the printed panels in
+  [`Revision 3/3d Models/`](../Revision%203/3d%20Models/) — see [`ASSEMBLY.md`](ASSEMBLY.md) for the specification,
+  the cutout dimensions and where to buy one. That case is a **mechanical fit, not a safety
+  enclosure**: it has no rated creepage or clearance across the barrier and no ingress rating.
+  If the input side will be above touch-safe voltages, put the board in a properly rated
+  enclosure instead.
+- **The aluminium shell is bonded to `ISenseRTN`, not to earth.** `J1`'s SMA nut clamps the case
+  to the connector body, so the whole enclosure sits at the chassis-bonded 6 V reference. Touching
+  it is not the same as touching ground, and earthing it is not the same as earthing the board.
+  Anodising also means the two halves and the end plates may not be continuous with each other —
+  do not assume any part of the case is at the potential you measured on another part of it.
 - **Mind the auxiliary supply.** It must be isolated (see the README). Beyond the accuracy
   consequence, a non-isolated supply ties the board's 0 V to earth, which is not what the rest of
   the design assumes.
