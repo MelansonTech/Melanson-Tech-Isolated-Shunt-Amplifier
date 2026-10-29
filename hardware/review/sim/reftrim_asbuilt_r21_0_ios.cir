@@ -1,0 +1,24 @@
+* asbuilt_r21_0_ios
+.include "C:/CS Projects Folder/Isolated Shunt Amplifier/hardware/review/models/LM7321_12V.lib"
+* reference section, as built (R21 = 0)
+V12 v12 0 12.000
+Vin vin 0 15
+* ISenseRTN: 100k/100k divider, 100 nF, unity buffer U5
+R22 v12 u5p 100k
+R17 u5p 0 100k
+C4 u5p 0 100n
+XU5 u5p irtn v12 0 irtn LM7321_12V
+C30 irtn 0 1.713e-05
+C29 irtn vin 1.341e-05
+* DiffAmpRef: second 100k/100k divider with R28 100 R in the middle, R21, 100 nF, buffer U9
+R26 v12 r28a 100k
+R28a r28a wiper 50
+R28b wiper r28b 50
+R29 r28b 0 100k
+R21 wiper u9p 0.001
+C26 u9p 0 100n
+Ios 0 u9p 2e-07
+XU9 u9p dref v12 0 dref LM7321_12V
+C10 dref irtn 22u
+.op
+.end

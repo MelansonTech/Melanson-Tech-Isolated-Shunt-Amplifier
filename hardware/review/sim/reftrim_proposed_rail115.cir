@@ -1,0 +1,23 @@
+* proposed_rail115
+.include "C:/CS Projects Folder/Isolated Shunt Amplifier/hardware/review/models/LM7321_12V.lib"
+* reference section, proposed: one source, trim injected after it
+V12 v12 0 11.500
+Vin vin 0 15
+* ISenseRTN: 100k/100k divider, 100 nF, unity buffer U5
+R22 v12 u5p 100k
+R17 u5p 0 100k
+C4 u5p 0 100n
+XU5 u5p irtn v12 0 irtn LM7321_12V
+C30 irtn 0 1.713e-05
+C29 irtn vin 1.341e-05
+* DiffAmpRef = ISenseRTN + (Vwiper - ISenseRTN) * R21 / (R21 + R33)
+R28a v12 wiper 0.001
+R28b wiper 0 1e+04
+R33 wiper u9p 100k
+R21 irtn u9p 100
+C26 u9p irtn 100n
+Ios 0 u9p 0
+XU9 u9p dref v12 0 dref LM7321_12V
+C10 dref irtn 22u
+.op
+.end
