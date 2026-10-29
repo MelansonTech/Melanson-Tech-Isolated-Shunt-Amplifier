@@ -1,0 +1,18 @@
+{
+ "pnp": "Pick Place for MelansonTech Isolated Shunt Amplifier Rev3.csv",
+ "n_pnp": 95,
+ "n_board": 95,
+ "offset": [
+  -24.249992069999998,
+  -34.999989490000004
+ ],
+ "moved": [],
+ "rotated": [],
+ "flipped": [],
+ "only_output": [
+  "R10"
+ ],
+ "only_board": [
+  ""
+ ]
+}

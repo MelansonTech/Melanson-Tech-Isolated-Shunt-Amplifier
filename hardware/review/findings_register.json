@@ -1,0 +1,870 @@
+[
+ {
+  "id": "F1",
+  "area": "legacy",
+  "severity": 2,
+  "title": "Isolated auxiliary supply requirement was undocumented",
+  "detail": "ISenseRTN is bonded to chassis and board GND floats 6 V below it; an earthed supply shorts U5. README, CONNECTORS.md and the Rev 3.1 silkscreen now state it. The suggested series resistor in the chassis-bond leg is not fitted.",
+  "net": "ISENSERTN",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "closed",
+  "opened": "2026-08-20",
+  "closed": "2026-09-06",
+  "closed_by": "README/silkscreen, Rev 3.1 outputs 2026-08-20",
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md"
+  ]
+ },
+ {
+  "id": "F2",
+  "area": "legacy",
+  "severity": 2,
+  "title": "+12 rail unregulated below ~14.9 V at the jack",
+  "detail": "UA78L12 needs 14.5 V in; one Schottky on the x10 range. Headroom on the 5 A range shrinks to 0.32 V at 13 V. Re-examined in this review with both diode drops on the x100 range.",
+  "net": "+12",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by rails.py, power_budget.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F3",
+  "area": "legacy",
+  "severity": 3,
+  "title": "R21 asymmetry between the two reference buffers (10 k vs 0)",
+  "detail": "Recommended 100 ohm. The sheets now carry R21 = 0 ohm (CR0805-J/-000ELF); the board still carries CRCW080510K0FKTA (10 k) - see sync-1.",
+  "net": "OFFSETADJ",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by sim/chain.py, ds_params.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F4",
+  "area": "legacy",
+  "severity": 1,
+  "title": "R28 is 100 ohm on the schematic and CT94EW103 (10 k) in the BOM",
+  "detail": "A 10 k trimmer resolves to 5.7 % of full scale on the x100 range. BOM line unchanged in the 2026-08-20 Rev 3 output.",
+  "net": "NetR21_1",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by comment_diff.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F5",
+  "area": "legacy",
+  "severity": 2,
+  "title": "U6 HT7550-1 dissipates ~0.55-0.6 W in SOT-89",
+  "detail": "Drops VregIn to 5 V for the Si8921 output side and the DC-DC module. Total board draw measured 95 mA; U6 share and junction temperature not measured. Re-examined in this review.",
+  "net": "+5",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by thermal.py, dfm_check.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F6",
+  "area": "legacy",
+  "severity": 2,
+  "title": "Published common-mode figure exceeded the J2 400 V connector rating",
+  "detail": "Corrected to 400 Vdc in the documentation; creepage and clearance were never checked on the layout. Re-examined in this review.",
+  "net": "GND_ISO",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "closed",
+  "opened": "2026-08-20",
+  "closed": "2026-09-06",
+  "closed_by": "docs corrected 2026-08-21; layout check is isolation-1",
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md"
+  ]
+ },
+ {
+  "id": "F7",
+  "area": "legacy",
+  "severity": 3,
+  "title": "Accuracy stack-up: +/-(1.0 % + 12 mA) and +/-(0.9 % + 8 mA)",
+  "detail": "Hybrid worst case; bench 2026-09-06 measured -0.24 % and -0.05 % gain error on one board.",
+  "net": null,
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "closed",
+  "opened": "2026-08-20",
+  "closed": "2026-09-06",
+  "closed_by": "bench 2026-09-06, one board",
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md"
+  ]
+ },
+ {
+  "id": "F8",
+  "area": "legacy",
+  "severity": 3,
+  "title": "x100 bandwidth not derivable from the schematic",
+  "detail": "Measured 60 kHz on Rev 3.1. This review derives it: 50 ohm (R4||R8) with C9 47 nF switched in by Q6 gives 67.7 kHz, 63 kHz with C18 in parallel.",
+  "net": "ISENSEOUT",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "closed",
+  "opened": "2026-08-20",
+  "closed": "2026-09-06",
+  "closed_by": "bench 2026-09-06 (60 kHz); derivation in this review",
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md"
+  ]
+ },
+ {
+  "id": "F9",
+  "area": "legacy",
+  "severity": 3,
+  "title": "C16, C17, C28 at 3 pF are below the layout parasitics",
+  "detail": "Set nothing repeatable; raise or delete.",
+  "net": null,
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by sim/chain.py, ds_params.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F10",
+  "area": "legacy",
+  "severity": 3,
+  "title": "Difference-amp CMRR relies on four discrete resistors",
+  "detail": "R2/R9 8.2 k 0.05 % and R3/R20 10 k 0.1 %; a matched network would remove the drift term.",
+  "net": null,
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by sim/chain.py, ds_params.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F11",
+  "area": "legacy",
+  "severity": 2,
+  "title": "No reverse-polarity, fuse or TVS on the 15 V input; D6 clamp topology",
+  "detail": "C7 (1000 uF polymer) reverse-biased by a centre-negative adapter. D6 is an antiparallel pair across AIP/AIN (not a series pair) - see protection-1.",
+  "net": "VIN",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md"
+  ]
+ },
+ {
+  "id": "F12",
+  "area": "legacy",
+  "severity": 2,
+  "title": "SW1 carries the whole board supply at its 100 mA / 12 V rating",
+  "detail": "Confirmed from the netlist in this review: pole pin 2 fed by D3, positions 3 and 4 carry VregIn and HighGain. 95 mA measured at 15 V.",
+  "net": "VREGIN",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by rails.py, power_budget.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F13",
+  "area": "legacy",
+  "severity": 2,
+  "title": "BOM lines C8, C43, R23 are generic placeholders",
+  "detail": "680 pF, 680 pF and 1 ohm on the sheet; no part number in the 2026-08-20 Rev 3 BOM.",
+  "net": null,
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by comment_diff.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F14",
+  "area": "legacy",
+  "severity": 3,
+  "title": "Relay contact resistance sits in the x100 gain network",
+  "detail": "~100 mohm in series with 156.7 ohm: 0.06 % initially, a wear-out term.",
+  "net": "NetR14_2",
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by sim/chain.py, ds_params.py",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "F15",
+  "area": "legacy",
+  "severity": 2,
+  "title": "Rev 3.1 silkscreen legends disagree with the schematic",
+  "detail": "x50 fixed to x100 (2026-08-21); Vout settled at 5.70 V measured. Still open: Supply 13-16Vdc against the 12 V relay coil (15.6 V max), Max Input +/-200mV against +/-250mV on the sheet.",
+  "net": null,
+  "source": "docs/DESIGN_REVIEW.md (schematic-level review, 2026-08-20)",
+  "status": "open",
+  "opened": "2026-08-20",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "2026-10-28: carried into the register from DESIGN_REVIEW.md",
+   "2026-10-28: no longer reported by review 2026-10-29",
+   "2026-10-29: reopened - a solver carry closed it by mistake; legacy items are hand-added and close only on a check"
+  ]
+ },
+ {
+  "id": "sync-1",
+  "area": "sync",
+  "severity": 2,
+  "title": "Sheet and board differ: R21 is fitted the other way round and renamed on the sheet (0 ohm link) after the last ECO",
+  "detail": "pins C26, R21, R28, U9; board carries CRCW080510K0FKTA (10 k), sheets and BOM carry CR0805-J/-000ELF (0 R). Electrically symmetric, but the board has not been synchronised since the 2026-08-20 sheet edit",
+  "net": "OFFSETADJ",
+  "source": "netlist_diff.py, comment_diff.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sync-2",
+  "area": "sync",
+  "severity": 2,
+  "title": "R10 exists on the sheets but the board's R10 footprint is not linked to it",
+  "detail": "the board component at (29.10, 69.80) has no SOURCEDESIGNATOR / unique id (a free part whose silkscreen text says R10); the next Update PCB adds a second R10. Nets NetR10_1 / NetR7_1 are correct",
+  "net": "NetR10_1",
+  "source": "netlist_diff.py, comment_diff.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "bom-1",
+  "area": "bom",
+  "severity": 2,
+  "title": "D6: sheet/BOM says BAS31, board says BAT54SLT1G",
+  "detail": "the BOM orders the sheet's part; the board's comment is what an assembler reading the P&P sees. D6: the board's BAT54S (Schottky) conducts 2 uA at 100 mV and ~0.3 mA at 250 mV through the 20 ohm sense resistors; the sheet's BAS31 (silicon) does not - the silicon part must be the one fitted",
+  "net": null,
+  "source": "comment_diff.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "bom-2",
+  "area": "bom",
+  "severity": 2,
+  "title": "R2: sheet/BOM says ERA-6VRW8201V, board says RR1220P-8251-D-M",
+  "detail": "the BOM orders the sheet's part; the board's comment is what an assembler reading the P&P sees. R2/R9: RR1220P-8251-D-M is 8.25 k 0.5 %, the sheet's ERA-6VRW8201V is 8.2 k 0.05 %; the difference amplifier ratio moves 0.6 % between them",
+  "net": null,
+  "source": "comment_diff.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "bom-3",
+  "area": "bom",
+  "severity": 2,
+  "title": "R9: sheet/BOM says ERA-6VRW8201V, board says RR1220P-8251-D-M",
+  "detail": "the BOM orders the sheet's part; the board's comment is what an assembler reading the P&P sees. R2/R9: RR1220P-8251-D-M is 8.25 k 0.5 %, the sheet's ERA-6VRW8201V is 8.2 k 0.05 %; the difference amplifier ratio moves 0.6 % between them",
+  "net": null,
+  "source": "comment_diff.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-1",
+  "area": "isolation",
+  "severity": 2,
+  "title": "Barrier creepage 3.43 mm (bottom) / 3.68 mm (top) around the slot's left end, below the 4.0 mm basic figure for 400 V",
+  "detail": "shortest surface path from the GND_ISO / +5_ISO pours at (25.3-25.6, 43.9) round the slot tip to the +5 pour that wraps into the bridge at (23.7, 46.5). IEC 60664-1 table F.5, PD2, material group IIIb: 4.0 mm basic / 8.0 mm reinforced at 400 V (5.0 mm at 500 V); the DC-DC module's own creepage is 4.0 mm. Supported working voltage at 3.43 mm is about 340 V basic",
+  "net": "+5",
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-2",
+  "area": "isolation",
+  "severity": 2,
+  "title": "Aluminium case rail (bonded to ISenseRTN) is 3.60 mm from PSU1's -Vout pad along the bottom surface at 1 mm groove engagement",
+  "detail": "the right-hand rail lands next to the isolated secondary at the slot's right end; 4.1 mm at 0.5 mm engagement, 2.6 mm at 2.0 mm. Anodising is a film, not rated insulation (trap 1). Engagement depth is on no drawing",
+  "net": "GND_ISO",
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-3",
+  "area": "isolation",
+  "severity": 2,
+  "title": "Free 3.5 mm plated hole at (21.75, 43.0) sits 2.1 mm from measured-side copper and 1.8 mm from output-side copper",
+  "detail": "no net, no component; a metal fastener in it bridges the barrier at 2.1 mm. Its purpose is not recorded",
+  "net": null,
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-4",
+  "area": "isolation",
+  "severity": 2,
+  "title": "Pours on every layer come within 0.21 mm of the slot wall",
+  "detail": "GND (inner planes), +5, +12 and GND_ISO / +5_ISO all stop 0.21-0.22 mm from the routed slot; routing tolerance is of that order, so inner copper can be exposed in the slot. The clearance across the 2.5 mm slot itself is adequate",
+  "net": "GND",
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-5",
+  "area": "isolation",
+  "severity": 2,
+  "title": "No design rule enforces the barrier",
+  "detail": "the exported rule set has one 0.200 mm clearance rule scoped to the whole board; a clearance rule between a measured-side net class and everything else at 4.0 mm (and 0.5 mm pour-to-cutout) would have caught both findings above",
+  "net": null,
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "isolation-6",
+  "area": "isolation",
+  "severity": 3,
+  "title": "J2's 400 V rating applies to overvoltage category II / pollution degree 2 only",
+  "detail": "5442002 catalog: 400 V (II/2), 320 V (III/2), 250 V (III/3), 4 kV surge, material group I. SAFETY.md quotes 400 V without the category",
+  "net": null,
+  "source": "isolation_geom.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "power-1",
+  "area": "power",
+  "severity": 2,
+  "title": "x100 full scale (5.0 V) is at the output clamp at 13 V in: two Schottky drops plus the regulator dropout",
+  "detail": "headroom -0.01 V typical, -0.41 V at the guaranteed 14.5 V regulator input; full scale is reachable above 13.05 V (typ) / 13.85 V (guaranteed). Regulation thresholds at the jack: x10 14.06 / 14.86 V, x100 14.42 / 15.22 V (typ / guaranteed)",
+  "net": "+12",
+  "source": "rails.py, power_budget.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "power-2",
+  "area": "power",
+  "severity": 2,
+  "title": "U6 (HT7550-1, SOT-89) dissipates 0.62 W at 15 V and 0.71 W at 16 V against a 0.5 W package rating",
+  "detail": "63 mA of module input (the measured 95.8 mA total less everything else, implying 43 % module efficiency at 14 % load) plus 3.5 mA for the Si8921 from VregIn 14.3-15.6 V. Simulated hotspot 76 C in free air at 25 C, 107 C in the case at 40 C (operating range of the part is 85 C ambient, 150 C junction)",
+  "net": "+5",
+  "source": "rails.py, power_budget.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "power-3",
+  "area": "power",
+  "severity": 2,
+  "title": "SW1 carries 93-97 % of its 0.1 A rating at 15 V (rated 12 V) and makes/breaks the board supply",
+  "detail": "pole terminal 2 confirmed from the C&K table (1-2, 2-3, 2-4); 10,000-cycle life; switching into C3 (22 uF) from the 1176 uF input bank",
+  "net": "VREGIN",
+  "source": "rails.py, power_budget.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "power-4",
+  "area": "power",
+  "severity": 3,
+  "title": "Relay coil at 16 V is 130 % of rating, within the G6L's 150 % maximum to 70 C",
+  "detail": "corrects finding 15: the 13-16 V silkscreen is not what limits the input; U6 dissipation is (0.71 W at 16 V)",
+  "net": "HIGHGAIN",
+  "source": "rails.py, power_budget.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "thermal-1",
+  "area": "thermal",
+  "severity": 2,
+  "title": "The slot makes the shunt area a thermal island: R5 at 10 A reaches 110 C in free air and 138 C in the case at 40 C with 2.5 mm2 leads as fins",
+  "detail": "without the leads the model gives 192-325 C, so the shunt is cooled by its wiring. At +85 C the shunt's 50 ppm/C is a 0.4 % gain term on the 10 A range (the budget assumed a 33 C rise); the Si8921 input side sits at 68-95 C. Measure the shunt at 10 A with the real leads, or derate the continuous current on the x10 range",
+  "net": "NetJ2_1",
+  "source": "thermal.py, dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "thermal-2",
+  "area": "thermal",
+  "severity": 3,
+  "title": "J2-to-shunt pours rise ~21 C at 10 A (IPC-2221, 1 oz, top layer only)",
+  "detail": "4.55 mm wide; a second copper layer or 2 oz halves it",
+  "net": "NetJ2_1",
+  "source": "thermal.py, dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "analog-1",
+  "area": "analog",
+  "severity": 3,
+  "title": "U9_x100 loop: phase margin 26 deg (simulated, LM7321 model at its 10 V group)",
+  "detail": "Tian probe at the amplifier output with the board's loads (22 uF derated on the references); crossover 3.74e+04 Hz. The LM7321 is specified for unlimited capacitive load and the bench board shows no instability, so this is a question about the model's output stage, not a fault found: confirm with a step on DiffAmpRef",
+  "net": null,
+  "source": "sim/chain.py, ds_params.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "analog-2",
+  "area": "analog",
+  "severity": 3,
+  "title": "x100 bandwidth is set by C9 (47 nF) against the 50 ohm output resistors: simulated 58 kHz, measured 60 kHz",
+  "detail": "C9 is switched to board GND by Q6 on the x100 range; C8 (680 pF) with R32 (1 k) adds a 234 kHz pole. x10: 575 kHz simulated against 580 kHz measured, set by the Si8921",
+  "net": "ISENSEOUT",
+  "source": "sim/chain.py, ds_params.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "analog-3",
+  "area": "analog",
+  "severity": 3,
+  "title": "Input-referred noise 1.7 mA rms (x100, 60 kHz) and 5.4 mA rms (x10, 580 kHz), dominated by the Si8921",
+  "detail": "bench: ~2 mA rms on x100; the x10 bench figure (12 mA rms) is a 108 kHz spur, not the noise floor",
+  "net": "ISENSEOUT",
+  "source": "sim/chain.py, ds_params.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "analog-4",
+  "area": "analog",
+  "severity": 2,
+  "title": "LM7321 bias current (0.4 uA typ, up to 2 uA) through the R21 asymmetry: 4 mV typ / 20 mV max offset between the two references with the board's 10 k, zero with the sheet's 0 R",
+  "detail": "simulated with the vendor model (Ib -1.1 uA): DiffAmpRef - ISenseRTN = +11.1 mV with 10 k, -0.05 mV with 0 R, against a +/-3 mV trim span. A 10 k R21 can put the zero out of reach on a worst-case LM7321; the sheet's 0 R (or 100 R) removes it. The datasheet figure is ten times the 50 nA the previous review assumed",
+  "net": "OFFSETADJ",
+  "source": "sim/chain.py, ds_params.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "analog-5",
+  "area": "analog",
+  "severity": 3,
+  "title": "D6 as drawn is an antiparallel clamp across AIP/AIN (+/-0.7 V with BAS31), not a series pair",
+  "detail": "pins 1 and 2 on AIN, pin 3 on AIP. The Si8921 absolute maximum is -0.5 V / VDDA + 0.5 V, so the clamp protects; with the board's BAT54S it also leaks 0.3 mA at the 250 mV input maximum (2.4 % of full scale through the 20 ohm) - see bom-2",
+  "net": "NetC41_1",
+  "source": "sim/chain.py, ds_params.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "dfm-1",
+  "area": "dfm",
+  "severity": 2,
+  "title": "Pours come within 0.21 mm of the barrier slot wall on every layer",
+  "detail": "JLC routed-edge copper clearance is 0.30 mm; a 0.2 mm setback can leave inner-layer copper exposed in the slot after routing tolerance",
+  "net": null,
+  "source": "dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "dfm-2",
+  "area": "dfm",
+  "severity": 2,
+  "title": "Barrier slot is drawn on the Outline layer as a 2.5 mm stroked path, not a closed cut-out contour",
+  "detail": "D103 C,2.5: a fab reading the profile layer must interpret a wide stroke as a routed slot; the saved board carries it as a board cut-out region, so an ODB++/IPC-2581 export or a drawn contour removes the ambiguity",
+  "net": null,
+  "source": "dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "dfm-3",
+  "area": "dfm",
+  "severity": 2,
+  "title": "A .GKO (keep-out) file with an 11.5 x 3.9 mm rectangle is in the fabrication set",
+  "detail": "fabs that take GKO as the profile when present would cut the wrong board; the keep-out region under U2 should not be output, or the file dropped from the order zip",
+  "net": null,
+  "source": "dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "dfm-4",
+  "area": "dfm",
+  "severity": 3,
+  "title": "No fiducials and no test points on the board",
+  "detail": "a 95-part double-sided board going to machine assembly needs two or three fiducials per side; the only probe points are component pads",
+  "net": null,
+  "source": "dfm_check.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "emc-1",
+  "area": "emc",
+  "severity": 2,
+  "title": "Conducted emission at the 15 V port from PSU1: worst margin -4.8 dB to CISPR 32 Class B AVG (10-30 MHz), module scan de-embedded",
+  "detail": "common-mode current through the 2.5 pF barrier, CM1 buys ~1 dB against a 40 kohm source; the Si8921 modulator and the real earth path of the measured circuit are not in the estimate. A LISN scan settles it",
+  "net": "VIN",
+  "source": "emc_conducted.py",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-1",
+  "area": "sourcing",
+  "severity": 1,
+  "title": "LM7321MF/NOPB (U5, U9): OBSOLETE",
+  "detail": "ti.com part details 2026-10-29: 'no longer in production'; Digi-Key: 'Obsolete and no longer manufactured'. TI's page lists LM7321MFX/NOPB (ACTIVE, reel carrier) and OPA994IDBVR as alternatives - reported from the page, not evaluated here",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-2",
+  "area": "sourcing",
+  "severity": 2,
+  "title": "G6L-1F DC12 (Rel1): conflicting",
+  "detail": "Omron KR snippet 'In production'; Digi-Key CA 'Active' but no backorders, 'temporary constrained supply'; Master Electronics 'discontinued, but still in stock'. unresolved; Omron page refused fetches",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-3",
+  "area": "sourcing",
+  "severity": 2,
+  "title": "PJ-002A (J4): conflicting",
+  "detail": "Master Electronics 'no longer being manufactured ... End of Life' (template wording); Same Sky page did not resolve; Future shows stock 24,730, 17 wk. Digi-Key/Mouser list PJ-002AH only",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-4",
+  "area": "sourcing",
+  "severity": 2,
+  "title": "DR331-105BE (CM1): conflicting",
+  "detail": "Digi-Key CA 'Active', non-cancellable; Master Electronics 'no longer being manufactured' (template wording); Octopart 'Production'. Bourns not reachable",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-5",
+  "area": "sourcing",
+  "severity": 2,
+  "title": "CL31B475KBHNNNE (C11, C12): NRND (LCSC)",
+  "detail": "LCSC snippet 'Not recommended for new designs'; Samsung page HTTP 500. ",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "sourcing-6",
+  "area": "sourcing",
+  "severity": 3,
+  "title": "Part numbers that no distributor listing matched: NXJ1S0505T6MC-R7, ERA-6VRW8201V, ERA-6AEB471V, C0805X102J1GACAUTO",
+  "detail": "the BOM carries Digi-Key numbers for the first three; C0805X102J1GACAUTO looks like C0805C102J1GACAUTO. Verify at order time",
+  "net": null,
+  "source": "sourcing.json (web check 2026-10-29)",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "documentation-1",
+  "area": "documentation",
+  "severity": 3,
+  "title": "Documents give the board as 68.25 x 85.00 mm; it is 50.00 x 50.00 mm",
+  "detail": "CONNECTORS.md and ASSEMBLY.md read the outline's maximum coordinate as a size; ASSEMBLY.md's enclosure section has the right 50 x 50",
+  "net": null,
+  "source": "review 2026-10-29",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "documentation-2",
+  "area": "documentation",
+  "severity": 3,
+  "title": "README says Revision 3 'has not been fabricated or tested' while the test report characterises a Rev 3.1 board",
+  "detail": "the repository-layout paragraph is stale since 2026-09-06",
+  "net": null,
+  "source": "review 2026-10-29",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "documentation-3",
+  "area": "documentation",
+  "severity": 3,
+  "title": "The board file's stackup is not a fabricated one: 1.524 mm between top and the first plane, then 0.254 / 0.254",
+  "detail": "JLC's 4-layer 1.6 mm stack is 0.21 / 1.065 / 0.21; thermal and plane-coupling results use the JLC stack and say so",
+  "net": null,
+  "source": "review 2026-10-29",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "documentation-4",
+  "area": "documentation",
+  "severity": 3,
+  "title": "C7 is a 10 x 16 mm can (A750 MV); upright it cannot fit the 24 mm case, lying flat it clears by ~3 mm with 1.5 mm walls",
+  "detail": "the footprint name (RA1, 14 mm high) implies a right-angle mount; the case wall thickness is on no drawing",
+  "net": null,
+  "source": "review 2026-10-29",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ },
+ {
+  "id": "documentation-5",
+  "area": "documentation",
+  "severity": 3,
+  "title": "Rev 1 Bode files and the sheet note 'Circuit Requires 300mW' are stale",
+  "detail": "measured 1.4 W; the sheet note is where the README's 300 mW came from",
+  "net": null,
+  "source": "review 2026-10-29",
+  "status": "open",
+  "opened": "2026-10-28",
+  "closed": null,
+  "closed_by": null,
+  "notes": [
+   "run 2026-10-29"
+  ]
+ }
+]

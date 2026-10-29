@@ -1,0 +1,164 @@
+{
+ "n_common": 230,
+ "mismatches": [
+  {
+   "pin": "C18.2",
+   "sheet_net": "IsenseOut",
+   "board_net": "ISENSEOUT",
+   "sheet_only": [
+    "C43.1",
+    "R11.1",
+    "R15.2",
+    "R4.2",
+    "R8.2",
+    "U8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "C43.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "C9.2",
+   "sheet_net": "IsenseOut",
+   "board_net": "ISENSEOUT",
+   "sheet_only": [
+    "C43.1",
+    "R11.1",
+    "R15.2",
+    "R4.2",
+    "R8.2",
+    "U8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "J1.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "ISENSEOUT",
+   "sheet_only": [
+    "C43.1",
+    "R11.1",
+    "R15.2",
+    "R4.2",
+    "R8.2",
+    "U8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R11.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R15.2",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R4.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "ISENSEOUT",
+   "sheet_only": [
+    "C43.1",
+    "R11.1",
+    "R15.2",
+    "R4.2",
+    "R8.2",
+    "U8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R4.2",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R8.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "ISENSEOUT",
+   "sheet_only": [
+    "C43.1",
+    "R11.1",
+    "R15.2",
+    "R4.2",
+    "R8.2",
+    "U8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "R8.2",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  },
+  {
+   "pin": "U8.1",
+   "sheet_net": "IsenseOut",
+   "board_net": "NetC43_1",
+   "sheet_only": [
+    "C18.2",
+    "C9.2",
+    "J1.1",
+    "R4.1",
+    "R8.1"
+   ],
+   "board_only": []
+  }
+ ],
+ "sheet_only_components": [
+  "R10"
+ ],
+ "board_only_components": [],
+ "board_only_pins": [],
+ "board": "MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc",
+ "sheets": [
+  "MelansonTech PSU_IsolatedShuntAmp Rev2.SchDoc",
+  "MelansonTech Isolated Shunt Amplifier rev 2 alt shunt.SchDoc"
+ ],
+ "sheet_source": "sheets at 1a42ddd"
+}

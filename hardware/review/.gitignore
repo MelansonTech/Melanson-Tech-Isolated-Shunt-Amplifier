@@ -1,0 +1,12 @@
+__pycache__/
+*.raw
+*.log
+_carry_*.json
+sim/trial_*
+models/LM7321_12V.lib
+models/lm7322_pspice/
+models/lm7322_tina/
+models/ua78l/
+models/opa197_ti/
+datasheets/*.txt
+datasheets/cl21a226_samsung_mlcc_catalog.pdf

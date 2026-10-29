@@ -1,0 +1,87 @@
+* shunt amplifier chain, ctl=1 (1 = x100), V12=12.00, R21=0
+.include "C:/CS Projects Folder/Isolated Shunt Amplifier/hardware/review/models/OPA197.LIB"
+.include "C:/CS Projects Folder/Isolated Shunt Amplifier/hardware/review/models/LM7321_12V.lib"
+
+* --- behavioural Si8921B: gain 8.2, two real poles at 932 kHz (-3 dB 600 kHz), 459 ns extra delay,
+* --- output common mode 1.39 V, differential clip +/-2.5 V, input-referred noise 79 nV/rtHz as R=379 k
+.subckt SI8921B aip ain aop aon
+Rn aip aipn 3.787e+05
+Ein sin 0 aipn ain 1
+Rf1 sin f1 1k
+Cf1 f1 0 1.707e-10
+Eb1 f1b 0 f1 0 1
+Rf2 f1b f2 1k
+Cf2 f2 0 1.707e-10
+Eb2 f2b 0 f2 0 1
+Edel f2d 0 f2b 0 Laplace=exp(-s*4.586e-07)
+Bop aopi 0 V=1.390 + 0.5*8.2*min(max(V(f2d),-0.305),0.305)
+Bon aoni 0 V=1.390 - 0.5*8.2*min(max(V(f2d),-0.305),0.305)
+Rop aopi aop 50
+Ron aoni aon 50
+.ends SI8921B
+
+.model DBAS31 D(Is=2.5n N=1.0 Rs=1 Cjo=30p)
+.model SWON SW(Ron=2 Roff=1G Vt=0.5 Vh=0)
+.model SWREL SW(Ron=0.1 Roff=1G Vt=0.5 Vh=0)
+V12 v12 0 12.000
+Vin vin 0 15
+Vctl ctl 0 1
+* shunt sense: V(aip)-V(ain) = +Vsh
+Vsh 0 shn DC 0 AC 1
+R1 0 aip 10
+R12 shn ain 10
+C41 aip ain 1n
+D6a ain aip DBAS31
+D6b aip ain DBAS31
+XU2 aip ain aop aon SI8921B
+* U3 difference amplifier
+XU3 u3p u3n v12 0 u3o OPA197
+R2 aop u3p 8.2k
+R3 u3p dref 10k
+C16 u3p dref 3p
+R9 aon u3n 8.2k
+R20 u3o u3n 10k
+C17 u3o u3n 3p
+R13 u3o 0 10k
+* U8 gain stage
+R32 u3o u8p 1k
+C28 u8p 0 3p
+C8 u8p q5d 680p
+S5 q5d 0 ctl 0 SWON
+XU8 u8p u8n v12 0 u8o OPA197
+R15 u8o 0 10k
+R11 u8o fb1 470
+R10 fb1 fb2 470
+R7 fb2 u8n 470
+C43 u8o u8n 680p
+Rg u8n rg 156.667
+Srel rg irtn ctl 0 SWREL
+R4 u8o out 100
+R8 u8o out 100
+C18 out irtn 3.3n
+C9 out q6d 47n
+S6 q6d 0 ctl 0 SWON
+Rload out irtn 1Meg
+Cload out irtn 20p
+* U5 ISenseRTN buffer
+XU5 u5p irtn v12 0 irtn LM7321_12V
+R22 v12 u5p 100k
+R17 u5p 0 100k
+C4 u5p 0 100n
+C30 irtn 0 1.713e-05
+C29 irtn vin 1.341e-05
+C10 dref irtn 2.2e-05
+* U9 DiffAmpRef buffer
+XU9 u9p dref v12 0 dref_a LM7321_12V
+R26 v12 r28a 100k
+R28a r28a wiper 50
+R28b wiper r28b 50
+R29 r28b 0 100k
+R21 wiper u9p 0.001
+C26 u9p 0 100n
+* Tian probe at the U9 output
+Vt dref dref_a DC 0 AC {1-iv}
+It 0 dref AC {iv}
+.step param iv list 0 1
+.ac dec 60 10 100Meg
+.end

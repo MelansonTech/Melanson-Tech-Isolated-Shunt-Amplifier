@@ -1,0 +1,11 @@
+* OPA197 validation
+.include "C:/CS Projects Folder/Isolated Shunt Amplifier/hardware/review/models/OPA197.LIB"
+V12 vp 0 12
+Vin p 0 6 AC 1
+X1 p n vp 0 o OPA197
+Rf o n 100k
+Rg n m 1k
+Vm m 0 6
+RL o 0 10k
+.ac dec 50 10 100Meg
+.end

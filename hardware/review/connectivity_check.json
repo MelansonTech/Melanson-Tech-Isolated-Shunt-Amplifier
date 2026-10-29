@@ -1,0 +1,1527 @@
+{
+ "sources": {
+  "sheet": "sheets on disk",
+  "board": "MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc",
+  "committed": "sheets at HEAD"
+ },
+ "interfaces": [
+  {
+   "name": "J4 auxiliary supply, PJ-002A, driven by the external 13-15 V adapter",
+   "connector": "J4",
+   "results": {
+    "sheet": [
+     {
+      "connector": "J4",
+      "pin": "1",
+      "label": "centre pin",
+      "driver": "adapter +",
+      "dir": "out",
+      "role": "V+ into the CM choke",
+      "must_reach": "CM1.1",
+      "reaches": "CM1.1",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "2",
+      "label": "sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return into the CM choke",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "3",
+      "label": "tip switch, rests on the sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "J4",
+      "pin": "1",
+      "label": "centre pin",
+      "driver": "adapter +",
+      "dir": "out",
+      "role": "V+ into the CM choke",
+      "must_reach": "CM1.1",
+      "reaches": "CM1.1",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "2",
+      "label": "sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return into the CM choke",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "3",
+      "label": "tip switch, rests on the sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "J4",
+      "pin": "1",
+      "label": "centre pin",
+      "driver": "adapter +",
+      "dir": "out",
+      "role": "V+ into the CM choke",
+      "must_reach": "CM1.1",
+      "reaches": "CM1.1",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "2",
+      "label": "sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return into the CM choke",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     },
+     {
+      "connector": "J4",
+      "pin": "3",
+      "label": "tip switch, rests on the sleeve",
+      "driver": "adapter -",
+      "dir": "out",
+      "role": "0 V return",
+      "must_reach": "CM1.3",
+      "reaches": "CM1.3",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "J1 signal output, SMA 142-0701-801, read by a 1 Mohm instrument",
+   "connector": "J1",
+   "results": {
+    "sheet": [
+     {
+      "connector": "J1",
+      "pin": "1",
+      "label": "centre",
+      "driver": "instrument input",
+      "dir": "in",
+      "role": "IsenseOut after the 50 ohm",
+      "must_reach": "R4.1",
+      "reaches": "R4.1",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S1",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN, the chassis reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S2",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S3",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S4",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "J1",
+      "pin": "1",
+      "label": "centre",
+      "driver": "instrument input",
+      "dir": "in",
+      "role": "IsenseOut after the 50 ohm",
+      "must_reach": "R4.1",
+      "reaches": "R4.1",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S1",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN, the chassis reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S2",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S3",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S4",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "J1",
+      "pin": "1",
+      "label": "centre",
+      "driver": "instrument input",
+      "dir": "in",
+      "role": "IsenseOut after the 50 ohm",
+      "must_reach": "R4.1",
+      "reaches": "R4.1",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S1",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN, the chassis reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S2",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S3",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "J1",
+      "pin": "S4",
+      "label": "shell",
+      "driver": "instrument ground",
+      "dir": "in",
+      "role": "ISenseRTN",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "J2 current input, Phoenix 5442002, the measured circuit (CONNECTORS.md: pin 2 high side)",
+   "connector": "J2",
+   "results": {
+    "sheet": [
+     {
+      "connector": "J2",
+      "pin": "2",
+      "label": "high side",
+      "driver": "measured circuit",
+      "dir": "out",
+      "role": "current enters the shunt at terminal 1",
+      "must_reach": "R5.1",
+      "reaches": "R5.1",
+      "ok": true
+     },
+     {
+      "connector": "J2",
+      "pin": "1",
+      "label": "low side",
+      "driver": "measured circuit",
+      "dir": "in",
+      "role": "current leaves the shunt at terminal 2",
+      "must_reach": "R5.2",
+      "reaches": "R5.2",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "J2",
+      "pin": "2",
+      "label": "high side",
+      "driver": "measured circuit",
+      "dir": "out",
+      "role": "current enters the shunt at terminal 1",
+      "must_reach": "R5.1",
+      "reaches": "R5.1",
+      "ok": true
+     },
+     {
+      "connector": "J2",
+      "pin": "1",
+      "label": "low side",
+      "driver": "measured circuit",
+      "dir": "in",
+      "role": "current leaves the shunt at terminal 2",
+      "must_reach": "R5.2",
+      "reaches": "R5.2",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "J2",
+      "pin": "2",
+      "label": "high side",
+      "driver": "measured circuit",
+      "dir": "out",
+      "role": "current enters the shunt at terminal 1",
+      "must_reach": "R5.1",
+      "reaches": "R5.1",
+      "ok": true
+     },
+     {
+      "connector": "J2",
+      "pin": "1",
+      "label": "low side",
+      "driver": "measured circuit",
+      "dir": "in",
+      "role": "current leaves the shunt at terminal 2",
+      "must_reach": "R5.2",
+      "reaches": "R5.2",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "R5 shunt WSL3637 Kelvin terminals into the Si8921",
+   "connector": "R5",
+   "results": {
+    "sheet": [
+     {
+      "connector": "R5",
+      "pin": "4",
+      "label": "sense at terminal 1",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIP side, the isolated ground reference",
+      "must_reach": "R1.2",
+      "reaches": "R1.2",
+      "ok": true
+     },
+     {
+      "connector": "R5",
+      "pin": "3",
+      "label": "sense at terminal 2",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIN side through R12",
+      "must_reach": "R12.2",
+      "reaches": "R12.2",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "R5",
+      "pin": "4",
+      "label": "sense at terminal 1",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIP side, the isolated ground reference",
+      "must_reach": "R1.2",
+      "reaches": "R1.2",
+      "ok": true
+     },
+     {
+      "connector": "R5",
+      "pin": "3",
+      "label": "sense at terminal 2",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIN side through R12",
+      "must_reach": "R12.2",
+      "reaches": "R12.2",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "R5",
+      "pin": "4",
+      "label": "sense at terminal 1",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIP side, the isolated ground reference",
+      "must_reach": "R1.2",
+      "reaches": "R1.2",
+      "ok": true
+     },
+     {
+      "connector": "R5",
+      "pin": "3",
+      "label": "sense at terminal 2",
+      "driver": "shunt",
+      "dir": "out",
+      "role": "AIN side through R12",
+      "must_reach": "R12.2",
+      "reaches": "R12.2",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "SW1 range and off switch, C&K OS103011, operated by the user",
+   "connector": "SW1",
+   "results": {
+    "sheet": [
+     {
+      "connector": "SW1",
+      "pin": "2",
+      "label": "pole",
+      "driver": "switch",
+      "dir": "in",
+      "role": "fed from Vin through D3",
+      "must_reach": "D3.1",
+      "reaches": "D3.1",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "3",
+      "label": "position 2 (x10)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "VregIn to the 12 V regulator input",
+      "must_reach": "U1.3",
+      "reaches": "U1.3",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "4",
+      "label": "position 3 (x100)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "HighGain to the relay coil",
+      "must_reach": "Rel1.5",
+      "reaches": "Rel1.5",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "5",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "6",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "SW1",
+      "pin": "2",
+      "label": "pole",
+      "driver": "switch",
+      "dir": "in",
+      "role": "fed from Vin through D3",
+      "must_reach": "D3.1",
+      "reaches": "D3.1",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "3",
+      "label": "position 2 (x10)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "VregIn to the 12 V regulator input",
+      "must_reach": "U1.3",
+      "reaches": "U1.3",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "4",
+      "label": "position 3 (x100)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "HighGain to the relay coil",
+      "must_reach": "Rel1.5",
+      "reaches": "Rel1.5",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "5",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "6",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "SW1",
+      "pin": "2",
+      "label": "pole",
+      "driver": "switch",
+      "dir": "in",
+      "role": "fed from Vin through D3",
+      "must_reach": "D3.1",
+      "reaches": "D3.1",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "3",
+      "label": "position 2 (x10)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "VregIn to the 12 V regulator input",
+      "must_reach": "U1.3",
+      "reaches": "U1.3",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "4",
+      "label": "position 3 (x100)",
+      "driver": "switch",
+      "dir": "out",
+      "role": "HighGain to the relay coil",
+      "must_reach": "Rel1.5",
+      "reaches": "Rel1.5",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "5",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "SW1",
+      "pin": "6",
+      "label": "frame",
+      "driver": "switch",
+      "dir": "in",
+      "role": "board 0 V",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "R28 zero trimmer CT94, adjusted by the user",
+   "connector": "R28",
+   "results": {
+    "sheet": [
+     {
+      "connector": "R28",
+      "pin": "1",
+      "label": "end 1",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "ground-side divider leg R29",
+      "must_reach": "R29.2",
+      "reaches": "R29.2",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "3",
+      "label": "end 3",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "+12-side divider leg R26",
+      "must_reach": "R26.1",
+      "reaches": "R26.1",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "2",
+      "label": "wiper",
+      "driver": "trimmer",
+      "dir": "out",
+      "role": "OffsetAdj through R21 (board end 1; the sheet has R21 the other way round)",
+      "must_reach": "R21.1",
+      "reaches": "R21.2",
+      "ok": false
+     }
+    ],
+    "board": [
+     {
+      "connector": "R28",
+      "pin": "1",
+      "label": "end 1",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "ground-side divider leg R29",
+      "must_reach": "R29.2",
+      "reaches": "R29.2",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "3",
+      "label": "end 3",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "+12-side divider leg R26",
+      "must_reach": "R26.1",
+      "reaches": "R26.1",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "2",
+      "label": "wiper",
+      "driver": "trimmer",
+      "dir": "out",
+      "role": "OffsetAdj through R21 (board end 1; the sheet has R21 the other way round)",
+      "must_reach": "R21.1",
+      "reaches": "R21.1",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "R28",
+      "pin": "1",
+      "label": "end 1",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "ground-side divider leg R29",
+      "must_reach": "R29.2",
+      "reaches": "R29.2",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "3",
+      "label": "end 3",
+      "driver": "trimmer",
+      "dir": "in",
+      "role": "+12-side divider leg R26",
+      "must_reach": "R26.1",
+      "reaches": "R26.1",
+      "ok": true
+     },
+     {
+      "connector": "R28",
+      "pin": "2",
+      "label": "wiper",
+      "driver": "trimmer",
+      "dir": "out",
+      "role": "OffsetAdj through R21 (board end 1; the sheet has R21 the other way round)",
+      "must_reach": "R21.1",
+      "reaches": "R21.2",
+      "ok": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "Rel1 range relay G6L-1F DC12",
+   "connector": "Rel1",
+   "results": {
+    "sheet": [
+     {
+      "connector": "Rel1",
+      "pin": "5",
+      "label": "coil",
+      "driver": "HighGain",
+      "dir": "in",
+      "role": "coil drive from the switch",
+      "must_reach": "SW1.4",
+      "reaches": "SW1.4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "8",
+      "label": "coil",
+      "driver": "GND",
+      "dir": "in",
+      "role": "coil return",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "4",
+      "label": "contact",
+      "driver": "ISenseRTN",
+      "dir": "in",
+      "role": "gain-set leg to the reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "2",
+      "label": "contact",
+      "driver": "R14/R16/R18",
+      "dir": "in",
+      "role": "gain-set leg to the U8 inverting network",
+      "must_reach": "R14.2",
+      "reaches": "R14.2",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "Rel1",
+      "pin": "5",
+      "label": "coil",
+      "driver": "HighGain",
+      "dir": "in",
+      "role": "coil drive from the switch",
+      "must_reach": "SW1.4",
+      "reaches": "SW1.4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "8",
+      "label": "coil",
+      "driver": "GND",
+      "dir": "in",
+      "role": "coil return",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "4",
+      "label": "contact",
+      "driver": "ISenseRTN",
+      "dir": "in",
+      "role": "gain-set leg to the reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "2",
+      "label": "contact",
+      "driver": "R14/R16/R18",
+      "dir": "in",
+      "role": "gain-set leg to the U8 inverting network",
+      "must_reach": "R14.2",
+      "reaches": "R14.2",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "Rel1",
+      "pin": "5",
+      "label": "coil",
+      "driver": "HighGain",
+      "dir": "in",
+      "role": "coil drive from the switch",
+      "must_reach": "SW1.4",
+      "reaches": "SW1.4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "8",
+      "label": "coil",
+      "driver": "GND",
+      "dir": "in",
+      "role": "coil return",
+      "must_reach": "U1.2",
+      "reaches": "U1.2",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "4",
+      "label": "contact",
+      "driver": "ISenseRTN",
+      "dir": "in",
+      "role": "gain-set leg to the reference",
+      "must_reach": "U5.1",
+      "reaches": "U5.1,4",
+      "ok": true
+     },
+     {
+      "connector": "Rel1",
+      "pin": "2",
+      "label": "contact",
+      "driver": "R14/R16/R18",
+      "dir": "in",
+      "role": "gain-set leg to the U8 inverting network",
+      "must_reach": "R14.2",
+      "reaches": "R14.2",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "U2 Si8921 isolated amplifier",
+   "connector": "U2",
+   "results": {
+    "sheet": [
+     {
+      "connector": "U2",
+      "pin": "1",
+      "label": "VDDA",
+      "driver": "+5_ISO",
+      "dir": "in",
+      "role": "isolated supply from L3",
+      "must_reach": "L3.1",
+      "reaches": "L3.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "2",
+      "label": "AIP",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "non-inverting input through R1",
+      "must_reach": "R1.1",
+      "reaches": "R1.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "3",
+      "label": "AIN",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "inverting input through R12",
+      "must_reach": "R12.1",
+      "reaches": "R12.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "4",
+      "label": "GNDA",
+      "driver": "PSU1",
+      "dir": "in",
+      "role": "isolated ground",
+      "must_reach": "PSU1.7",
+      "reaches": "PSU1.7",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "5",
+      "label": "GNDB",
+      "driver": "GND",
+      "dir": "in",
+      "role": "output-side ground",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "6",
+      "label": "AON",
+      "driver": "U2",
+      "dir": "out",
+      "role": "inverted output into R9",
+      "must_reach": "R9.2",
+      "reaches": "R9.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "7",
+      "label": "AOP",
+      "driver": "U2",
+      "dir": "out",
+      "role": "output into R2",
+      "must_reach": "R2.2",
+      "reaches": "R2.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "8",
+      "label": "VDDB",
+      "driver": "+5",
+      "dir": "in",
+      "role": "output-side supply from U6",
+      "must_reach": "U6.3",
+      "reaches": "U6.3",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "U2",
+      "pin": "1",
+      "label": "VDDA",
+      "driver": "+5_ISO",
+      "dir": "in",
+      "role": "isolated supply from L3",
+      "must_reach": "L3.1",
+      "reaches": "L3.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "2",
+      "label": "AIP",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "non-inverting input through R1",
+      "must_reach": "R1.1",
+      "reaches": "R1.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "3",
+      "label": "AIN",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "inverting input through R12",
+      "must_reach": "R12.1",
+      "reaches": "R12.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "4",
+      "label": "GNDA",
+      "driver": "PSU1",
+      "dir": "in",
+      "role": "isolated ground",
+      "must_reach": "PSU1.7",
+      "reaches": "PSU1.7",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "5",
+      "label": "GNDB",
+      "driver": "GND",
+      "dir": "in",
+      "role": "output-side ground",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "6",
+      "label": "AON",
+      "driver": "U2",
+      "dir": "out",
+      "role": "inverted output into R9",
+      "must_reach": "R9.2",
+      "reaches": "R9.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "7",
+      "label": "AOP",
+      "driver": "U2",
+      "dir": "out",
+      "role": "output into R2",
+      "must_reach": "R2.2",
+      "reaches": "R2.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "8",
+      "label": "VDDB",
+      "driver": "+5",
+      "dir": "in",
+      "role": "output-side supply from U6",
+      "must_reach": "U6.3",
+      "reaches": "U6.3",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "U2",
+      "pin": "1",
+      "label": "VDDA",
+      "driver": "+5_ISO",
+      "dir": "in",
+      "role": "isolated supply from L3",
+      "must_reach": "L3.1",
+      "reaches": "L3.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "2",
+      "label": "AIP",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "non-inverting input through R1",
+      "must_reach": "R1.1",
+      "reaches": "R1.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "3",
+      "label": "AIN",
+      "driver": "shunt",
+      "dir": "in",
+      "role": "inverting input through R12",
+      "must_reach": "R12.1",
+      "reaches": "R12.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "4",
+      "label": "GNDA",
+      "driver": "PSU1",
+      "dir": "in",
+      "role": "isolated ground",
+      "must_reach": "PSU1.7",
+      "reaches": "PSU1.7",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "5",
+      "label": "GNDB",
+      "driver": "GND",
+      "dir": "in",
+      "role": "output-side ground",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "6",
+      "label": "AON",
+      "driver": "U2",
+      "dir": "out",
+      "role": "inverted output into R9",
+      "must_reach": "R9.2",
+      "reaches": "R9.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "7",
+      "label": "AOP",
+      "driver": "U2",
+      "dir": "out",
+      "role": "output into R2",
+      "must_reach": "R2.2",
+      "reaches": "R2.2",
+      "ok": true
+     },
+     {
+      "connector": "U2",
+      "pin": "8",
+      "label": "VDDB",
+      "driver": "+5",
+      "dir": "in",
+      "role": "output-side supply from U6",
+      "must_reach": "U6.3",
+      "reaches": "U6.3",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "PSU1 NXJ1S0505 isolated DC-DC",
+   "connector": "PSU1",
+   "results": {
+    "sheet": [
+     {
+      "connector": "PSU1",
+      "pin": "3",
+      "label": "+Vin",
+      "driver": "+5 through L2",
+      "dir": "in",
+      "role": "module input",
+      "must_reach": "L2.1",
+      "reaches": "L2.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "1",
+      "label": "-Vin",
+      "driver": "GND",
+      "dir": "in",
+      "role": "module input return",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "8",
+      "label": "+Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated 5 V into L3",
+      "must_reach": "L3.2",
+      "reaches": "L3.2",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "7",
+      "label": "-Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated ground",
+      "must_reach": "R6.1",
+      "reaches": "R6.1",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "PSU1",
+      "pin": "3",
+      "label": "+Vin",
+      "driver": "+5 through L2",
+      "dir": "in",
+      "role": "module input",
+      "must_reach": "L2.1",
+      "reaches": "L2.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "1",
+      "label": "-Vin",
+      "driver": "GND",
+      "dir": "in",
+      "role": "module input return",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "8",
+      "label": "+Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated 5 V into L3",
+      "must_reach": "L3.2",
+      "reaches": "L3.2",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "7",
+      "label": "-Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated ground",
+      "must_reach": "R6.1",
+      "reaches": "R6.1",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "PSU1",
+      "pin": "3",
+      "label": "+Vin",
+      "driver": "+5 through L2",
+      "dir": "in",
+      "role": "module input",
+      "must_reach": "L2.1",
+      "reaches": "L2.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "1",
+      "label": "-Vin",
+      "driver": "GND",
+      "dir": "in",
+      "role": "module input return",
+      "must_reach": "U6.1",
+      "reaches": "U6.1",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "8",
+      "label": "+Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated 5 V into L3",
+      "must_reach": "L3.2",
+      "reaches": "L3.2",
+      "ok": true
+     },
+     {
+      "connector": "PSU1",
+      "pin": "7",
+      "label": "-Vout",
+      "driver": "PSU1",
+      "dir": "out",
+      "role": "isolated ground",
+      "must_reach": "R6.1",
+      "reaches": "R6.1",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "U1 UA78L12 (SOT-89: 1 OUT, 2 GND, 3 IN)",
+   "connector": "U1",
+   "results": {
+    "sheet": [
+     {
+      "connector": "U1",
+      "pin": "3",
+      "label": "IN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "1",
+      "label": "OUT",
+      "driver": "U1",
+      "dir": "out",
+      "role": "+12 rail",
+      "must_reach": "C33.2",
+      "reaches": "C33.2",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "2",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C32.1",
+      "reaches": "C32.1",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "U1",
+      "pin": "3",
+      "label": "IN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "1",
+      "label": "OUT",
+      "driver": "U1",
+      "dir": "out",
+      "role": "+12 rail",
+      "must_reach": "C33.2",
+      "reaches": "C33.2",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "2",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C32.1",
+      "reaches": "C32.1",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "U1",
+      "pin": "3",
+      "label": "IN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "1",
+      "label": "OUT",
+      "driver": "U1",
+      "dir": "out",
+      "role": "+12 rail",
+      "must_reach": "C33.2",
+      "reaches": "C33.2",
+      "ok": true
+     },
+     {
+      "connector": "U1",
+      "pin": "2",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C32.1",
+      "reaches": "C32.1",
+      "ok": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "U6 HT7550-1 (SOT-89: 1 GND, 2 VIN, 3 VOUT)",
+   "connector": "U6",
+   "results": {
+    "sheet": [
+     {
+      "connector": "U6",
+      "pin": "2",
+      "label": "VIN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "3",
+      "label": "VOUT",
+      "driver": "U6",
+      "dir": "out",
+      "role": "+5 rail into L2 and the Si8921",
+      "must_reach": "L2.2",
+      "reaches": "L2.2",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "1",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C5.1",
+      "reaches": "C5.1",
+      "ok": true
+     }
+    ],
+    "board": [
+     {
+      "connector": "U6",
+      "pin": "2",
+      "label": "VIN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "3",
+      "label": "VOUT",
+      "driver": "U6",
+      "dir": "out",
+      "role": "+5 rail into L2 and the Si8921",
+      "must_reach": "L2.2",
+      "reaches": "L2.2",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "1",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C5.1",
+      "reaches": "C5.1",
+      "ok": true
+     }
+    ],
+    "committed": [
+     {
+      "connector": "U6",
+      "pin": "2",
+      "label": "VIN",
+      "driver": "VregIn",
+      "dir": "in",
+      "role": "from the switch",
+      "must_reach": "SW1.3",
+      "reaches": "SW1.3",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "3",
+      "label": "VOUT",
+      "driver": "U6",
+      "dir": "out",
+      "role": "+5 rail into L2 and the Si8921",
+      "must_reach": "L2.2",
+      "reaches": "L2.2",
+      "ok": true
+     },
+     {
+      "connector": "U6",
+      "pin": "1",
+      "label": "GND",
+      "driver": "GND",
+      "dir": "in",
+      "role": "ground",
+      "must_reach": "C5.1",
+      "reaches": "C5.1",
+      "ok": true
+     }
+    ]
+   }
+  }
+ ]
+}

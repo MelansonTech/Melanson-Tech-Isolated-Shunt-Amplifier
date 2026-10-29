@@ -1,5 +1,9 @@
 # Changelog
 
+## Layout and system review - 2026-10-29
+
+**Not a board change.** The Rev 3.1 design files as committed (board saved 2026-08-20 20:37, outputs 20:43) were put through the gated hardware review: every gate, then isolation geometry, rails and headroom, a 3-D thermal solve, LTspice loops / noise / bandwidth with the vendor op-amp models, a conducted-emission estimate, DFM and the fabrication package, enclosure fit and a lifecycle check of every BOM line. The report is [`design-review/design-review-2026-10-29.md`](design-review/design-review-2026-10-29.md) (PDF beside it), the solvers and their result files are in `hardware/review/`, and every finding - including F1-F15 of the August review - now lives in `hardware/review/findings_register.json`; the open list is [`TODO.md`](TODO.md).
+
 ## Bench characterisation — 2026-09-06
 
 **Not a board change.** A Rev 3.1 board was measured end to end, converting most of the

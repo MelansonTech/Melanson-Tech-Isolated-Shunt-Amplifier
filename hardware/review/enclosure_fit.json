@@ -1,0 +1,385 @@
+{
+ "case_h": 24.0,
+ "board_t": 1.6,
+ "y_mid": 8.75,
+ "cases": {
+  "wall_1.0": {
+   "avail_bottom": 13.45,
+   "avail_top": 6.95,
+   "rows": [
+    {
+     "ref": "J4",
+     "side": "BOTTOM",
+     "h": 11.0,
+     "avail": 13.45,
+     "margin": 2.4499999999999993,
+     "src": "pj-002a.pdf drawing, 11.00"
+    },
+    {
+     "ref": "C7 standing",
+     "side": "BOTTOM",
+     "h": 16.0,
+     "avail": 13.45,
+     "margin": -2.5500000000000007,
+     "src": "a750.pdf: MV size code = 10 x 16 mm can; if mounted upright"
+    },
+    {
+     "ref": "C7 lying (RA1)",
+     "side": "BOTTOM",
+     "h": 10.0,
+     "avail": 13.45,
+     "margin": 3.4499999999999993,
+     "src": "a750.pdf: 10 mm diameter; the footprint name (RA1) implies a right-angle, lying mount"
+    },
+    {
+     "ref": "SW1",
+     "side": "BOTTOM",
+     "h": 4.7,
+     "avail": 13.45,
+     "margin": 8.75,
+     "src": "os103011.pdf: frame H = 4.7 mm; actuator passes through the panel slot"
+    },
+    {
+     "ref": "Rel1",
+     "side": "BOTTOM",
+     "h": 4.2,
+     "avail": 13.45,
+     "margin": 9.25,
+     "src": "g6l.pdf G6L-1F drawing 4.2 +/-0.2"
+    },
+    {
+     "ref": "CM1",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 13.45,
+     "margin": 8.45,
+     "src": "board file HEIGHT 5.0"
+    },
+    {
+     "ref": "PSU1",
+     "side": "BOTTOM",
+     "h": 4.0,
+     "avail": 13.45,
+     "margin": 9.45,
+     "src": "board file HEIGHT 4.0"
+    },
+    {
+     "ref": "J2",
+     "side": "BOTTOM",
+     "h": 10.5,
+     "avail": 13.45,
+     "margin": 2.9499999999999993,
+     "src": "EST: BCH-508HS 2-pos header, through Panel B cutout 9.5 mm tall"
+    },
+    {
+     "ref": "R28",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 13.45,
+     "margin": 8.45,
+     "src": "EST: CT-94 top-adjust body"
+    },
+    {
+     "ref": "D4/D5",
+     "side": "BOTTOM",
+     "h": 9.0,
+     "avail": 13.45,
+     "margin": 4.449999999999999,
+     "src": "panel LED holes at Y 18.0: leads formed to reach the panel, EST"
+    },
+    {
+     "ref": "U2",
+     "side": "TOP",
+     "h": 2.8,
+     "avail": 6.95,
+     "margin": 4.15,
+     "src": "board file HEIGHT 2.8"
+    },
+    {
+     "ref": "Q5/Q6",
+     "side": "TOP",
+     "h": 2.4,
+     "avail": 6.95,
+     "margin": 4.550000000000001,
+     "src": "board file HEIGHT 2.38"
+    },
+    {
+     "ref": "U1/U6",
+     "side": "TOP",
+     "h": 2.0,
+     "avail": 6.95,
+     "margin": 4.95,
+     "src": "board file HEIGHT 2.0"
+    },
+    {
+     "ref": "C11/C12",
+     "side": "TOP",
+     "h": 1.6,
+     "avail": 6.95,
+     "margin": 5.35,
+     "src": "EST: 1206 4.7 uF 50 V"
+    },
+    {
+     "ref": "C1 (0805 HD)",
+     "side": "TOP",
+     "h": 1.4,
+     "avail": 6.95,
+     "margin": 5.550000000000001,
+     "src": "board file HEIGHT 1.4"
+    }
+   ]
+  },
+  "wall_1.5": {
+   "avail_bottom": 12.95,
+   "avail_top": 6.45,
+   "rows": [
+    {
+     "ref": "J4",
+     "side": "BOTTOM",
+     "h": 11.0,
+     "avail": 12.95,
+     "margin": 1.9499999999999993,
+     "src": "pj-002a.pdf drawing, 11.00"
+    },
+    {
+     "ref": "C7 standing",
+     "side": "BOTTOM",
+     "h": 16.0,
+     "avail": 12.95,
+     "margin": -3.0500000000000007,
+     "src": "a750.pdf: MV size code = 10 x 16 mm can; if mounted upright"
+    },
+    {
+     "ref": "C7 lying (RA1)",
+     "side": "BOTTOM",
+     "h": 10.0,
+     "avail": 12.95,
+     "margin": 2.9499999999999993,
+     "src": "a750.pdf: 10 mm diameter; the footprint name (RA1) implies a right-angle, lying mount"
+    },
+    {
+     "ref": "SW1",
+     "side": "BOTTOM",
+     "h": 4.7,
+     "avail": 12.95,
+     "margin": 8.25,
+     "src": "os103011.pdf: frame H = 4.7 mm; actuator passes through the panel slot"
+    },
+    {
+     "ref": "Rel1",
+     "side": "BOTTOM",
+     "h": 4.2,
+     "avail": 12.95,
+     "margin": 8.75,
+     "src": "g6l.pdf G6L-1F drawing 4.2 +/-0.2"
+    },
+    {
+     "ref": "CM1",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 12.95,
+     "margin": 7.949999999999999,
+     "src": "board file HEIGHT 5.0"
+    },
+    {
+     "ref": "PSU1",
+     "side": "BOTTOM",
+     "h": 4.0,
+     "avail": 12.95,
+     "margin": 8.95,
+     "src": "board file HEIGHT 4.0"
+    },
+    {
+     "ref": "J2",
+     "side": "BOTTOM",
+     "h": 10.5,
+     "avail": 12.95,
+     "margin": 2.4499999999999993,
+     "src": "EST: BCH-508HS 2-pos header, through Panel B cutout 9.5 mm tall"
+    },
+    {
+     "ref": "R28",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 12.95,
+     "margin": 7.949999999999999,
+     "src": "EST: CT-94 top-adjust body"
+    },
+    {
+     "ref": "D4/D5",
+     "side": "BOTTOM",
+     "h": 9.0,
+     "avail": 12.95,
+     "margin": 3.9499999999999993,
+     "src": "panel LED holes at Y 18.0: leads formed to reach the panel, EST"
+    },
+    {
+     "ref": "U2",
+     "side": "TOP",
+     "h": 2.8,
+     "avail": 6.45,
+     "margin": 3.6500000000000004,
+     "src": "board file HEIGHT 2.8"
+    },
+    {
+     "ref": "Q5/Q6",
+     "side": "TOP",
+     "h": 2.4,
+     "avail": 6.45,
+     "margin": 4.050000000000001,
+     "src": "board file HEIGHT 2.38"
+    },
+    {
+     "ref": "U1/U6",
+     "side": "TOP",
+     "h": 2.0,
+     "avail": 6.45,
+     "margin": 4.45,
+     "src": "board file HEIGHT 2.0"
+    },
+    {
+     "ref": "C11/C12",
+     "side": "TOP",
+     "h": 1.6,
+     "avail": 6.45,
+     "margin": 4.85,
+     "src": "EST: 1206 4.7 uF 50 V"
+    },
+    {
+     "ref": "C1 (0805 HD)",
+     "side": "TOP",
+     "h": 1.4,
+     "avail": 6.45,
+     "margin": 5.050000000000001,
+     "src": "board file HEIGHT 1.4"
+    }
+   ]
+  },
+  "wall_2.0": {
+   "avail_bottom": 12.45,
+   "avail_top": 5.95,
+   "rows": [
+    {
+     "ref": "J4",
+     "side": "BOTTOM",
+     "h": 11.0,
+     "avail": 12.45,
+     "margin": 1.4499999999999993,
+     "src": "pj-002a.pdf drawing, 11.00"
+    },
+    {
+     "ref": "C7 standing",
+     "side": "BOTTOM",
+     "h": 16.0,
+     "avail": 12.45,
+     "margin": -3.5500000000000007,
+     "src": "a750.pdf: MV size code = 10 x 16 mm can; if mounted upright"
+    },
+    {
+     "ref": "C7 lying (RA1)",
+     "side": "BOTTOM",
+     "h": 10.0,
+     "avail": 12.45,
+     "margin": 2.4499999999999993,
+     "src": "a750.pdf: 10 mm diameter; the footprint name (RA1) implies a right-angle, lying mount"
+    },
+    {
+     "ref": "SW1",
+     "side": "BOTTOM",
+     "h": 4.7,
+     "avail": 12.45,
+     "margin": 7.749999999999999,
+     "src": "os103011.pdf: frame H = 4.7 mm; actuator passes through the panel slot"
+    },
+    {
+     "ref": "Rel1",
+     "side": "BOTTOM",
+     "h": 4.2,
+     "avail": 12.45,
+     "margin": 8.25,
+     "src": "g6l.pdf G6L-1F drawing 4.2 +/-0.2"
+    },
+    {
+     "ref": "CM1",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 12.45,
+     "margin": 7.449999999999999,
+     "src": "board file HEIGHT 5.0"
+    },
+    {
+     "ref": "PSU1",
+     "side": "BOTTOM",
+     "h": 4.0,
+     "avail": 12.45,
+     "margin": 8.45,
+     "src": "board file HEIGHT 4.0"
+    },
+    {
+     "ref": "J2",
+     "side": "BOTTOM",
+     "h": 10.5,
+     "avail": 12.45,
+     "margin": 1.9499999999999993,
+     "src": "EST: BCH-508HS 2-pos header, through Panel B cutout 9.5 mm tall"
+    },
+    {
+     "ref": "R28",
+     "side": "BOTTOM",
+     "h": 5.0,
+     "avail": 12.45,
+     "margin": 7.449999999999999,
+     "src": "EST: CT-94 top-adjust body"
+    },
+    {
+     "ref": "D4/D5",
+     "side": "BOTTOM",
+     "h": 9.0,
+     "avail": 12.45,
+     "margin": 3.4499999999999993,
+     "src": "panel LED holes at Y 18.0: leads formed to reach the panel, EST"
+    },
+    {
+     "ref": "U2",
+     "side": "TOP",
+     "h": 2.8,
+     "avail": 5.95,
+     "margin": 3.1500000000000004,
+     "src": "board file HEIGHT 2.8"
+    },
+    {
+     "ref": "Q5/Q6",
+     "side": "TOP",
+     "h": 2.4,
+     "avail": 5.95,
+     "margin": 3.5500000000000003,
+     "src": "board file HEIGHT 2.38"
+    },
+    {
+     "ref": "U1/U6",
+     "side": "TOP",
+     "h": 2.0,
+     "avail": 5.95,
+     "margin": 3.95,
+     "src": "board file HEIGHT 2.0"
+    },
+    {
+     "ref": "C11/C12",
+     "side": "TOP",
+     "h": 1.6,
+     "avail": 5.95,
+     "margin": 4.35,
+     "src": "EST: 1206 4.7 uF 50 V"
+    },
+    {
+     "ref": "C1 (0805 HD)",
+     "side": "TOP",
+     "h": 1.4,
+     "avail": 5.95,
+     "margin": 4.550000000000001,
+     "src": "board file HEIGHT 1.4"
+    }
+   ]
+  }
+ }
+}

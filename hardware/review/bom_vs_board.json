@@ -1,0 +1,12 @@
+{
+ "bom": "bom_rev3.csv",
+ "n_bom": 95,
+ "n_board": 95,
+ "missing": [
+  ""
+ ],
+ "missing_dnp": [],
+ "extra": [
+  "R10"
+ ]
+}

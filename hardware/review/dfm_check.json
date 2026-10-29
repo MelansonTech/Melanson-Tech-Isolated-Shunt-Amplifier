@@ -1,0 +1,142 @@
+{
+ "jlc": {
+  "annular_min": 0.13,
+  "track_min": 0.09,
+  "clearance_min": 0.09,
+  "copper_to_edge": 0.3,
+  "via_drill_min": 0.15,
+  "via_pad_min": 0.45
+ },
+ "board_rules": {
+  "width_min": 0.13,
+  "clearance_min": 0.2
+ },
+ "findings": [
+  {
+   "area": "dfm",
+   "severity": 2,
+   "title": "Pours come within 0.21 mm of the barrier slot wall on every layer",
+   "detail": "JLC routed-edge copper clearance is 0.30 mm; a 0.2 mm setback can leave inner-layer copper exposed in the slot after routing tolerance",
+   "net": null
+  },
+  {
+   "area": "fab-package",
+   "severity": 2,
+   "title": "Barrier slot is drawn on the Outline layer as a 2.5 mm stroked path, not a closed cut-out contour",
+   "detail": "D103 C,2.5: a fab reading the profile layer must interpret a wide stroke as a routed slot; the saved board carries it as a board cut-out region, so an ODB++/IPC-2581 export or a drawn contour removes the ambiguity"
+  },
+  {
+   "area": "fab-package",
+   "severity": 2,
+   "title": "A .GKO (keep-out) file with an 11.5 x 3.9 mm rectangle is in the fabrication set",
+   "detail": "fabs that take GKO as the profile when present would cut the wrong board; the keep-out region under U2 should not be output, or the file dropped from the order zip"
+  },
+  {
+   "area": "dfm",
+   "severity": 3,
+   "title": "No fiducials and no test points on the board",
+   "detail": "a 95-part double-sided board going to machine assembly needs two or three fiducials per side; the only probe points are component pads"
+  },
+  {
+   "area": "thermal",
+   "severity": 3,
+   "title": "J2-to-shunt pours rise ~21 C at 10 A (IPC-2221, 1 oz, top only)",
+   "detail": "4.6 mm wide copper carrying 10 A; a second copper layer or 2 oz halves it",
+   "net": "NetJ2_1"
+  }
+ ],
+ "annular_min": {
+  "kind": "pad None.2",
+  "x": 21.74999205999999,
+  "y": 42.999987659999974,
+  "ring": -0.9880003099999994,
+  "drill": 3.500000619999998,
+  "pad": 1.5239999999999991
+ },
+ "track_min": {
+  "1": 0.24999949999999987,
+  "32": 0.25399999999999984
+ },
+ "clearance": {
+  "Top": {
+   "mm": 0.2,
+   "net": "NetR10_1",
+   "at": [
+    29.7,
+    69.16
+   ]
+  },
+  "Signal 1": {
+   "mm": 0.20615528128088303,
+   "net": "NetL3_2",
+   "at": [
+    53.2,
+    39.21
+   ]
+  },
+  "Signal 2": {
+   "mm": 0.20615528128088303,
+   "net": "NetL3_2",
+   "at": [
+    53.2,
+    39.21
+   ]
+  },
+  "Bottom": {
+   "mm": 0.20615528128088303,
+   "net": "NetL3_2",
+   "at": [
+    53.2,
+    39.21
+   ]
+  }
+ },
+ "copper_to_edge": {
+  "Top": {
+   "to_slot": 0.21213203435596426,
+   "to_outline": 0.55
+  },
+  "Signal 1": {
+   "to_slot": 0.21213203435596426,
+   "to_outline": 0.5
+  },
+  "Signal 2": {
+   "to_slot": 0.21213203435596426,
+   "to_outline": 0.55
+  },
+  "Bottom": {
+   "to_slot": 0.21213203435596426,
+   "to_outline": 0.55
+  }
+ },
+ "drill": {
+  "txt_holes": 160,
+  "board_holes": 163,
+  "unmatched": [],
+  "inside_outline": 160,
+  "tools": {
+   "1": 0.3,
+   "2": 0.45,
+   "3": 0.65,
+   "4": 0.7,
+   "5": 0.75,
+   "7": 0.8,
+   "8": 1.4,
+   "9": 1.5,
+   "10": 3.5
+  },
+  "slot_moves": 0
+ },
+ "outline_apertures": {
+  "33": "0.5000",
+  "103": "2.5000"
+ },
+ "fiducials": 0,
+ "shunt_path": {
+  "pour_width_mm": 4.550006007849255,
+  "copper_um": 35,
+  "i_a": 10.0,
+  "ipc2221_rise_c": 21.274669447461754,
+  "note": "IPC-2221 external conductor, 1 oz; the pours are top-layer only"
+ }
+}

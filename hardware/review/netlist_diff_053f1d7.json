@@ -1,0 +1,15 @@
+{
+ "n_common": 230,
+ "mismatches": [],
+ "sheet_only_components": [
+  "R10"
+ ],
+ "board_only_components": [],
+ "board_only_pins": [],
+ "board": "MelansonTech Isolated Shunt Amplifier Rev3.CSPcbDoc",
+ "sheets": [
+  "MelansonTech PSU_IsolatedShuntAmp Rev3.SchDoc",
+  "MelansonTech Isolated Shunt Amplifier Rev3.SchDoc"
+ ],
+ "sheet_source": "sheets at 053f1d7"
+}

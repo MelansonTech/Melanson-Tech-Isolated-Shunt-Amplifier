@@ -136,7 +136,8 @@ The full set including the PCB and fabrication drawings is
 | [**Building one**](docs/ASSEMBLY.md) | Fab ordering, assembly notes, BOM corrections, first power-on |
 | [**Calibration**](docs/CALIBRATION.md) | The zero trim — **required** — and the optional gain correction |
 | [**Test record**](docs/TEST_RECORD.xlsx) | Per-board data capture with automatic pass/fail |
-| [**Design review**](docs/DESIGN_REVIEW.md) | 15 findings, the full tolerance stack-up, open items |
+| [**Layout and system review, 2026-10-29**](docs/design-review/design-review-2026-10-29.md) | Gates (outputs, placement, BOM, sheet-vs-board, connectivity), creepage and clearance with the slot and the case, rails and headroom, 3-D thermal, loops / noise / bandwidth in LTspice, EMC estimate, DFM, sourcing. Register in `hardware/review/`, open list in [`docs/TODO.md`](docs/TODO.md) |
+| [**Schematic review, 2026-08-20**](docs/DESIGN_REVIEW.md) | 15 findings, the full tolerance stack-up; carried into the register as F1-F15 |
 | [**Tolerance budget**](docs/Tolerance%20Budget%20-%20Isolated%20Shunt%20Amplifier%20Rev%202.xlsx) | The live model behind every accuracy number |
 | [**Changelog**](docs/CHANGELOG.md) | Revision history and open items |
 

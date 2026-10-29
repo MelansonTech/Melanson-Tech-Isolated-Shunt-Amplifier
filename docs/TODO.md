@@ -1,0 +1,53 @@
+# TODO - from the findings register (2026-10-29)
+
+Open items, severity order. Close an item only with a check on a newer board (`hardware/review/register.py`).
+
+- [ ] **F4** (sev 1, legacy): R28 is 100 ohm on the schematic and CT94EW103 (10 k) in the BOM
+- [ ] **sourcing-1** (sev 1, sourcing): LM7321MF/NOPB (U5, U9): OBSOLETE
+- [ ] **F11** (sev 2, legacy): No reverse-polarity, fuse or TVS on the 15 V input; D6 clamp topology
+- [ ] **F12** (sev 2, legacy): SW1 carries the whole board supply at its 100 mA / 12 V rating
+- [ ] **F13** (sev 2, legacy): BOM lines C8, C43, R23 are generic placeholders
+- [ ] **F15** (sev 2, legacy): Rev 3.1 silkscreen legends disagree with the schematic
+- [ ] **F2** (sev 2, legacy): +12 rail unregulated below ~14.9 V at the jack
+- [ ] **F5** (sev 2, legacy): U6 HT7550-1 dissipates ~0.55-0.6 W in SOT-89
+- [ ] **analog-4** (sev 2, analog): LM7321 bias current (0.4 uA typ, up to 2 uA) through the R21 asymmetry: 4 mV typ / 20 mV max offset between the two references with the board's 10 k, zero with the sheet's 0 R
+- [ ] **bom-1** (sev 2, bom): D6: sheet/BOM says BAS31, board says BAT54SLT1G
+- [ ] **bom-2** (sev 2, bom): R2: sheet/BOM says ERA-6VRW8201V, board says RR1220P-8251-D-M
+- [ ] **bom-3** (sev 2, bom): R9: sheet/BOM says ERA-6VRW8201V, board says RR1220P-8251-D-M
+- [ ] **dfm-1** (sev 2, dfm): Pours come within 0.21 mm of the barrier slot wall on every layer
+- [ ] **dfm-2** (sev 2, dfm): Barrier slot is drawn on the Outline layer as a 2.5 mm stroked path, not a closed cut-out contour
+- [ ] **dfm-3** (sev 2, dfm): A .GKO (keep-out) file with an 11.5 x 3.9 mm rectangle is in the fabrication set
+- [ ] **emc-1** (sev 2, emc): Conducted emission at the 15 V port from PSU1: worst margin -4.8 dB to CISPR 32 Class B AVG (10-30 MHz), module scan de-embedded
+- [ ] **isolation-1** (sev 2, isolation): Barrier creepage 3.43 mm (bottom) / 3.68 mm (top) around the slot's left end, below the 4.0 mm basic figure for 400 V
+- [ ] **isolation-2** (sev 2, isolation): Aluminium case rail (bonded to ISenseRTN) is 3.60 mm from PSU1's -Vout pad along the bottom surface at 1 mm groove engagement
+- [ ] **isolation-3** (sev 2, isolation): Free 3.5 mm plated hole at (21.75, 43.0) sits 2.1 mm from measured-side copper and 1.8 mm from output-side copper
+- [ ] **isolation-4** (sev 2, isolation): Pours on every layer come within 0.21 mm of the slot wall
+- [ ] **isolation-5** (sev 2, isolation): No design rule enforces the barrier
+- [ ] **power-1** (sev 2, power): x100 full scale (5.0 V) is at the output clamp at 13 V in: two Schottky drops plus the regulator dropout
+- [ ] **power-2** (sev 2, power): U6 (HT7550-1, SOT-89) dissipates 0.62 W at 15 V and 0.71 W at 16 V against a 0.5 W package rating
+- [ ] **power-3** (sev 2, power): SW1 carries 93-97 % of its 0.1 A rating at 15 V (rated 12 V) and makes/breaks the board supply
+- [ ] **sourcing-2** (sev 2, sourcing): G6L-1F DC12 (Rel1): conflicting
+- [ ] **sourcing-3** (sev 2, sourcing): PJ-002A (J4): conflicting
+- [ ] **sourcing-4** (sev 2, sourcing): DR331-105BE (CM1): conflicting
+- [ ] **sourcing-5** (sev 2, sourcing): CL31B475KBHNNNE (C11, C12): NRND (LCSC)
+- [ ] **sync-1** (sev 2, sync): Sheet and board differ: R21 is fitted the other way round and renamed on the sheet (0 ohm link) after the last ECO
+- [ ] **sync-2** (sev 2, sync): R10 exists on the sheets but the board's R10 footprint is not linked to it
+- [ ] **thermal-1** (sev 2, thermal): The slot makes the shunt area a thermal island: R5 at 10 A reaches 110 C in free air and 138 C in the case at 40 C with 2.5 mm2 leads as fins
+- [ ] **F10** (sev 3, legacy): Difference-amp CMRR relies on four discrete resistors
+- [ ] **F14** (sev 3, legacy): Relay contact resistance sits in the x100 gain network
+- [ ] **F3** (sev 3, legacy): R21 asymmetry between the two reference buffers (10 k vs 0)
+- [ ] **F9** (sev 3, legacy): C16, C17, C28 at 3 pF are below the layout parasitics
+- [ ] **analog-1** (sev 3, analog): U9_x100 loop: phase margin 26 deg (simulated, LM7321 model at its 10 V group)
+- [ ] **analog-2** (sev 3, analog): x100 bandwidth is set by C9 (47 nF) against the 50 ohm output resistors: simulated 58 kHz, measured 60 kHz
+- [ ] **analog-3** (sev 3, analog): Input-referred noise 1.7 mA rms (x100, 60 kHz) and 5.4 mA rms (x10, 580 kHz), dominated by the Si8921
+- [ ] **analog-5** (sev 3, analog): D6 as drawn is an antiparallel clamp across AIP/AIN (+/-0.7 V with BAS31), not a series pair
+- [ ] **dfm-4** (sev 3, dfm): No fiducials and no test points on the board
+- [ ] **documentation-1** (sev 3, documentation): Documents give the board as 68.25 x 85.00 mm; it is 50.00 x 50.00 mm
+- [ ] **documentation-2** (sev 3, documentation): README says Revision 3 'has not been fabricated or tested' while the test report characterises a Rev 3.1 board
+- [ ] **documentation-3** (sev 3, documentation): The board file's stackup is not a fabricated one: 1.524 mm between top and the first plane, then 0.254 / 0.254
+- [ ] **documentation-4** (sev 3, documentation): C7 is a 10 x 16 mm can (A750 MV); upright it cannot fit the 24 mm case, lying flat it clears by ~3 mm with 1.5 mm walls
+- [ ] **documentation-5** (sev 3, documentation): Rev 1 Bode files and the sheet note 'Circuit Requires 300mW' are stale
+- [ ] **isolation-6** (sev 3, isolation): J2's 400 V rating applies to overvoltage category II / pollution degree 2 only
+- [ ] **power-4** (sev 3, power): Relay coil at 16 V is 130 % of rating, within the G6L's 150 % maximum to 70 C
+- [ ] **sourcing-6** (sev 3, sourcing): Part numbers that no distributor listing matched: NXJ1S0505T6MC-R7, ERA-6VRW8201V, ERA-6AEB471V, C0805X102J1GACAUTO
+- [ ] **thermal-2** (sev 3, thermal): J2-to-shunt pours rise ~21 C at 10 A (IPC-2221, 1 oz, top layer only)

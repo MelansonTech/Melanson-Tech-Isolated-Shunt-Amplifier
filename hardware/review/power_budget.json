@@ -1,0 +1,1466 @@
+{
+ "psu_in_ma_residual": 63.2575299850075,
+ "psu_eff_implied": 0.43200031259123606,
+ "cases": {
+  "x10_13.0": {
+   "vin": 13.0,
+   "range": "x10",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 0.0,
+   "vregin": 12.64,
+   "v12": 10.940000000000001,
+   "vref": 5.470000000000001,
+   "i12": 0.006677372663668166,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0,
+   "i_vregin": 0.07727740264867568,
+   "i_total": 0.07727740264867568,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 5.470000000000001e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.467266366816592e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.0007740000000000001,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0005470000000000001,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0005470000000000001,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.017879533528235875,
+    "U6": 0.5100275290854573,
+    "Rel1": 0.0,
+    "D3": 0.027819864953523243,
+    "D1": 0.0,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.010940000000000002,
+    "U8": 0.010940000000000002,
+    "U5": 0.014769000000000003,
+    "U9": 0.014769000000000003,
+    "SW1": 0.00011943593920251093
+   },
+   "p_in_w": 1.0046062344327837
+  },
+  "x100_13.0": {
+   "vin": 13.0,
+   "range": "x100",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 12.64,
+   "vregin": 12.280000000000001,
+   "v12": 10.580000000000002,
+   "vref": 5.290000000000001,
+   "i12": 0.006601773563218391,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0158,
+   "i_vregin": 0.0772018035482259,
+   "i_total": 0.0930018035482259,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 5.290000000000001e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.287356321839082e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.0007380000000000002,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0005290000000000001,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0005290000000000001,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0158,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.01775101505747126,
+    "U6": 0.48599481829085467,
+    "Rel1": 0.19971200000000003,
+    "D3": 0.03348064927736132,
+    "D1": 0.02779264927736132,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.010580000000000003,
+    "U8": 0.010580000000000003,
+    "U5": 0.014283000000000004,
+    "U9": 0.014283000000000004,
+    "SW1": 0.0001729867092644561
+   },
+   "p_in_w": 1.2090234461269367
+  },
+  "x10_14.0": {
+   "vin": 14.0,
+   "range": "x10",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 0.0,
+   "vregin": 13.64,
+   "v12": 11.940000000000001,
+   "vref": 5.970000000000001,
+   "i12": 0.006887370164917542,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0,
+   "i_vregin": 0.07748740014992504,
+   "i_total": 0.07748740014992504,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 5.970000000000001e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.9670164917541235e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.0008740000000000002,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0005970000000000001,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0005970000000000001,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.018236529280359813,
+    "U6": 0.5767850590704648,
+    "Rel1": 0.0,
+    "D3": 0.027895464053973015,
+    "D1": 0.0,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.011940000000000001,
+    "U8": 0.011940000000000001,
+    "U5": 0.016119,
+    "U9": 0.016119,
+    "SW1": 0.00012008594363989208
+   },
+   "p_in_w": 1.0848236020989506
+  },
+  "x100_14.0": {
+   "vin": 14.0,
+   "range": "x100",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 13.64,
+   "vregin": 13.280000000000001,
+   "v12": 11.580000000000002,
+   "vref": 5.790000000000001,
+   "i12": 0.0068117710644677665,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.01705,
+   "i_vregin": 0.07741180104947527,
+   "i_total": 0.09446180104947527,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 5.790000000000001e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.787106446776613e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.0008380000000000002,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0005790000000000001,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0005790000000000001,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.01705,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.018108010809595197,
+    "U6": 0.5527523482758622,
+    "Rel1": 0.232562,
+    "D3": 0.0340062483778111,
+    "D1": 0.027868248377811097,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.011580000000000002,
+    "U8": 0.011580000000000002,
+    "U5": 0.015633000000000005,
+    "U9": 0.015633000000000005,
+    "SW1": 0.00017846063715021296
+   },
+   "p_in_w": 1.3224652146926537
+  },
+  "x10_15.0": {
+   "vin": 15.0,
+   "range": "x10",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 0.0,
+   "vregin": 14.64,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.07750000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.028353520839580214,
+    "U6": 0.6435425890554723,
+    "Rel1": 0.0,
+    "D3": 0.027900000000000005,
+    "D1": 0.0,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00012012500000000005
+   },
+   "p_in_w": 1.1625
+  },
+  "x100_15.0": {
+   "vin": 15.0,
+   "range": "x100",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 14.64,
+   "vregin": 14.280000000000001,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0183,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.09580000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0183,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.02448713163418292,
+    "U6": 0.6195098782608697,
+    "Rel1": 0.26791200000000004,
+    "D3": 0.034488000000000005,
+    "D1": 0.027900000000000005,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00018355280000000005
+   },
+   "p_in_w": 1.437
+  },
+  "x10_15.6": {
+   "vin": 15.6,
+   "range": "x10",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 0.0,
+   "vregin": 15.24,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.07750000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.03479750284857571,
+    "U6": 0.6835971070464768,
+    "Rel1": 0.0,
+    "D3": 0.027900000000000005,
+    "D1": 0.0,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00012012500000000005
+   },
+   "p_in_w": 1.209
+  },
+  "x100_15.6": {
+   "vin": 15.6,
+   "range": "x100",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 15.24,
+   "vregin": 14.88,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.01905,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.09655000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.01905,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.03093111364317842,
+    "U6": 0.6595643962518741,
+    "Rel1": 0.290322,
+    "D3": 0.034758000000000004,
+    "D1": 0.027900000000000005,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00018643805000000002
+   },
+   "p_in_w": 1.50618
+  },
+  "x10_16.0": {
+   "vin": 16.0,
+   "range": "x10",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 0.0,
+   "vregin": 15.64,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.0,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.07750000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.0,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.03909349085457272,
+    "U6": 0.7103001190404798,
+    "Rel1": 0.0,
+    "D3": 0.027900000000000005,
+    "D1": 0.0,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00012012500000000005
+   },
+   "p_in_w": 1.2400000000000002
+  },
+  "x100_16.0": {
+   "vin": 16.0,
+   "range": "x100",
+   "vf_d3": 0.36,
+   "vf_d1": 0.36,
+   "highgain": 15.64,
+   "vregin": 15.280000000000001,
+   "v12": 12.0,
+   "vref": 6.0,
+   "i12": 0.006899970014992504,
+   "i5": 0.0667575299850075,
+   "i_psu": 0.0632575299850075,
+   "i_coil": 0.01955,
+   "i_vregin": 0.07750000000000001,
+   "i_total": 0.09705000000000001,
+   "loads": [
+    {
+     "ref": "U3",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U8",
+     "rail": "+12",
+     "i_a": 0.001,
+     "src": "DS",
+     "note": "OPA197 IQ 1.0 mA typ"
+    },
+    {
+     "ref": "U5",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "U9",
+     "rail": "+12",
+     "i_a": 0.00135,
+     "src": "DS",
+     "note": "LM7321 IS 1.35 mA typ"
+    },
+    {
+     "ref": "R22/R17",
+     "rail": "+12",
+     "i_a": 6e-05,
+     "src": "CALC",
+     "note": "100k + 100k reference divider"
+    },
+    {
+     "ref": "R26/R28/R29",
+     "rail": "+12",
+     "i_a": 5.997001499250375e-05,
+     "src": "CALC",
+     "note": "100k + 100 R + 100k trim divider"
+    },
+    {
+     "ref": "D4 or D5",
+     "rail": "+12",
+     "i_a": 0.00088,
+     "src": "CALC",
+     "note": "one blue LED through 10k, Vf 3.2 V (BOM description)"
+    },
+    {
+     "ref": "R13",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U3 out (~Vref) to GND, sourced by U3"
+    },
+    {
+     "ref": "R15",
+     "rail": "+12",
+     "i_a": 0.0006,
+     "src": "CALC",
+     "note": "10k from U8 out (~Vref) to GND, sourced by U8"
+    },
+    {
+     "ref": "U1",
+     "rail": "VregIn",
+     "i_a": 0.00384,
+     "src": "DS",
+     "note": "UA78L12 bias 3.84 mA typ (new chip)"
+    },
+    {
+     "ref": "U2 VDDB",
+     "rail": "+5",
+     "i_a": 0.0035,
+     "src": "DS",
+     "note": "Si8921 output side 3.5 mA typ"
+    },
+    {
+     "ref": "PSU1 in",
+     "rail": "+5",
+     "i_a": 0.0632575299850075,
+     "src": "MEAS",
+     "note": "residual of the measured 95.8 mA total at 15 V, x100"
+    },
+    {
+     "ref": "R6",
+     "rail": "+5_ISO",
+     "i_a": 0.022727272727272728,
+     "src": "CALC",
+     "note": "220 R preload on the isolated 5 V"
+    },
+    {
+     "ref": "U2 VDDA",
+     "rail": "+5_ISO",
+     "i_a": 0.0046,
+     "src": "DS",
+     "note": "Si8921 input side 4.6 mA typ"
+    },
+    {
+     "ref": "U6",
+     "rail": "VregIn",
+     "i_a": 2.5e-06,
+     "src": "DS",
+     "note": "HT7550-1 quiescent 2.5 uA"
+    },
+    {
+     "ref": "Rel1 coil",
+     "rail": "HighGain",
+     "i_a": 0.01955,
+     "src": "CALC",
+     "note": "G6L-1F DC12 coil 800 R at HighGain"
+    }
+   ],
+   "diss_w": {
+    "U1": 0.035227101649175425,
+    "U6": 0.6862674082458772,
+    "Rel1": 0.30576200000000003,
+    "D3": 0.034938000000000004,
+    "D1": 0.027900000000000005,
+    "PSU1": 0.17965128628867386,
+    "R6": 0.11363636363636363,
+    "U2": 0.040499999999999994,
+    "U3": 0.012,
+    "U8": 0.012,
+    "U5": 0.0162,
+    "U9": 0.0162,
+    "SW1": 0.00018837405000000007
+   },
+   "p_in_w": 1.5528000000000002
+  }
+ }
+}
