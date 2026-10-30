@@ -39,15 +39,20 @@ import ref_trim                                                          # noqa:
 FIG = HERE.parent.parent.parent / "docs" / "design-review" / "figures"
 RENDER = Path.home() / ".claude/skills/ltspice/scripts/render_asc.py"
 MODEL = HERE.parent / "models" / "LM7321_12V.lib"
-OA = Block("LM7321_12V", 128, 96, [("IN+", 0, 32, "LEFT"), ("IN-", 0, 64, "LEFT"), ("V+", 64, 0, "TOP"),
-                                   ("V-", 64, 96, "BOTTOM"), ("OUT", 128, 48, "RIGHT")], title="buffer")
-STUB = 48
+# the buffer as an op-amp triangle: IN+ top-left, IN- bottom-left, V+ / V- on short stubs, OUT at the apex
+OA = Block("LM7321_12V", 128, 128,
+           [("IN+", 0, 32, "LEFT"), ("IN-", 0, 96, "LEFT"), ("V+", 64, 16, "TOP"), ("V-", 64, 112, "BOTTOM"), ("OUT", 128, 64, "RIGHT")],
+           title="", show_pins=False,
+           lines=[(0, 0, 0, 128), (0, 0, 128, 64), (0, 128, 128, 64), (64, 16, 64, 32), (64, 112, 64, 96),
+                  (8, 32, 20, 32), (14, 26, 14, 38), (8, 96, 20, 96)])
 
 
-def vert(s, sym, name, value, top, note=None):
-    p = STOCK[sym][0]
+def vert(s, sym, name, value, top, note=None, note_dy=0):
+    """A vertical part with its top pin at `top`. The note starts just below the top pin, so a
+    wire running along the top (a part hanging from a line) never crosses it."""
+    p, box = STOCK[sym]
     o = (top[0] - p[0][0], top[1] - p[0][1])
-    s.part(sym, name, value, o, "R0", None, note)
+    s.part(sym, name, value, o, "R0", None, note, note_at=(o[0] + box[2] + 8, top[1] + 8 + note_dy, "Left"))
     return (o[0] + p[1][0], o[1] + p[1][1])
 
 
@@ -59,15 +64,16 @@ def horiz(s, sym, name, value, left, note=None):
     return (o[0] + r2[0], o[1] + r2[1])
 
 
-def opamp(s, name, at_inp, note=None):
+def opamp(s, name, at_inp):
     """Place the buffer with IN+ at at_inp; wire IN- to OUT; returns (out point, v+ point, v- point)."""
     _, px, py, _ = OA.pins[0]
     o = (at_inp[0] - px, at_inp[1] - py)
-    s.part(None, name, None, o, "R0", None, note, block=OA)
+    s.part(None, name, None, o, "R0", None, None, block=OA)
     pts = [(o[0] + x, o[1] + y) for _, x, y, _ in OA.pins]
     inn, vp, vn, out = pts[1], pts[2], pts[3], pts[4]
-    # feedback: IN- left, down, right under the body, up to OUT
-    s.wire(inn, (inn[0] - 32, inn[1]), (inn[0] - 32, inn[1] + 128), (out[0] + 24, inn[1] + 128), (out[0] + 24, out[1]), out)
+    # feedback: IN- left, down under the V- ground symbol, right past the body, up to OUT
+    fb = inn[1] + 96
+    s.wire(inn, (inn[0] - 32, inn[1]), (inn[0] - 32, fb), (out[0] + 24, fb), (out[0] + 24, out[1]), out)
     s.wire(vp, (vp[0], vp[1] - 24)); s.flag((vp[0], vp[1] - 24), "v12")
     s.wire(vn, (vn[0], vn[1] + 24)); s.flag((vn[0], vn[1] + 24), "0")
     return out, vp, vn
@@ -75,12 +81,6 @@ def opamp(s, name, at_inp, note=None):
 
 def gnd(s, pt):
     s.flag(pt, "0")
-
-
-def label(s, pt, name, dx=STUB):
-    b = (pt[0] + dx, pt[1])
-    s.wire(pt, b)
-    s.flag(b, name)
 
 
 def isrc_into(s, name, value, node):
@@ -92,7 +92,7 @@ def isrc_into(s, name, value, node):
 
 
 def draw_supplies(s, x, y):
-    s.text((x - 32, y - 96), "supplies", size=2)
+    s.text((x - 32, y - 112), "supplies", size=2)
     for dx, name, val, net in ((0, "V12", "12", "v12"), (160, "Vin", "15", "vin")):
         top = (x + dx, y)
         s.wire((top[0], top[1] - 32), top); s.flag((top[0], top[1] - 32), net)
@@ -101,40 +101,37 @@ def draw_supplies(s, x, y):
 
 def directives(s, y, params, note):
     s.text((48, y), "Run: a stepped operating point. Plot V(dref)-V(irtn), DiffAmpRef - ISenseRTN, against k, the R28 wiper position: 0 = GND end, 1 = +12 end", size=2)
-    s.text((48, y + 24), note, size=2)
-    s.text((48, y + 48), "ios: current into the U9 input, 200n = the LM7321 offset-current maximum. Model: LM7321_12V.lib beside this file, written by ../models/make_lm7321_12v.py", size=2)
-    s.directive((48, y + 88), ".include LM7321_12V.lib")
-    s.directive((48, y + 112), ".param " + params)
-    s.directive((48, y + 136), ".step param k 0 1 0.25")
-    s.directive((48, y + 160), ".op")
+    s.text((48, y + 32), note, size=2)
+    s.text((48, y + 64), "ios: current into the U9 input, 200n = the LM7321 offset-current maximum. Model: LM7321_12V.lib beside this file, written by ../models/make_lm7321_12v.py", size=2)
+    s.directive((48, y + 104), ".include LM7321_12V.lib")
+    s.directive((48, y + 136), ".param " + params)
+    s.directive((48, y + 168), ".step param k 0 1 0.25")
+    s.directive((48, y + 200), ".op")
 
 
 def draw_common(s, y):
-    """+12 divider, C4, U5 -> ISenseRTN with C30 and C29. Returns the ISenseRTN line point."""
-    s.text((48, y - 120), "ISenseRTN: 100k/100k divider off +12, 100 nF, unity buffer U5 (LM7321), 22 uF to GND and to Vin", size=2)
+    """+12 divider, C4, U5 -> ISenseRTN with C30 and C29, and the supplies."""
+    s.text((48, y - 144), "ISenseRTN: 100k/100k divider off +12, 100 nF, unity buffer U5 (LM7321), 22 uF to GND and to Vin", size=2)
     x = 112
     s.wire((x, y - 48), (x, y)); s.flag((x, y - 48), "v12")
     b = vert(s, "res", "R22", "100k", (x, y), note="0.1 %")
-    u5p = (b[0], b[1] + 48); s.wire(b, u5p)
+    u5p = (b[0], b[1] + 64); s.wire(b, u5p)
     b2 = vert(s, "res", "R17", "100k", u5p, note="0.1 %")
     gnd(s, b2)
     # C4 hangs to the right of the junction, clear of the R22/R17 notes
-    s.wire(u5p, (u5p[0] + 160, u5p[1]))
+    s.wire(u5p, (u5p[0] + 160, u5p[1]), (u5p[0] + 352, u5p[1]))
     s.flag((u5p[0] + 80, u5p[1]), "u5p")
     c = vert(s, "cap", "C4", "100n", (u5p[0] + 160, u5p[1])); gnd(s, c)
     # buffer, far enough right that its feedback wire clears the C4 note
-    s.wire((u5p[0] + 160, u5p[1]), (u5p[0] + 352, u5p[1]))
     out, vp, vn = opamp(s, "U5", (u5p[0] + 352, u5p[1]))
     line = (out[0] + 96, out[1])
-    s.wire(out, line)
-    s.flag((out[0] + 48, out[1] - 0), "irtn")
+    s.wire(out, line, (line[0] + 128, line[1]))
+    s.flag((out[0] + 48, out[1]), "irtn")
     # C30 to ground, C29 to Vin, hanging from the line
-    c30 = vert(s, "cap", "C30", "22u", (line[0], line[1]), note="to GND"); gnd(s, c30)
-    s.wire(line, (line[0] + 128, line[1]))
+    c30 = vert(s, "cap", "C30", "22u", line, note="to GND"); gnd(s, c30)
     c29 = vert(s, "cap", "C29", "22u", (line[0] + 128, line[1]), note="to Vin")
-    s.wire(c29, (c29[0], c29[1] + 32), (c29[0] + 48, c29[1] + 32)); s.flag((c29[0] + 48, c29[1] + 32), "vin")
+    s.wire(c29, (c29[0], c29[1] + 64), (c29[0] + 48, c29[1] + 64)); s.flag((c29[0] + 48, c29[1] + 64), "vin")
     draw_supplies(s, 1040, y + 32)
-    return (line[0] + 128, line[1]), u5p
 
 
 def draw_asbuilt():
@@ -143,28 +140,27 @@ def draw_asbuilt():
     draw_common(s, y)
     # second divider with the trimmer, on a second row
     y2 = y + 512
-    s.text((48, y2 - 120), "DiffAmpRef as built: a second 100k/100k divider with R28 (100 R) in the middle, R21 (10 k on the board, 0 R on the sheet), 100 nF, buffer U9; C10 22 uF ties the two references", size=2)
+    s.text((48, y2 - 144), "DiffAmpRef as built: a second 100k/100k divider with R28 (100 R) in the middle, R21 (10 k on the board, 0 R on the sheet), 100 nF, buffer U9; C10 22 uF ties the two references", size=2)
     x = 112
     s.wire((x, y2 - 48), (x, y2)); s.flag((x, y2 - 48), "v12")
     b = vert(s, "res", "R26", "100k", (x, y2), note="0.1 %")
-    a = (b[0], b[1] + 32); s.wire(b, a); s.wire(a, (a[0] + 64, a[1])); s.flag((a[0] + 64, a[1]), "r28a")
-    b = vert(s, "res", "R28a", "{ra}", a, note="R28 100 R")
+    a = (b[0], b[1] + 32); s.wire(b, a); s.wire(a, (a[0] - 48, a[1])); s.flag((a[0] - 48, a[1]), "r28a")
+    b = vert(s, "res", "R28a", "{ra}", a)
     w = (b[0], b[1] + 32); s.wire(b, w)
-    s.wire(w, (w[0] + 64, w[1])); s.flag((w[0] + 64, w[1]), "wiper")
     b = vert(s, "res", "R28b", "{rb}", w)
-    a = (b[0], b[1] + 32); s.wire(b, a); s.wire(a, (a[0] + 64, a[1])); s.flag((a[0] + 64, a[1]), "r28b")
+    a = (b[0], b[1] + 32); s.wire(b, a); s.wire(a, (a[0] - 48, a[1])); s.flag((a[0] - 48, a[1]), "r28b")
     b = vert(s, "res", "R29", "100k", a, note="0.1 %"); gnd(s, b)
-    # R21 from the wiper to the right, then C26, the bias-imbalance source and U9
-    r = horiz(s, "res", "R21", "{r21}", (w[0] + 160, w[1]), note="board 10k")
-    s.wire((w[0] + 64, w[1]), (w[0] + 160, w[1]))
-    u9p = (r[0] + 64, r[1]); s.wire(r, u9p)
+    # the wiper row: R21 to the right, then C26, the bias-imbalance source and U9
+    s.wire(w, (w[0] + 224, w[1])); s.flag((w[0] + 120, w[1]), "wiper")
+    r = horiz(s, "res", "R21", "{r21}", (w[0] + 224, w[1]), note="board 10k")
+    u9p = (r[0] + 64, r[1])
+    s.wire(r, u9p, (u9p[0] + 176, u9p[1]), (u9p[0] + 336, u9p[1])); s.flag((u9p[0] + 112, u9p[1]), "u9p")
     c = vert(s, "cap", "C26", "100n", u9p); gnd(s, c)
-    s.wire(u9p, (u9p[0] + 176, u9p[1]), (u9p[0] + 336, u9p[1])); s.flag((u9p[0] + 112, u9p[1]), "u9p")
     isrc_into(s, "Ios", "{ios}", (u9p[0] + 176, u9p[1]))
     out, vp, vn = opamp(s, "U9", (u9p[0] + 336, u9p[1]))
     line = (out[0] + 96, out[1]); s.wire(out, line); s.flag((out[0] + 48, out[1]), "dref")
     c10 = vert(s, "cap", "C10", "22u", line, note="to ISenseRTN")
-    s.wire(c10, (c10[0], c10[1] + 32), (c10[0] + 48, c10[1] + 32)); s.flag((c10[0] + 48, c10[1] + 32), "irtn")
+    s.wire(c10, (c10[0], c10[1] + 64), (c10[0] + 48, c10[1] + 64)); s.flag((c10[0] + 48, c10[1] + 64), "irtn")
     directives(s, 1232, "r21=10k ra=100*(1-k)+1m rb=100*k+1m ios=0",
                "r21: 10k as fitted on the Rev 3.1 board; the sheet says 0 R (use 1m). ra, rb: the two halves of R28 (100 R) either side of the wiper")
     return s
@@ -175,38 +171,38 @@ def draw_proposed():
     y = 224
     draw_common(s, y)
     y2 = y + 512
-    s.text((48, y2 - 120), "DiffAmpRef proposed: ISenseRTN through R21 (100 R, 0.1 %) to the U9 input; the trim is a current from R28's wiper through R33 (100 k); R26 and R29 deleted", size=2)
+    s.text((48, y2 - 128), "DiffAmpRef proposed: ISenseRTN through R21 (100 R, 0.1 %) to the U9 input; the trim is a current from the wiper of R28 (10 k) through R33 (100 k); R26 and R29 deleted", size=2)
     s.text((48, y2 - 96), "dV = (Vwiper - ISenseRTN) x 100 / 100.1k = +/-6 mV over the pot's travel, 18 turns; 200 nA of U9 bias current moves it 20 uV", size=2)
     # the pot across the rails, a column at the right of the row
     xp = 1232
-    y2 = y2 + 160
-    s.wire((xp, y2 - 48), (xp, y2)); s.flag((xp, y2 - 48), "v12")
-    b = vert(s, "res", "R28a", "{ra}", (xp, y2), note="R28 10k")
+    yp = y2 + 192
+    s.wire((xp, yp - 48), (xp, yp)); s.flag((xp, yp - 48), "v12")
+    b = vert(s, "res", "R28a", "{ra}", (xp, yp))
     w = (b[0], b[1] + 32); s.wire(b, w)
-    b = vert(s, "res", "R28b", "{rb}", w)
+    b = vert(s, "res", "R28b", "{rb}", w, note_dy=32)
     gnd(s, b)
-    # R33 from the wiper leftward to the U9 input node
+    # R33 from the wiper leftward; its left pin is the U9 input node
     s.wire(w, (w[0] - 48, w[1]))
-    r33 = horiz(s, "res", "R33", "100k", (w[0] - 128, w[1]))     # right pin lands on the wiper wire at w-48
-    u9p = (w[0] - 128, w[1])                                      # the left pin of R33
+    horiz(s, "res", "R33", "100k", (w[0] - 128, w[1]))
+    u9p = (w[0] - 128, w[1])
     s.wire(w, (w[0] + 48, w[1])); s.flag((w[0] + 48, w[1]), "wiper")
     # ISenseRTN comes in from the left through R21 to the U9 input node
     x0 = 112
-    y2 = y2 - 160
-    s.wire((x0, y2 + 64), (x0 + 48, y2 + 64)); s.flag((x0, y2 + 64), "irtn")
-    r = horiz(s, "res", "R21", "100", (x0 + 48, y2 + 64), note="0.1 %")
-    node = (r[0] + 64, r[1]); s.wire(r, node)
+    yr = y2 + 64
+    s.wire((x0, yr), (x0 + 48, yr)); s.flag((x0, yr), "irtn")
+    r = horiz(s, "res", "R21", "100", (x0 + 48, yr), note="0.1 %")
+    node = (r[0] + 64, r[1])
+    # the node row: C26, the riser down to the R33 row, the bias-imbalance source, then U9
+    s.wire(r, node, (node[0] + 224, node[1]), (node[0] + 288, node[1]), (node[0] + 448, node[1]))
+    s.flag((node[0] + 128, node[1]), "u9p")
     c = vert(s, "cap", "C26", "100n", node, note="to ISenseRTN")
-    s.wire(c, (c[0], c[1] + 32), (c[0] + 48, c[1] + 32)); s.flag((c[0] + 48, c[1] + 32), "irtn")
-    # the node row: riser down to the R33 row, the bias-imbalance source, then U9
-    s.wire(node, (node[0] + 176, node[1]), (node[0] + 240, node[1]), (node[0] + 384, node[1]))
-    s.flag((node[0] + 112, node[1]), "u9p")
-    s.wire((node[0] + 176, node[1]), (node[0] + 176, w[1]), u9p)
-    isrc_into(s, "Ios", "{ios}", (node[0] + 240, node[1]))
-    out, vp, vn = opamp(s, "U9", (node[0] + 384, node[1]))
+    s.wire(c, (c[0], c[1] + 64), (c[0] + 48, c[1] + 64)); s.flag((c[0] + 48, c[1] + 64), "irtn")
+    s.wire((node[0] + 224, node[1]), (node[0] + 224, w[1]), u9p)
+    isrc_into(s, "Ios", "{ios}", (node[0] + 288, node[1]))
+    out, vp, vn = opamp(s, "U9", (node[0] + 448, node[1]))
     line = (out[0] + 96, out[1]); s.wire(out, line); s.flag((out[0] + 48, out[1]), "dref")
     c10 = vert(s, "cap", "C10", "22u", line, note="to ISenseRTN")
-    s.wire(c10, (c10[0], c10[1] + 32), (c10[0] + 48, c10[1] + 32)); s.flag((c10[0] + 48, c10[1] + 32), "irtn")
+    s.wire(c10, (c10[0], c10[1] + 64), (c10[0] + 48, c10[1] + 64)); s.flag((c10[0] + 48, c10[1] + 64), "irtn")
     directives(s, 1232, "ra=10k*(1-k)+1m rb=10k*k+1m ios=0",
                "ra, rb: the two halves of R28 (10 k) either side of the wiper")
     return s
@@ -238,7 +234,6 @@ def prove(asc_path, bench_lines):
                 out[name] = tuple(sorted(t.lower() for t in tok[1:3]))
         return out
     a, b = parse(net), parse("\n".join(bench_lines))
-    # the drawing's buffers have V+ / V- on the rails as the bench does; compare the parts both carry
     bad = []
     for k in sorted(set(a) | set(b)):
         if k not in a:

@@ -37,11 +37,10 @@ C10 dref irtn 22µ
 * 12
 * Vin
 * 15
-* DiffAmpRef proposed: ISenseRTN through R21 (100 R, 0.1 %) to the U9 input; the trim is a current from R28's wiper through R33 (100 k); R26 and R29 deleted
+* DiffAmpRef proposed: ISenseRTN through R21 (100 R, 0.1 %) to the U9 input; the trim is a current from the wiper of R28 (10 k) through R33 (100 k); R26 and R29 deleted
 * dV = (Vwiper - ISenseRTN) x 100 / 100.1k = +/-6 mV over the pot's travel, 18 turns; 200 nA of U9 bias current moves it 20 uV
 * R28a
 * {ra}
-* R28 10k
 * R28b
 * {rb}
 * R33
