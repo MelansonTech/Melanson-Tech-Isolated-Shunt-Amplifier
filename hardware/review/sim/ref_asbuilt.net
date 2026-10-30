@@ -3,9 +3,9 @@
 R22 v12 u5p 100k
 R17 u5p 0 100k
 C4 u5p 0 100n
-X§U5 u5p irtn v12 0 irtn LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+X§U5 u5p irtn v12 0 irtn LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+C29 vin irtn 22µ
 C30 irtn 0 22µ
-C29 irtn vin 22µ
 V12 v12 0 12
 Vin vin 0 15
 R26 v12 r28a 100k
@@ -15,7 +15,7 @@ R29 r28b 0 100k
 R21 wiper u9p {r21}
 C26 u9p 0 100n
 Ios 0 u9p {ios}
-X§U9 u9p dref v12 0 dref LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+X§U9 u9p dref v12 0 dref LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
 C10 dref irtn 22µ
 * ISenseRTN: 100k/100k divider off +12, 100 nF, unity buffer U5 (LM7321), 22 uF to GND and to Vin
 * R22
@@ -27,12 +27,12 @@ C10 dref irtn 22µ
 * C4
 * 100n
 * U5
-* C30
-* 22u
-* to GND
 * C29
 * 22u
 * to Vin
+* C30
+* 22u
+* to GND
 * supplies
 * V12
 * 12

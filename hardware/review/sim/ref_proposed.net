@@ -3,18 +3,18 @@
 R22 v12 u5p 100k
 R17 u5p 0 100k
 C4 u5p 0 100n
-X§U5 u5p irtn v12 0 irtn LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+X§U5 u5p irtn v12 0 irtn LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+C29 vin irtn 22µ
 C30 irtn 0 22µ
-C29 irtn vin 22µ
 V12 v12 0 12
 Vin vin 0 15
+R21 irtn u9p 100
+C26 irtn u9p 100n
 R28a v12 wiper {ra}
 R28b wiper 0 {rb}
-R33 u9p wiper 100k
-R21 irtn u9p 100
-C26 u9p irtn 100n
+R33 wiper u9p 100k
 Ios 0 u9p {ios}
-X§U9 u9p dref v12 0 dref LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
+X§U9 u9p dref v12 0 dref LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
 C10 dref irtn 22µ
 * ISenseRTN: 100k/100k divider off +12, 100 nF, unity buffer U5 (LM7321), 22 uF to GND and to Vin
 * R22
@@ -26,12 +26,12 @@ C10 dref irtn 22µ
 * C4
 * 100n
 * U5
-* C30
-* 22u
-* to GND
 * C29
 * 22u
 * to Vin
+* C30
+* 22u
+* to GND
 * supplies
 * V12
 * 12
@@ -39,18 +39,17 @@ C10 dref irtn 22µ
 * 15
 * DiffAmpRef proposed: ISenseRTN through R21 (100 R, 0.1 %) to the U9 input; the trim is a current from the wiper of R28 (10 k) through R33 (100 k); R26 and R29 deleted
 * dV = (Vwiper - ISenseRTN) x 100 / 100.1k = +/-6 mV over the pot's travel, 18 turns; 200 nA of U9 bias current moves it 20 uV
+* R21
+* 100
+* 0.1 %
+* C26
+* 100n
 * R28a
 * {ra}
 * R28b
 * {rb}
 * R33
 * 100k
-* R21
-* 100
-* 0.1 %
-* C26
-* 100n
-* to ISenseRTN
 * Ios
 * {ios}
 * U9
