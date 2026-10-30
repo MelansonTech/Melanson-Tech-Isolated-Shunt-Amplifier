@@ -6,12 +6,15 @@ C4 u5p 0 100n
 X§U5 u5p irtn v12 0 irtn LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
 C30 irtn 0 22µ
 C29 irtn vin 22µ
+V12 v12 0 12
+Vin vin 0 15
 R26 v12 r28a 100k
-R28a r28a wiper 50
-R28b wiper r28b 50
+R28a r28a wiper {ra}
+R28b wiper r28b {rb}
 R29 r28b 0 100k
-R21 wiper u9p 10k
+R21 wiper u9p {r21}
 C26 u9p 0 100n
+Ios 0 u9p {ios}
 X§U9 u9p dref v12 0 dref LM7321_12V LM7321_12V ;§pnba IN+)IN-)V+)V-)OUT
 C10 dref irtn 22µ
 * ISenseRTN: 100k/100k divider off +12, 100 nF, unity buffer U5 (LM7321), 22 uF to GND and to Vin
@@ -30,26 +33,40 @@ C10 dref irtn 22µ
 * C29
 * 22u
 * to Vin
-* DiffAmpRef as built: a second 100k/100k divider with R28 (100 R) in the middle, R21 (10 k on the board), 100 nF, buffer U9; C10 22 uF ties the two references
+* supplies
+* V12
+* 12
+* Vin
+* 15
+* DiffAmpRef as built: a second 100k/100k divider with R28 (100 R) in the middle, R21 (10 k on the board, 0 R on the sheet), 100 nF, buffer U9; C10 22 uF ties the two references
 * R26
 * 100k
 * 0.1 %
 * R28a
-* 50
+* {ra}
 * R28 100 R
 * R28b
-* 50
+* {rb}
 * R29
 * 100k
 * 0.1 %
 * R21
-* 10k
-* board / sheet
+* {r21}
+* board 10k
 * C26
 * 100n
+* Ios
+* {ios}
 * U9
 * C10
 * 22u
 * to ISenseRTN
+* Run: a stepped operating point. Plot V(dref)-V(irtn), DiffAmpRef - ISenseRTN, against k, the R28 wiper position: 0 = GND end, 1 = +12 end
+* r21: 10k as fitted on the Rev 3.1 board; the sheet says 0 R (use 1m). ra, rb: the two halves of R28 (100 R) either side of the wiper
+* ios: current into the U9 input, 200n = the LM7321 offset-current maximum. Model: LM7321_12V.lib beside this file, written by ../models/make_lm7321_12v.py
+.include LM7321_12V.lib
+.param r21=10k ra=100*(1-k)+1m rb=100*k+1m ios=0
+.step param k 0 1 0.25
+.op
 .backanno
 .end

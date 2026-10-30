@@ -10,3 +10,4 @@ models/ua78l/
 models/opa197_ti/
 datasheets/*.txt
 datasheets/cl21a226_samsung_mlcc_catalog.pdf
+sim/LM7321_12V.lib
